@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const userServices = require('../services/userServices');
+import * as userServices from '../services/userServices.js';
 
 const userRoutes = express.Router();
 
@@ -13,4 +13,4 @@ userRoutes.get('/test', async (req, res) => {
   }
 });
 
-module.exports = userRoutes;
+export { userRoutes };

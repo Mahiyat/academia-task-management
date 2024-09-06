@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const config = require('./config');
+import mongoose from 'mongoose';
+import config from './config/index.js';
 
 const DB_URI = config.mongo_uri;
 
@@ -12,6 +12,4 @@ async function connectMongoDB() {
   }
 }
 
-module.exports = {
-  connectMongoDB,
-};
+export { connectMongoDB };

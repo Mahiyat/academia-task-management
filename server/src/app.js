@@ -1,14 +1,12 @@
-require('dotenv').config();
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
 
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
+import config from './config/index.js';
 
-const config = require('./config');
+import { connectMongoDB } from './db.js';
 
-const { connectMongoDB } = require('./db');
-
-const userRoutes = require('./routes/userRoutes');
+import { userRoutes } from './routes/userRoutes.js';
 
 const app = express();
 

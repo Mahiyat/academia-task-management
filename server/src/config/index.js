@@ -1,4 +1,8 @@
-module.exports = {
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
+
+const config = {
   app: { port: 5000 },
   mongo_uri: process.env.MONGO_URI,
   cors:
@@ -8,3 +12,5 @@ module.exports = {
         }
       : {},
 };
+
+export default config;
