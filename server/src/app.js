@@ -6,6 +6,8 @@ const cors = require('cors');
 
 const config = require('./config');
 
+const { connectMongoDB } = require('./db');
+
 const userRoutes = require('./routes/userRoutes');
 
 const app = express();
@@ -17,6 +19,8 @@ app.use(cors(config.cors));
 app.get('/_status', (req, res) => {
   res.status(200).json({ status: 'OK' });
 });
+
+connectMongoDB();
 
 app.use('/api', userRoutes);
 
