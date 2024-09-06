@@ -1,6 +1,6 @@
 # Project Setup
 ## Server
-- [ ] Initiate nodejs server
+- [X] Initiate nodejs server
 - [ ] Configure router
 - [ ] Connect database
 - [ ] Add a simple API implementation
