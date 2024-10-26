@@ -1,31 +1,31 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const TeacherSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true
+    required: true,
   },
   lastName: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   phoneNumber: {
-    type: String
+    type: String,
   },
   designation: {
-    type: String
+    type: String,
   },
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course' 
-    }
-  ]
+      ref: "Course",
+    },
+  ],
   /*
    * role: {
    *   type: mongoose.Schema.Types.ObjectId,
@@ -35,6 +35,7 @@ const TeacherSchema = new mongoose.Schema({
    */
 });
 
-const Teacher = mongoose.model('Teacher', TeacherSchema);
+const Teacher = mongoose.model("Teacher", TeacherSchema);
 
 export default Teacher;
+

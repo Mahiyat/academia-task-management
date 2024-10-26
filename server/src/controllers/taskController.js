@@ -1,6 +1,10 @@
 import taskServices from "../services/taskServices.js";
 
-// Controller to create a new task
+/**
+ * Creates a new task.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const createTask = async (req, res) => {
   try {
     const { kanbanBoardId, ...taskData } = req.body;
@@ -12,7 +16,11 @@ export const createTask = async (req, res) => {
   }
 };
 
-// Controller to update a task
+/**
+ * Updates a new task.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const updateTask = async (req, res) => {
   try {
     const task = await taskServices.updateTask(req.params.id, req.body);
@@ -23,7 +31,11 @@ export const updateTask = async (req, res) => {
   }
 };
 
-// Controller to get all tasks
+/**
+ * Gets all tasks.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const getAllTasks = async (req, res) => {
   try {
     const tasks = await taskServices.getAllTasks();
@@ -40,7 +52,11 @@ export const getAllTasks = async (req, res) => {
   }
 };
 
-// Get tasks by board and status
+/**
+ * Gets task by kanban ID and status.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const getTasksByBoardAndStatus = async (req, res) => {
   try {
     const { kanbanBoardId, status } = req.params;
@@ -52,7 +68,11 @@ export const getTasksByBoardAndStatus = async (req, res) => {
   }
 };
 
-// Controller to delete a task
+/**
+ * Deletes a new task.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const deleteTask = async (req, res) => {
   try {
     await taskServices.deleteTask(req.params.id);
