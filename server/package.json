@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "mocha --recursive --require @babel/register"
   },
   "author": "",
   "license": "ISC",
@@ -18,9 +19,22 @@
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "helmet": "^7.1.0",
+    "jsdoc": "^4.0.4",
     "mongoose": "^8.6.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/register": "^7.25.9",
+    "@eslint/js": "^9.13.0",
+    "chai": "^5.1.2",
+    "eslint": "^9.13.0",
+    "eslint-plugin-jsdoc": "^50.4.3",
+    "eslint-plugin-sort-class-members": "^1.21.0",
+    "globals": "^15.11.0",
+    "mocha": "^10.7.3",
+    "nodemon": "^3.1.4",
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
   }
 }

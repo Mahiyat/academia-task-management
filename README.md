@@ -1,13 +1,14 @@
 # Project Setup
 ## Server
 - [X] Initiate nodejs server
-- [ ] Configure router
-- [ ] Connect database
-- [ ] Add a simple API implementation
+- [X] Configure router
+- [X] Connect database
+- [X] Add a simple API implementation
 - [ ] Add basic authentication
 - [ ] Add logging
-- [ ] Add unit test
-- [ ] Add lint rules
+- [X] Add unit test
+- [X] Add lint rules
+- [X] Add documentation tool
 - [ ] Dockerize
 - [ ] Add app runner CLI
 
