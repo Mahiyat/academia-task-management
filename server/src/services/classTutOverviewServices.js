@@ -1,6 +1,13 @@
-// services/classTutOverviewService.js
-import Course from '../models/Course.js';
 import Teacher from '../models/Teacher.js';
+
+/**
+ * Retrieves course overview data for a specified teacher, including progress metrics and status.
+ * @param {string} teacherId - The ID of the teacher whose course overview data is to be fetched.
+ * @returns {Promise<object[]>} An array of objects representing course details, 
+ * progress metrics, and status.
+ * @throws {Error} Throws an error if no course data is available or 
+ * if there is an issue loading the data.
+ */
 
 const getCourseOverviewData = async (teacherId) => {
   try {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classTutOverviewController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classTutOverviewController.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// controllers/classTutOverviewController.js
+import classTutOverviewService from '../services/classTutOverviewServices.js';
 
+/**
+ * Fetches the class and tutorial overview data for a specific teacher.
+ * @param {object} req - The request object.
+ * @param {object} req.params - The parameters of the request.
+ * @param {string} req.params.teacherId - The ID of the teacher to fetch data for.
+ * @param {object} res - The response object.
+ * @returns {Promise&lt;void>} Sends JSON response with overview data or an error message.
+ * @throws {Error} If there is an issue retrieving the data, 
+ * responds with an appropriate error message.
+ */
 
-    <h3> </h3>
+export const getClassTutOverview = async (req, res) => {
+  const { teacherId } = req.params;
 
+  console.log(teacherId);
+  try {
+    const overviewData = await classTutOverviewService.getCourseOverviewData(teacherId);
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    res.status(200).json(overviewData);
+  } catch (error) {
+    if (error.message === 'No course data available') {
+      res.status(404).json({ message: 'No course data available.' });
+    } else if (error.message === 'Unable to load class and tutorial overview.') {
+      res.status(500).json({ message: 'Unable to load class and tutorial overview.' });
+    } else {
+      res.status(500).json({ message: 'System error – unable to retrieve progress chart.' });
+    }
+  }
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

@@ -9,7 +9,7 @@ describe("Course Model", () => {
       courseCode: "SE101",
       courseName: "Software Engineering",
       courseCredit: 3,
-      courseType: "Core",
+      courseType: "Theory",
       contactHours: 30,
       expectedNoOfClasses: 10,
       expectedNoOfTutorials: 5,
@@ -31,7 +31,7 @@ describe("Course Model", () => {
     expect(result.courseCode).to.equal("SE101");
     expect(result.courseName).to.equal("Software Engineering");
     expect(result.courseCredit).to.equal(3);
-    expect(result.courseType).to.equal("Core");
+    expect(result.courseType).to.equal("Theory");
     expect(result.contactHours).to.equal(30);
     expect(result.expectedNoOfClasses).to.equal(10);
     expect(result.expectedNoOfTutorials).to.equal(5);

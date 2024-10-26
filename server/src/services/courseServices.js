@@ -31,7 +31,7 @@ const getCourseById = async (courseId) => {
 /**
  * Updates a course by ID.
  * @param {string} courseId - The ID of the course to update.
- * @param {Object} updatedData - The updated course data.
+ * @param {object} updatedData - The updated course data.
  * @returns {Promise<Course|null>} The updated course, or null if not found.
  */
 const updateCourse = async (courseId, updatedData) => {

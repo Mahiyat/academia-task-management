@@ -16,7 +16,7 @@ const createBoard = async (boardData) => {
  * @returns {Promise<Array>} An array of Kanban boards.
  */
 const getAllBoards = async () => {
-  return await KanbanBoard.find().populate("courseId");
+  return await KanbanBoard.find().populate("course");
 };
 
 /**
@@ -25,7 +25,7 @@ const getAllBoards = async () => {
  * @returns {Promise<object|null>} The Kanban board or null if not found.
  */
 const getBoardById = async (boardId) => {
-  return await KanbanBoard.findById(boardId).populate("courseId");
+  return await KanbanBoard.findById(boardId).populate("course");
 };
 
 /**
@@ -53,7 +53,7 @@ const deleteBoard = async (boardId) => {
  * @returns {Promise<object|null>} The Kanban board or null if not found.
  */
 const getBoardByCourseId = async (courseId) => {
-  return await KanbanBoard.findOne({ courseId }).populate("courseId");
+  return await KanbanBoard.findOne({ course: courseId }).populate("course");
 };
 
 export default {

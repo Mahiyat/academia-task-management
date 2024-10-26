@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import mongoose from 'mongoose';
 import Task from '../../src/models/Task.js';
 
 describe('Task Model', () => {

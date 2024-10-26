@@ -5,9 +5,6 @@ import KanbanBoard from "../models/KanbanBoard.js";
 /**
  * Retrieves all 'todo' and 'doing' tasks for a given teacher, based on
  * their courses and associated kanban boards.
- *
- * @async
- * @function getTasks
  * @param {string} teacherId - Unique identifier for the teacher.
  * @returns {Promise<Array<object>>} - A promise that resolves to an array of task objects.
  */

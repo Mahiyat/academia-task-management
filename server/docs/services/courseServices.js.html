@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: semesterServices.js</title>
+    <title>JSDoc: Source: courseServices.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: semesterServices.js</h1>
+    <h1 class="page-title">Source: courseServices.js</h1>
 
     
 
@@ -26,72 +26,76 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Semester from "../models/Semester.js";
+            <pre class="prettyprint source linenums"><code>import Course from "../models/Course.js";
 
 /**
- * Fetches all Semesters from the database.
- * @returns {Promise&lt;Array>} An array of all teacher documents.
+ * Creates a new course.
+ * @param {object} courseData - The data for the new course.
+ * @returns {Promise&lt;Course>} The created course.
  */
-
-const getAllSemesters = async () => {
-  const semesters = await Semester.find()
-    .populate("courses")
-    .populate("examCommittee");
-
-  return semesters;
-};
-
-
-/**
- * Creates a new semester.
- * @param {object} semesterData - The data for the semester to create.
- * @returns {Promise&lt;Semester>} The created semester.
- */
-const createSemester = async (semesterData) => {
-  const semester = new Semester(semesterData);
-
-  return await semester.save();
-};
-
-
-/**
- * Updates a semester with the provided data.
- * @param {string} semesterId - The ID of the semester to update.
- * @param {object} updatedSemester - The data to update the semester with.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const updateSemester = async (semesterId, updatedSemester) => {
-  const updatedNewSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    updatedSemester,
-    { new: true }
-  );
-
-  return updatedNewSemester;
-};
-
-/**
- * Adds a teacher to the exam committee of a semester.
- * @param {string} semesterId - The ID of the semester.
- * @param {string} teacherId - The ID of the teacher to add to the exam committee.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const addExamCommitteeMember = async (semesterId, teacherId) => {
-  const updatedSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    { $push: { examCommittee: teacherId } },
-    { new: true }
-  );
+const createNewCourse = async (courseData) => {
+  const course = new Course(courseData);
   
-  return updatedSemester;
+  return await course.save();
+};
+
+/**
+ * Retrieves all courses.
+ * @returns {Promise&lt;Array&lt;Course>>} An array of courses with populated fields.
+ */
+const getAllCourses = async () => {
+  return await Course.find().populate('courseTeachers').populate('semester');
+};
+
+/**
+ * Retrieves a specific course by ID.
+ * @param {string} courseId - The ID of the course to retrieve.
+ * @returns {Promise&lt;Course|null>} The requested course, or null if not found.
+ */
+const getCourseById = async (courseId) => {
+  return await Course.findById(courseId).populate('courseTeachers').populate('semester');
+};
+
+/**
+ * Updates a course by ID.
+ * @param {string} courseId - The ID of the course to update.
+ * @param {object} updatedData - The updated course data.
+ * @returns {Promise&lt;Course|null>} The updated course, or null if not found.
+ */
+const updateCourse = async (courseId, updatedData) => {
+  return await Course.findByIdAndUpdate(courseId, updatedData, { new: true })
+    .populate('courseTeachers')
+    .populate('semester');
+};
+
+/**
+ * Deletes a course by ID.
+ * @param {string} courseId - The ID of the course to delete.
+ * @returns {Promise&lt;Course|null>} The deleted course, or null if not found.
+ */
+const deleteCourse = async (courseId) => {
+  return await Course.findByIdAndDelete(courseId);
+};
+
+/**
+ * Retrieves all courses for a specific semester.
+ * @param {string} semesterId - The ID of the semester to get courses for.
+ * @returns {Promise&lt;Array&lt;Course>>} An array of courses for the specified semester.
+ */
+const getCoursesBySemester = async (semesterId) => {
+  return await Course.find({ semester: semesterId }).populate('courseTeachers');
 };
 
 export default {
-  getAllSemesters,
-  updateSemester,
-  createSemester,
-  addExamCommitteeMember,
+  createNewCourse,
+  getAllCourses,
+  getCourseById,
+  updateCourse,
+  deleteCourse,
+  getCoursesBySemester,
 };
+
+
 </code></pre>
         </article>
     </section>

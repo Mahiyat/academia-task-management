@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
 
+/**
+ * Schema representing a teacher in an academic system.
+ * 
+ * @typedef {object} Teacher
+ * @property {string} firstName - The first name of the teacher.
+ * @property {string} lastName - The last name of the teacher.
+ * @property {string} email - The email address of the teacher, which is unique and required.
+ * @property {string} [phoneNumber] - The phone number of the teacher.
+ * @property {string} [designation] - The job designation of the teacher 
+ * (e.g., "Professor", "Lecturer").
+ * @property {Array<ObjectId>} courses - Array of course IDs taught by the teacher.
+ */
 const TeacherSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -26,13 +38,6 @@ const TeacherSchema = new mongoose.Schema({
       ref: "Course",
     },
   ],
-  /*
-   * role: {
-   *   type: mongoose.Schema.Types.ObjectId,
-   *   ref: 'Role',
-   *   required: true
-   * }
-   */
 });
 
 const Teacher = mongoose.model("Teacher", TeacherSchema);

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: semesterServices.js</title>
+    <title>JSDoc: Source: classTutOverviewServices.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: semesterServices.js</h1>
+    <h1 class="page-title">Source: classTutOverviewServices.js</h1>
 
     
 
@@ -26,72 +26,75 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Semester from "../models/Semester.js";
+            <pre class="prettyprint source linenums"><code>import Teacher from '../models/Teacher.js';
 
 /**
- * Fetches all Semesters from the database.
- * @returns {Promise&lt;Array>} An array of all teacher documents.
+ * Retrieves course overview data for a specified teacher, including progress metrics and status.
+ * @param {string} teacherId - The ID of the teacher whose course overview data is to be fetched.
+ * @returns {Promise&lt;object[]>} An array of objects representing course details, 
+ * progress metrics, and status.
+ * @throws {Error} Throws an error if no course data is available or 
+ * if there is an issue loading the data.
  */
 
-const getAllSemesters = async () => {
-  const semesters = await Semester.find()
-    .populate("courses")
-    .populate("examCommittee");
+const getCourseOverviewData = async (teacherId) => {
+  try {
 
-  return semesters;
+    const teacher = await Teacher.findById(teacherId).populate('courses');
+
+    console.log(teacher);
+    // Retrieve courses for a specific teacher
+    const courses = teacher.courses;
+
+    if (!courses.length) {
+      throw new Error('No course data available');
+    }
+
+    // Calculate progress and format response data
+    return courses.map((course) => {
+      // eslint-disable-next-line max-len
+      const classCompletionPercentage = (course.noOfClassesTaken / course.expectedNoOfClasses) * 100;
+      // eslint-disable-next-line max-len
+      const tutorialCompletionPercentage = (course.noOfTutorialsTaken / course.expectedNoOfTutorials) * 100;
+      // eslint-disable-next-line max-len
+      const overallProgressPercentage = (classCompletionPercentage + tutorialCompletionPercentage) / 2;
+
+      // Determine qualitative progress status
+      let progressStatus;
+
+      if (overallProgressPercentage >= 90) {
+        progressStatus = 'Excellent';
+      } else if (overallProgressPercentage >= 70) {
+        progressStatus = 'Very good';
+      } else if (overallProgressPercentage >= 50) {
+        progressStatus = 'Good';
+      } else if (overallProgressPercentage >= 30) {
+        progressStatus = 'Bad';
+      } else {
+        progressStatus = 'Very bad';
+      }
+
+      return {
+        courseDetails: {
+          courseName: course.courseName,
+          courseCode: course.courseCode,
+          courseCredit: course.courseCredit,
+          courseType: course.courseType,
+          contactHours: course.contactHours,
+        },
+        expectedNoOfClasses: course.expectedNoOfClasses,
+        noOfClassesTaken: course.noOfClassesTaken,
+        expectedNoOfTutorials: course.expectedNoOfTutorials,
+        noOfTutorialsTaken: course.noOfTutorialsTaken,
+        progressStatus,
+      };
+    });
+  } catch (error) {
+    throw new Error(error.message || 'Unable to load class and tutorial overview.');
+  }
 };
 
-
-/**
- * Creates a new semester.
- * @param {object} semesterData - The data for the semester to create.
- * @returns {Promise&lt;Semester>} The created semester.
- */
-const createSemester = async (semesterData) => {
-  const semester = new Semester(semesterData);
-
-  return await semester.save();
-};
-
-
-/**
- * Updates a semester with the provided data.
- * @param {string} semesterId - The ID of the semester to update.
- * @param {object} updatedSemester - The data to update the semester with.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const updateSemester = async (semesterId, updatedSemester) => {
-  const updatedNewSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    updatedSemester,
-    { new: true }
-  );
-
-  return updatedNewSemester;
-};
-
-/**
- * Adds a teacher to the exam committee of a semester.
- * @param {string} semesterId - The ID of the semester.
- * @param {string} teacherId - The ID of the teacher to add to the exam committee.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const addExamCommitteeMember = async (semesterId, teacherId) => {
-  const updatedSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    { $push: { examCommittee: teacherId } },
-    { new: true }
-  );
-  
-  return updatedSemester;
-};
-
-export default {
-  getAllSemesters,
-  updateSemester,
-  createSemester,
-  addExamCommitteeMember,
-};
+export default { getCourseOverviewData };
 </code></pre>
         </article>
     </section>

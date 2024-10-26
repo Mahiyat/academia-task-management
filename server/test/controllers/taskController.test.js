@@ -12,7 +12,7 @@ describe("Task Controller", () => {
         title: "Test Task",
         category: "Class",
         priority: "red",
-        kanbanBoardId: "someBoardId",
+        kanbanBoardId: "6724f57c79cd1dfd50948b71",
       },
     };
     res = { status: sinon.stub().returnsThis(), json: sinon.stub() };
@@ -42,9 +42,9 @@ describe("Task Controller", () => {
   });
 
   it("should get tasks by board and status with status 200", async () => {
-    req = { params: { kanbanBoardId: "someBoardId", status: "todo" } };
+    req = { params: { kanbanBoardId: "67226aff90863f1442fc8051", status: "todo" } };
     const tasks = [
-      { title: "Test Task", status: "todo", kanbanBoardId: "someBoardId" },
+      { title: "Test Task", status: "todo", kanbanBoardId: "67226aff90863f1442fc8051" },
     ];
 
     sinon.stub(taskServices, "getTasksByBoardAndStatus").resolves(tasks);

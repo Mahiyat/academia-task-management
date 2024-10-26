@@ -7,7 +7,7 @@ describe('Kanban Controller', () => {
   let req, res;
 
   beforeEach(() => {
-    req = { body: { name: 'Test Kanban Board', course: 'someCourseId' } };
+    req = { body: { name: 'Test Kanban Board', course: '6721de39267deadc474fec29' } };
     res = { status: sinon.stub().returnsThis(), json: sinon.stub() };
   });
 
@@ -35,8 +35,8 @@ describe('Kanban Controller', () => {
   });
 
   it('should get Kanban board by ID with status 200', async () => {
-    req = { params: { id: 'someBoardId' } };
-    const board = { name: 'Test Kanban Board', course: 'someCourseId' };
+    req = { params: { id: '6724f57c79cd1dfd50948b71' } };
+    const board = { name: 'Software Engineering Kanban', course: '6724f57c79cd1dfd50948b71' };
 
     sinon.stub(kanbanServices, 'getBoardById').resolves(board);
 
@@ -47,8 +47,8 @@ describe('Kanban Controller', () => {
   });
 
   it('should get Kanban board by course ID with status 200', async () => {
-    req = { params: { courseId: 'someCourseId' } };
-    const board = { name: 'Test Kanban Board', course: 'someCourseId' };
+    req = { params: { courseId: '6721de39267deadc474fec29' } };
+    const board = { name: 'Test Kanban Board', course: '6721de39267deadc474fec29' };
 
     sinon.stub(kanbanServices, 'getBoardByCourseId').resolves(board);
 
@@ -59,8 +59,8 @@ describe('Kanban Controller', () => {
   });
 
   it('should update a Kanban board and return status 200', async () => {
-    req = { params: { id: 'someBoardId' }, body: { name: 'Updated Board Name' } };
-    const updatedBoard = { name: 'Updated Board Name', course: 'someCourseId' };
+    req = { params: { id: '6724fa22320dd8d29940db44' }, body: { name: 'Updated Board Name' } };
+    const updatedBoard = { name: 'Updated Board Name', course: '6721de39267deadc474fec29' };
 
     sinon.stub(kanbanServices, 'updateBoard').resolves(updatedBoard);
 
@@ -71,7 +71,7 @@ describe('Kanban Controller', () => {
   });
 
   it('should delete a Kanban board and return status 200', async () => {
-    req = { params: { id: 'someBoardId' } };
+    req = { params: { id: '67250f49558eb9003c29fd80' } };
     sinon.stub(kanbanServices, 'deleteBoard').resolves();
 
     await kanbanController.deleteBoard(req, res);

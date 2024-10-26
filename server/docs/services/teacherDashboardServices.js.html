@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: semesterServices.js</title>
+    <title>JSDoc: Source: teacherDashboardServices.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: semesterServices.js</h1>
+    <h1 class="page-title">Source: teacherDashboardServices.js</h1>
 
     
 
@@ -26,71 +26,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Semester from "../models/Semester.js";
+            <pre class="prettyprint source linenums"><code>import Teacher from "../models/Teacher.js";
+import taskServices from "../services/taskServices.js";
+import KanbanBoard from "../models/KanbanBoard.js";
 
 /**
- * Fetches all Semesters from the database.
- * @returns {Promise&lt;Array>} An array of all teacher documents.
+ * Retrieves all 'todo' and 'doing' tasks for a given teacher, based on
+ * their courses and associated kanban boards.
+ * @param {string} teacherId - Unique identifier for the teacher.
+ * @returns {Promise&lt;Array&lt;object>>} - A promise that resolves to an array of task objects.
  */
+const getTasks = async (teacherId) => {
+  const teacher = await Teacher.findById(teacherId).populate("courses");
+  let tasks = [];
 
-const getAllSemesters = async () => {
-  const semesters = await Semester.find()
-    .populate("courses")
-    .populate("examCommittee");
+  for (const { _id: courseId } of teacher.courses) {
+    const course = courseId.toString();
 
-  return semesters;
-};
+    const kanbanBoard = await KanbanBoard.findOne({ course });
 
+    const { _id: kanbanBoardId } = kanbanBoard;
+    const kanbanBoardIdString = kanbanBoardId.toString();
 
-/**
- * Creates a new semester.
- * @param {object} semesterData - The data for the semester to create.
- * @returns {Promise&lt;Semester>} The created semester.
- */
-const createSemester = async (semesterData) => {
-  const semester = new Semester(semesterData);
+    const todoTasks = await taskServices.getTasksByBoardAndStatus(
+      kanbanBoardIdString,
+      "todo"
+    );
 
-  return await semester.save();
-};
+    tasks = tasks.concat(todoTasks);
 
+    const doingTasks = await taskServices.getTasksByBoardAndStatus(
+      kanbanBoardIdString,
+      "doing"
+    );
 
-/**
- * Updates a semester with the provided data.
- * @param {string} semesterId - The ID of the semester to update.
- * @param {object} updatedSemester - The data to update the semester with.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const updateSemester = async (semesterId, updatedSemester) => {
-  const updatedNewSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    updatedSemester,
-    { new: true }
-  );
+    tasks = tasks.concat(doingTasks);
+  }
 
-  return updatedNewSemester;
-};
-
-/**
- * Adds a teacher to the exam committee of a semester.
- * @param {string} semesterId - The ID of the semester.
- * @param {string} teacherId - The ID of the teacher to add to the exam committee.
- * @returns {Promise&lt;object|null>} The updated semester document, or null if not found.
- */
-const addExamCommitteeMember = async (semesterId, teacherId) => {
-  const updatedSemester = await Semester.findByIdAndUpdate(
-    semesterId,
-    { $push: { examCommittee: teacherId } },
-    { new: true }
-  );
-  
-  return updatedSemester;
+  return tasks;
 };
 
 export default {
-  getAllSemesters,
-  updateSemester,
-  createSemester,
-  addExamCommitteeMember,
+  getTasks,
 };
 </code></pre>
         </article>

@@ -5,6 +5,7 @@ import { semesterRoutes } from '../../src/routes/semesterRoutes.js';
 
 // Set up the express app with semester routes
 const app = express();
+
 app.use(express.json());
 app.use('/semesters', semesterRoutes);
 
@@ -12,6 +13,7 @@ describe('Semester Routes', () => {
   describe('GET /semesters', () => {
     it('should retrieve all semesters and return a 200 status', async () => {
       const res = await request(app).get('/semesters');
+      
       expect(res.status).to.equal(200);
       expect(res.body).to.be.an('array');
     });

@@ -4,8 +4,8 @@ import semesterServices from "../services/semesterServices.js";
  * Retrieves all semesters from the database.
  * Sends an array of semester objects as JSON response.
  *
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} - A promise that resolves to a JSON response with all semesters.
  */
 export async function getAllSemesters(req, res) {
@@ -19,6 +19,21 @@ export async function getAllSemesters(req, res) {
 }
 
 /**
+ * Creates a new semester.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
+export async function createSemester(req, res) {
+  try {
+    const newSemester = await semesterServices.createSemester(req.body);
+    
+    res.status(201).json({ message: 'Semester created successfully', semester: newSemester });
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating semester', error: error.message });
+  }
+}
+
+/**
  * Updates an existing semester in the database based on the given ID.
  * Sends the updated semester object as JSON response.
  *
@@ -28,30 +43,6 @@ export async function getAllSemesters(req, res) {
  * @param {object} res - The response object.
  * @returns {Promise<void>} - A promise that resolves to a JSON response with the updated semester.
  */
-
-/*
- *     if (!semester) {
- *       return res.status(404).json({ message: 'Semester not found' });
- *     }
- *     res.status(200).json(semester);
- *   } catch (error) {
- *     res.status(500).json({ message: error.message });
- *   }
- * }
- */
-
-// Create a new semester
-export async function createSemester(req, res) {
-  try {
-    const newSemester = await semesterServices.createSemester(req.body);
-    
-    res.status(201).json({ message: 'Semester created successfully', semester: newSemester });
-  } catch (error) {
-    res.status(400).json({ message: 'Error creating semester', error: error.message });
-  }
-}
-
-// Update a semester
 export async function updateSemester(req, res) {
   try {
     const updatedSemester = await semesterServices.updateSemester(

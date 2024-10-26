@@ -10,12 +10,12 @@ describe("Task Routes", () => {
         title: "Test Task",
         category: "Class",
         priority: "red",
-        kanbanBoardId: "someBoardId",
+        kanbanBoardId: "6724f55179cd1dfd50948b6f",
       })
       .expect(201)
       .expect((res) => {
         expect(res.body.title).to.equal("Test Task");
-        expect(res.body.kanbanBoardId).to.equal("someBoardId");
+        expect(res.body.kanbanBoardId).to.equal("6724f55179cd1dfd50948b6f");
       })
       .end(done);
   });
@@ -39,19 +39,19 @@ describe("Task Routes", () => {
         category: "Class",
         priority: "yellow",
         status: "todo",
-        kanbanBoardId: "someBoardId",
+        kanbanBoardId: "6724f55179cd1dfd50948b6f",
       })
       .expect(201)
       .end(() => {
         // Then, fetch tasks by that board ID and status
         request(app)
-          .get("/api/tasks/board/someBoardId/status/todo")
+          .get("/api/tasks/board/6724f55179cd1dfd50948b6f/status/todo")
           .expect(200)
           .expect((res) => {
             expect(res.body).to.be.an("array");
             expect(res.body.length).to.be.greaterThan(0);
             expect(res.body[0].status).to.equal("todo");
-            expect(res.body[0].kanbanBoardId).to.equal("someBoardId");
+            expect(res.body[0].kanbanBoardId).to.equal("6724f55179cd1dfd50948b6f");
           })
           .end(done);
       });

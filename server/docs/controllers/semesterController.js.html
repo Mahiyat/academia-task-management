@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: taskController.js</title>
+    <title>JSDoc: Source: semesterController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: taskController.js</h1>
+    <h1 class="page-title">Source: semesterController.js</h1>
 
     
 
@@ -26,89 +26,96 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import taskServices from "../services/taskServices.js";
+            <pre class="prettyprint source linenums"><code>import semesterServices from "../services/semesterServices.js";
 
 /**
- * Creates a new task.
+ * Retrieves all semesters from the database.
+ * Sends an array of semester objects as JSON response.
+ *
  * @param {object} req - The request object.
  * @param {object} res - The response object.
+ * @returns {Promise&lt;void>} - A promise that resolves to a JSON response with all semesters.
  */
-export const createTask = async (req, res) => {
+export async function getAllSemesters(req, res) {
   try {
-    const { kanbanBoardId, ...taskData } = req.body;
-    const task = await taskServices.createTask({ ...taskData, kanbanBoardId });
+    const semesters = await semesterServices.getAllSemesters();
 
-    res.status(201).json(task);
+    res.status(200).json(semesters);
   } catch (error) {
-    res.status(500).json({ message: "Task creation failed", error });
+    res.status(500).json({ message: error.message });
   }
-};
+}
 
 /**
- * Updates a new task.
+ * Creates a new semester.
  * @param {object} req - The request object.
  * @param {object} res - The response object.
  */
-export const updateTask = async (req, res) => {
+export async function createSemester(req, res) {
   try {
-    const task = await taskServices.updateTask(req.params.id, req.body);
-
-    res.status(200).json(task);
+    const newSemester = await semesterServices.createSemester(req.body);
+    
+    res.status(201).json({ message: 'Semester created successfully', semester: newSemester });
   } catch (error) {
-    res.status(500).json({ message: "Unable to update task", error });
+    res.status(500).json({ message: 'Error creating semester', error: error.message });
   }
-};
+}
 
 /**
- * Gets all tasks.
+ * Updates an existing semester in the database based on the given ID.
+ * Sends the updated semester object as JSON response.
+ *
  * @param {object} req - The request object.
+ * @param {string} req.params.id - The ID of the semester to update.
+ * @param {object} req.body - The updated semester data.
  * @param {object} res - The response object.
+ * @returns {Promise&lt;void>} - A promise that resolves to a JSON response with the updated semester.
  */
-export const getAllTasks = async (req, res) => {
+export async function updateSemester(req, res) {
   try {
-    const tasks = await taskServices.getAllTasks();
+    const updatedSemester = await semesterServices.updateSemester(
+      req.params.id,
+      req.body
+    );
 
-    if (!tasks || tasks.length === 0) {
-      res.status(200).json([]);
-    } else {
-      res.status(200).json(tasks);
+    if (!updatedSemester) {
+      return res.status(404).json({ message: "Semester not found" });
     }
+    res.status(200).json(updatedSemester);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "System error – unable to load Kanban board", error });
+    res.status(400).json({ message: error.message });
   }
-};
+}
 
 /**
- * Gets task by kanban ID and status.
+ * Adds a teacher to the exam committee of a specified semester.
+ * Sends the updated semester object as JSON response.
+ *
  * @param {object} req - The request object.
+ * @param {string} req.params.id - The ID of the semester to update.
+ * @param {string} req.body.teacherId - The ID of the teacher to add to the exam committee.
  * @param {object} res - The response object.
+ * @returns {Promise&lt;void>} - A promise that resolves to a JSON response with the updated semester.
  */
-export const getTasksByBoardAndStatus = async (req, res) => {
+export async function addExamCommitteeMember(req, res) {
   try {
-    const { kanbanBoardId, status } = req.params;
-    const tasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardId, status);
+    const { id } = req.params;
+    const { teacherId } = req.body;
 
-    res.status(200).json(tasks);
-  } catch (error) {
-    res.status(500).json({ message: "Unable to retrieve tasks by board and status", error });
-  }
-};
+    const updatedSemester = await semesterServices.addExamCommitteeMember(
+      id,
+      teacherId
+    );
 
-/**
- * Deletes a new task.
- * @param {object} req - The request object.
- * @param {object} res - The response object.
- */
-export const deleteTask = async (req, res) => {
-  try {
-    await taskServices.deleteTask(req.params.id);
-    res.status(200).json({ message: "Task deleted" });
+    if (!updatedSemester) {
+      return res.status(404).json({ message: "Semester not found" });
+    }
+
+    res.status(200).json(updatedSemester);
   } catch (error) {
-    res.status(500).json({ message: "Unable to delete task", error });
+    res.status(400).json({ message: error.message });
   }
-};
+}
 </code></pre>
         </article>
     </section>

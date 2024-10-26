@@ -18,6 +18,12 @@ export const getAllTeachers = async (req, res) => {
   }
 };
 
+/**
+ * Updates a teacher's assigned courses.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves to a JSON response with updated teacher.
+ */
 export const updateTeacher = async (req, res) => {
   const { id } = req.params;
   const { courseId } = req.body;

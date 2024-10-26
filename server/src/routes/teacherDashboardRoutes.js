@@ -7,10 +7,10 @@ const teacherDashboardRoutes = express.Router();
 
 /**
  * GET /:teacherId
- * @function
- * @description Retrieves and returns sorted priority tasks for a specific teacher.
+ * @summary Retrieves and returns sorted priority tasks for a specific teacher.
  * @param {string} teacherId - Unique identifier for the teacher whose tasks are being retrieved.
- * @returns {JSON} 200 - An array of tasks sorted by deadline and priority.
+ * @returns {Array<Task>} 200 - An array of tasks sorted by deadline and priority.
+ * @returns {Error} 500 - Server error
  */
 teacherDashboardRoutes.get('/:teacherId', showPriorityTasks);
 
