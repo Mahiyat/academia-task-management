@@ -3355,16 +3355,28 @@ axios@^1.7.7:
   version "1.7.7"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
 =======
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
 >>>>>>> 335e23d (Add Task model)
 =======
+=======
+>>>>>>> 3dcc626 (Add Task model)
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
 =======
   resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+  resolved "https://registry.npmjs.org/axios/-/axios-1.7.7.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
   dependencies:
     follow-redirects "^1.15.6"
@@ -4144,7 +4156,11 @@ css-select@^4.1.3:
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
 css-to-react-native@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/css-to-react-native/-/css-to-react-native-3.2.0.tgz#cdd8099f71024e149e4f6fe17a7d46ecd55f1e32"
@@ -4163,11 +4179,19 @@ css-tree@1.0.0-alpha.37:
     source-map "^0.6.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 335e23d (Add Task model)
 =======
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+>>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
 css-tree@^1.1.2, css-tree@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/css-tree/-/css-tree-1.1.3.tgz"
@@ -4626,6 +4650,10 @@ dom-converter@^0.2.0:
     utila "~0.4"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 413f945 (Add Task model)
 dom-helpers@^5.0.1:
   version "5.2.1"
 <<<<<<< HEAD
@@ -4647,8 +4675,12 @@ dom-serializer@0:
     "@babel/runtime" "^7.8.7"
     csstype "^3.0.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
 dom-serializer@^1.0.1:
   version "1.4.1"
   resolved "https://registry.npmjs.org/dom-serializer/-/dom-serializer-1.4.1.tgz"
@@ -5605,16 +5637,28 @@ form-data@^4.0.0:
   version "4.0.1"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.1.tgz"
 =======
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.1.tgz#ba1076daaaa5bfd7e99c1a6cb02aa0a5cff90d48"
 >>>>>>> 335e23d (Add Task model)
 =======
+=======
+>>>>>>> 3dcc626 (Add Task model)
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.1.tgz#ba1076daaaa5bfd7e99c1a6cb02aa0a5cff90d48"
 =======
   resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.1.tgz"
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+  resolved "https://registry.npmjs.org/form-data/-/form-data-4.0.1.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.1.tgz#ba1076daaaa5bfd7e99c1a6cb02aa0a5cff90d48"
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   integrity sha512-tzN8e4TX8+kkxGPK8D5u0FNmjPUjw3lwC9lSLxxoB/+GtsJG91CO8bSWy73APlgAZzZbXEYZJuxjkHH2w+Ezhw==
   dependencies:
     asynckit "^0.4.0"
@@ -6181,6 +6225,7 @@ internal-slot@^1.0.4, internal-slot@^1.0.7:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "internmap@1 - 2":
   version "2.0.3"
   resolved "https://registry.npmjs.org/internmap/-/internmap-2.0.3.tgz"
@@ -6195,6 +6240,11 @@ invariant@^2.1.2:
 =======
 =======
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+=======
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
 invariant@^2.2.0, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -6208,8 +6258,12 @@ ipaddr.js@1.9.1:
   integrity sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
 >>>>>>> 335e23d (Add Task model)
 
+<<<<<<< HEAD
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
 ipaddr.js@^2.0.1:
   version "2.2.0"
   resolved "https://registry.npmjs.org/ipaddr.js/-/ipaddr.js-2.2.0.tgz"
@@ -8595,10 +8649,13 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.0.2, postcss-value-parser@^
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "postcss@^7.0.0 || ^8.0.1", postcss@^8, postcss@^8.0.0, postcss@^8.0.3, postcss@^8.0.9, postcss@^8.1.0, postcss@^8.1.4, postcss@^8.2, postcss@^8.2.14, postcss@^8.2.15, postcss@^8.2.2, postcss@^8.3, postcss@^8.3.5, postcss@^8.4, postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.33, postcss@^8.4.4, postcss@^8.4.6, "postcss@>= 8", postcss@>=8, postcss@>=8.0.9:
 =======
 =======
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 3dcc626 (Add Task model)
 postcss@8.4.38:
   version "8.4.38"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.38.tgz#b387d533baf2054288e337066d81c6bee9db9e0e"
@@ -8623,7 +8680,33 @@ postcss@^8.3.5, postcss@^8.4.23, postcss@^8.4.33, postcss@^8.4.4:
 =======
 "postcss@^7.0.0 || ^8.0.1", postcss@^8, postcss@^8.0.0, postcss@^8.0.3, postcss@^8.0.9, postcss@^8.1.0, postcss@^8.1.4, postcss@^8.2, postcss@^8.2.14, postcss@^8.2.15, postcss@^8.2.2, postcss@^8.3, postcss@^8.3.5, postcss@^8.4, postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.33, postcss@^8.4.4, postcss@^8.4.6, "postcss@>= 8", postcss@>=8, postcss@>=8.0.9:
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+"postcss@^7.0.0 || ^8.0.1", postcss@^8, postcss@^8.0.0, postcss@^8.0.3, postcss@^8.0.9, postcss@^8.1.0, postcss@^8.1.4, postcss@^8.2, postcss@^8.2.14, postcss@^8.2.15, postcss@^8.2.2, postcss@^8.3, postcss@^8.3.5, postcss@^8.4, postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.33, postcss@^8.4.4, postcss@^8.4.6, "postcss@>= 8", postcss@>=8, postcss@>=8.0.9:
+=======
+postcss@8.4.38:
+  version "8.4.38"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.38.tgz#b387d533baf2054288e337066d81c6bee9db9e0e"
+  integrity sha512-Wglpdk03BSfXkHoQa3b/oulrotAkwrlLDRSOb9D0bN86FdRyE9lppSp33aHNPgBa0JKCoB+drFLZkQoRRYae5A==
+  dependencies:
+    nanoid "^3.3.7"
+    picocolors "^1.0.0"
+    source-map-js "^1.2.0"
+
+postcss@^7.0.35:
+  version "7.0.39"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.39.tgz#9624375d965630e2e1f2c02a935c82a59cb48309"
+  integrity sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA==
+  dependencies:
+    picocolors "^0.2.1"
+    source-map "^0.6.1"
+
+postcss@^8.3.5, postcss@^8.4.23, postcss@^8.4.33, postcss@^8.4.4:
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "8.4.47"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.47.tgz"
   integrity sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==
@@ -8748,16 +8831,28 @@ proxy-from-env@^1.1.0:
   version "1.1.0"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
 =======
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
 >>>>>>> 335e23d (Add Task model)
 =======
+=======
+>>>>>>> 3dcc626 (Add Task model)
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
 =======
   resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+  resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 psl@^1.1.33:
@@ -8870,6 +8965,7 @@ react-dev-utils@^12.0.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-dom@^0.14.1:
   version "0.14.10"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-0.14.10.tgz"
@@ -8880,11 +8976,22 @@ react-dom@^0.14.1:
 "react-dom@>= 16.3", react-dom@^18.3.1:
 >>>>>>> 335e23d (Add Task model)
 =======
+=======
+>>>>>>> 3dcc626 (Add Task model)
 "react-dom@>= 16.3", react-dom@^18.3.1:
 =======
 react-dom@^18.0.0, react-dom@^18.3.1:
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+react-dom@^18.0.0, react-dom@^18.3.1:
+=======
+"react-dom@>= 16.3", react-dom@^18.3.1:
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "18.3.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -8914,10 +9021,13 @@ react-is@^18.0.0, react-is@^18.3.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
 =======
 =======
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 3dcc626 (Add Task model)
 react-lifecycles-compat@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
@@ -8954,7 +9064,45 @@ react-refresh@^0.11.0:
 =======
 react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+react-refresh@^0.11.0, "react-refresh@>=0.10.0 <1.0.0":
+=======
+react-lifecycles-compat@^3.0.0:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+  integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-popopo@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/react-popopo/-/react-popopo-2.1.9.tgz#d93f70a8fb68227907d00c0cea4d8f5d321053ea"
+  integrity sha512-zXOpcLSpaLZmBxhdtenJzQPLjY81XknVS/tXH4Kv5BBrnYIUPHvVdGmS7+o9s7DjCzzdK7AdVwtG+FVSO0cZ8g==
+  dependencies:
+    classnames ">= 2.0"
+    prop-types "^15.7.2"
+    react ">= 16.3"
+    react-dom ">= 16.3"
+    styled-components ">= 4.0"
+
+react-redux@^5.0.7:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.2.tgz#b19cf9e21d694422727bf798e934a916c4080f57"
+  integrity sha512-Ns1G0XXc8hDyH/OcBHOxNgQx9ayH3SPxBnFCOidGKSle8pKihysQw2rG/PmciUQRoclhVBO8HMhiRmGXnDja9Q==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    loose-envify "^1.1.0"
+    prop-types "^15.6.1"
+    react-is "^16.6.0"
+    react-lifecycles-compat "^3.0.0"
+
+react-refresh@^0.11.0:
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "0.11.0"
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
@@ -9015,6 +9163,7 @@ react-scripts@5.0.1:
     fsevents "^2.3.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-transition-group@^4.4.5:
   version "4.4.5"
 <<<<<<< HEAD
@@ -9065,7 +9214,44 @@ react-trello@^2.2.11:
 =======
 react@^18.0.0, react@^18.3.1, "react@>= 16":
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+react@^18.0.0, react@^18.3.1, "react@>= 16":
+=======
+react-transition-group@^4.4.5:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
+  integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
+react-trello@^2.2.11:
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/react-trello/-/react-trello-2.2.11.tgz#3a5b375dfa2d80f2b7a7af16e09ae27eca930296"
+  integrity sha512-Zm7qrPAcFTysUXK6wpa1KhTt7fTadIZgNGYj+blDWGnppFYW7GMi1p+S6J8P9quhzKnIJTSZXVzHA1f4sREIVQ==
+  dependencies:
+    autosize "^4.0.2"
+    classnames "^2.2.6"
+    immutability-helper "^2.8.1"
+    lodash "^4.17.11"
+    prop-types "^15.7.2"
+    react-popopo "^2.1.9"
+    react-redux "^5.0.7"
+    redux "^4.0.0"
+    redux-actions "^2.6.1"
+    redux-logger "^3.0.6"
+    trello-smooth-dnd "1.0.0"
+    uuid "^3.3.2"
+
+"react@>= 16.3", react@^18.3.1:
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "18.3.1"
   resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -9883,7 +10069,11 @@ string-natural-compare@^3.0.1:
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -9894,11 +10084,19 @@ string-natural-compare@^3.0.1:
 
 string-width@^4.1.0, string-width@^4.2.0:
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 335e23d (Add Task model)
 =======
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+>>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -10002,7 +10200,11 @@ stringify-object@^3.3.0:
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -10011,11 +10213,19 @@ stringify-object@^3.3.0:
 
 strip-ansi@^6.0.0, strip-ansi@^6.0.1:
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 335e23d (Add Task model)
 =======
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+>>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "6.0.1"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -11151,7 +11361,11 @@ workbox-window@6.6.1:
 <<<<<<< HEAD
 =======
 =======
+<<<<<<< HEAD
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -11162,11 +11376,19 @@ workbox-window@6.6.1:
 
 wrap-ansi@^7.0.0:
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 335e23d (Add Task model)
 =======
 =======
 >>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
 >>>>>>> 51c7cba (update frontend and implement assign teacher for course partially)
+=======
+=======
+>>>>>>> c49b8d0 (update frontend and implement assign teacher for course partially)
+=======
+>>>>>>> bf6f6b4 (Add Task model)
+>>>>>>> 413f945 (Add Task model)
+>>>>>>> 3dcc626 (Add Task model)
   version "7.0.0"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
