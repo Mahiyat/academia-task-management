@@ -1,0 +1,13 @@
+{
+    "source": {
+      "include": ["src/controllers"],
+      "includePattern": ".js$",
+      "excludePattern": "(node_modules|docs)"
+    },
+    "opts": {
+      "destination": "./docs/controllers",
+      "recurse": true,
+      "template": "node_modules/jsdoc/templates/default"
+    }
+  }
+  

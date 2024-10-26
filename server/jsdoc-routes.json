@@ -1,0 +1,13 @@
+{
+    "source": {
+      "include": ["src/routes"],
+      "includePattern": ".js$",
+      "excludePattern": "(node_modules|docs)"
+    },
+    "opts": {
+      "destination": "./docs/routes",
+      "recurse": true,
+      "template": "node_modules/jsdoc/templates/default"
+    }
+  }
+  
