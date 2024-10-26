@@ -1,5 +1,5 @@
-import Semester from '../models/Semester.js';
-import semesterServices from '../services/semesterServices.js';
+import Semester from "../models/Semester.js";
+import semesterServices from "../services/semesterServices.js";
 
 // Get all semesters
 export async function getAllSemesters(req, res) {
@@ -27,10 +27,13 @@ export async function createSemester(req, res) {
 // Update a semester
 export async function updateSemester(req, res) {
   try {
-    const updatedSemester = await semesterServices.updateSemester(req.params.id,  req.body);
+    const updatedSemester = await semesterServices.updateSemester(
+      req.params.id,
+      req.body
+    );
 
     if (!updatedSemester) {
-      return res.status(404).json({ message: 'Semester not found' });
+      return res.status(404).json({ message: "Semester not found" });
     }
     res.status(200).json(updatedSemester);
   } catch (error) {
@@ -38,15 +41,18 @@ export async function updateSemester(req, res) {
   }
 }
 
-export async function addExamCommitteeMember(req, res){
+export async function addExamCommitteeMember(req, res) {
   try {
     const { id } = req.params;
     const { teacherId } = req.body;
 
-    const updatedSemester = await semesterServices.addExamCommitteeMember(id, teacherId);
+    const updatedSemester = await semesterServices.addExamCommitteeMember(
+      id,
+      teacherId
+    );
 
     if (!updatedSemester) {
-      return res.status(404).json({ message: 'Semester not found' });
+      return res.status(404).json({ message: "Semester not found" });
     }
 
     res.status(200).json(updatedSemester);
@@ -54,4 +60,3 @@ export async function addExamCommitteeMember(req, res){
     res.status(400).json({ message: error.message });
   }
 }
-

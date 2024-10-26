@@ -1,5 +1,11 @@
+/* eslint-disable jsdoc/require-returns */
 import kanbanServices from "../services/kanbanServices.js";
 
+/**
+ * Creates a new Kanban board.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const createBoard = async (req, res) => {
   try {
     const board = await kanbanServices.createBoard(req.body);
@@ -10,6 +16,11 @@ export const createBoard = async (req, res) => {
   }
 };
 
+/**
+ * Retrieves all Kanban boards.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const getAllBoards = async (req, res) => {
   try {
     const boards = await kanbanServices.getAllBoards();
@@ -22,6 +33,11 @@ export const getAllBoards = async (req, res) => {
   }
 };
 
+/**
+ * Retrieves a Kanban board by ID.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const getBoardById = async (req, res) => {
   try {
     const board = await kanbanServices.getBoardById(req.params.id);
@@ -35,6 +51,11 @@ export const getBoardById = async (req, res) => {
   }
 };
 
+/**
+ * Updates a Kanban board by ID.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const updateBoard = async (req, res) => {
   try {
     const board = await kanbanServices.updateBoard(req.params.id, req.body);
@@ -48,6 +69,11 @@ export const updateBoard = async (req, res) => {
   }
 };
 
+/**
+ * Deletes a Kanban board by ID.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const deleteBoard = async (req, res) => {
   try {
     await kanbanServices.deleteBoard(req.params.id);
@@ -57,7 +83,11 @@ export const deleteBoard = async (req, res) => {
   }
 };
 
-// Controller to get a Kanban board by course ID
+/**
+ * Retrieves a Kanban board by course ID.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
 export const getBoardByCourseId = async (req, res) => {
   try {
     const board = await kanbanServices.getBoardByCourseId(req.params.courseId);

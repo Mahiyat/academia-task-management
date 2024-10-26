@@ -16,7 +16,6 @@ import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 
-
 const app = express();
 
 

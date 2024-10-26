@@ -13,4 +13,4 @@ semesterRoutes.post('/', createSemester);
 semesterRoutes.put('/updatedSemester/:id', updateSemester);
 semesterRoutes.put('/:id/examCommittee', addExamCommitteeMember);
 
-export  { semesterRoutes };
+export { semesterRoutes };
