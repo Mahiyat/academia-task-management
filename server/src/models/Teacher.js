@@ -14,7 +14,7 @@ const TeacherSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  phone_number: {
+  phoneNumber: {
     type: String
   },
   designation: {
