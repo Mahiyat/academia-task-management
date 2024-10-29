@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const TeacherSchema = new mongoose.Schema({
   firstName: {
@@ -23,14 +23,16 @@ const TeacherSchema = new mongoose.Schema({
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
+      ref: 'Course' 
     }
-  ],
-  role: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Role',
-    required: true
-  }
+  ]
+  // role: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Role',
+  //   required: true
+  // }
 });
 
-module.exports = mongoose.model('Teacher', TeacherSchema);
+const Teacher = mongoose.model('Teacher', TeacherSchema);
+
+export default Teacher;
