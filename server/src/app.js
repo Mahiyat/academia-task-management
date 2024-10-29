@@ -12,12 +12,8 @@ import { taskRoutes } from "./routes/taskRoutes.js";
 import { kanbanRoutes } from "./routes/kanbanRoutes.js";
 import { teacherRoutes } from "./routes/teacherRoutes.js";
 import { semesterRoutes } from "./routes/semesterRoutes.js";
-<<<<<<< HEAD
 import { performanceRoutes } from "./routes/performanceRoutes.js";
-=======
-import { taskRoutes } from "./routes/taskRoutes.js";
-import { kanbanRoutes } from "./routes/kanbanRoutes.js";
->>>>>>> edc5f4b (Add Task model)
+import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 
 const app = express();
 
@@ -40,6 +36,7 @@ app.use("/api/semesters",  semesterRoutes);
 app.use("/api/performance", performanceRoutes);
 
 
+app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);
