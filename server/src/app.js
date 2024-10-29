@@ -12,6 +12,7 @@ import { teacherRoutes } from "./routes/teacherRoutes.js";
 import { semesterRoutes } from "./routes/semesterRoutes.js";
 import { taskRoutes } from "./routes/taskRoutes.js";
 import { kanbanRoutes } from "./routes/kanbanRoutes.js";
+import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/api/teachers",teacherRoutes);
 app.use("/api/semesters",semesterRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/kanban", kanbanRoutes);
+app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);
