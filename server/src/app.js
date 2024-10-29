@@ -9,6 +9,7 @@ import { connectMongoDB } from "./db.js";
 import { userRoutes } from "./routes/userRoutes.js";
 import { courseRoutes } from "./routes/courseRoutes.js";
 import { teacherRoutes } from "./routes/teacherRoutes.js";
+import { semesterRoutes } from "./routes/semesterRoutes.js";
 
 const app = express();
 
@@ -25,6 +26,7 @@ connectMongoDB();
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/teachers",teacherRoutes);
+app.use("/api/semesters",semesterRoutes);
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);

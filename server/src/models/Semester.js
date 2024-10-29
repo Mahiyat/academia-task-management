@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const SemesterSchema = new mongoose.Schema({
   semesterTitle : {
@@ -26,11 +26,13 @@ const SemesterSchema = new mongoose.Schema({
     }
   ],
   sessionYear: {
-    type: Number
+    type: String
   },
   programType: {
     type: String
   },
 });
 
-module.exports = mongoose.model('Semester', SemesterSchema);
+const Semester = mongoose.model('Semester', SemesterSchema);
+
+export default Semester;
