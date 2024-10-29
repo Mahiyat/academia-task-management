@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const SemesterSchema = new mongoose.Schema({
+  semesterTitle : {
+    type : String,
+    required : true
+  },
   semesterYear: {
     type: Number,
     required: true
@@ -15,21 +19,18 @@ const SemesterSchema = new mongoose.Schema({
       ref: 'Course'
     }
   ],
-  examCommittee: {
-    type: Number
-  },
+  examCommittee: [
+    {
+      type : mongoose.Schema.Types.ObjectId,
+      ref : 'Teacher'
+    }
+  ],
   sessionYear: {
     type: Number
   },
   programType: {
     type: String
   },
-  teachers: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Teacher'
-    }
-  ]
 });
 
 module.exports = mongoose.model('Semester', SemesterSchema);
