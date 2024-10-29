@@ -19,7 +19,7 @@ describe("Course Controller", () => {
     };
   });
 
-  afterEach(() => {
+  afterEach(() => { 
     sinon.restore(); // Restore stubbed functions after each test
   });
 
