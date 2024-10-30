@@ -6,6 +6,6 @@ const teacherDashboardRoutes = express.Router();
 
 
 // Route to get all courses
-teacherDashboardRoutes.get('/:teacherId', showPriorityTasks);
+teacherDashboardRoutes.get('/:id', showPriorityTasks);
 
 export  { teacherDashboardRoutes };

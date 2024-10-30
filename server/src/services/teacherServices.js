@@ -6,12 +6,13 @@ import Teacher from '../models/Teacher.js';
  */
 
 const getAllTeachers = async() =>{
-    const teachers = await Teacher.find().populate('courses');
-    console.log(teachers);
-    return teachers;
+  const teachers = await Teacher.find().populate('courses');
+
+  console.log(teachers);
+  return teachers;
 };
 
 
 export default {
-    getAllTeachers,
-}
+  getAllTeachers,
+};
