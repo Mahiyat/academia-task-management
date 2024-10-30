@@ -10,8 +10,13 @@ const getAllSemesters = async () => {
     .populate("courses")
     .populate("examCommittee");
 
-  console.log(semesters);
   return semesters;
+};
+
+const createSemester = async (semesterData) => {
+  const semester = new Semester(semesterData);
+
+  return await semester.save();
 };
 
 const updateSemester = async (semesterId, updatedSemester) => {
@@ -20,21 +25,6 @@ const updateSemester = async (semesterId, updatedSemester) => {
     updatedSemester,
     { new: true }
   );
-  const createSemester = async (semesterData) => {
-    const semester = new Semester(semesterData);
-
-    return await semester.save();
-  };
-
-  const updateSemester = async (semesterId, updatedSemester) => {
-    const updatedNewSemester = await findByIdAndUpdate(
-      semesterId,
-      updatedSemester,
-      { new: true }
-    );
-
-    return updatedNewSemester;
-  };
 
   return updatedNewSemester;
 };
@@ -45,13 +35,13 @@ const addExamCommitteeMember = async (semesterId, teacherId) => {
     { $push: { examCommittee: teacherId } },
     { new: true }
   );
-
+  
   return updatedSemester;
 };
 
 export default {
   getAllSemesters,
   updateSemester,
-  addExamCommitteeMember,
   createSemester,
+  addExamCommitteeMember,
 };

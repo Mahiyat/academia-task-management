@@ -1,7 +1,10 @@
-import express from 'express';
-import { addExamCommitteeMember, getAllSemesters, updateSemester, createSemester }
-  from '../controllers/semesterController.js';
-
+import express from "express";
+import {
+  getAllSemesters,
+  updateSemester,
+  createSemester,
+  addExamCommitteeMember,
+} from "../controllers/semesterController.js";
 
 // eslint-disable-next-line new-cap
 const semesterRoutes = express.Router();
