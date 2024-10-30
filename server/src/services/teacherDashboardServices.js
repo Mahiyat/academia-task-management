@@ -100,8 +100,7 @@ const priorityOrder = {
 
 const getTasks = async (id) => {
 
-   
-  const teacher = await Teacher.find();
+  const teacher = await Teacher.findById(id).populate('courses');
 
   console.log(id);
   console.log(teacher);

@@ -1,6 +1,6 @@
 import teacherDashboardServices from '../services/teacherDashboardServices.js';
 
-export const showPriorityTasks = async (req, res) => {
+export async function showPriorityTasks (req, res){
   try {
     const { id } = req.params;
     const priorityTasks = await teacherDashboardServices.getTasks(id);
