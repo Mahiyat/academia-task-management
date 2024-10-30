@@ -98,12 +98,14 @@ const priorityOrder = {
 };
 
 
-const getTasks = async (teacherId) => {
+const getTasks = async (id) => {
 
    
-  const teacher = await Teacher.findById(teacherId);
+  const teacher = await Teacher.find();
 
+  console.log(id);
   console.log(teacher);
+  return teacher;
   if (!teacher || !teacher.courses.length) {
     return [];
   }

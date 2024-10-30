@@ -29,6 +29,8 @@ connectMongoDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
+app.use("/api/teachers", teacherRoutes);
+app.use("/api/semesters", semesterRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/kanban", kanbanRoutes);
 app.use("/api/teachers",  teacherRoutes);
