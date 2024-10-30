@@ -8,9 +8,11 @@ const semesterRoutes = express.Router();
 
 // getAllSemesters
 
+semesterRoutes.get("/", getAllSemesters);
+semesterRoutes.put("/updatedSemester/:id", updateSemester);
+semesterRoutes.put("/:id/examCommittee", addExamCommitteeMember);
 semesterRoutes.get('/', getAllSemesters);
 semesterRoutes.post('/', createSemester);
-semesterRoutes.put('/updatedSemester/:id', updateSemester);
-semesterRoutes.put('/:id/examCommittee', addExamCommitteeMember);
+semesterRoutes.post('/updatedSemester', updateSemester);
 
 export { semesterRoutes };

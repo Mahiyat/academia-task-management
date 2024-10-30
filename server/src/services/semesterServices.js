@@ -14,16 +14,27 @@ const getAllSemesters = async () => {
   return semesters;
 };
 
-const createSemester = async (semesterData) => {
-  const semester = new Semester(semesterData);
+const updateSemester = async (semesterId, updatedSemester) => {
+  const updatedNewSemester = await Semester.findByIdAndUpdate(
+    semesterId,
+    updatedSemester,
+    { new: true }
+  );
+  const createSemester = async (semesterData) => {
+    const semester = new Semester(semesterData);
 
-  return await semester.save();
-};
+    return await semester.save();
+  };
 
-
-const updateSemester = async (semesterId, updatedSemester) =>{
-  // eslint-disable-next-line max-len
-  const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
+  const updateSemester = async (semesterId, updatedSemester) => {
+    const updatedNewSemester = await findByIdAndUpdate(
+      semesterId,
+      updatedSemester,
+      { new: true }
+    );
+    
+    return updatedNewSemester;
+  };
 
   return updatedNewSemester;
 };

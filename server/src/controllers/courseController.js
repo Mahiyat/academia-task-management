@@ -41,7 +41,6 @@ export const getCourseById = async (req, res) => {
 export const updateCourse = async (req, res) => {
   try {
     const course = await courseService.updateCourse(req.params.id, req.body);
-
     if (!course) {
       return res.status(404).json({ message: 'Course not found' });
     }
