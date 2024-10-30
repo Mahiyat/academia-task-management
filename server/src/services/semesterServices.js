@@ -36,7 +36,6 @@ const addExamCommitteeMember = async (semesterId, teacherId) =>{
   return updatedSemester;
 };
 
-
 export default {
   getAllSemesters,
   updateSemester,

@@ -38,7 +38,7 @@ export async function updateSemester(req, res) {
   }
 }
 
-export async function addExamCommitteeMember(req,  res){
+export async function addExamCommitteeMember(req, res){
   try {
     const { id } = req.params;
     const { teacherId } = req.body;
