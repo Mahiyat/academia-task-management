@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllSemesters, updateSemester } from '../controllers/semesterController.js';
+import { addExamCommitteeMember, getAllSemesters, updateSemester } from '../controllers/semesterController.js';
 
 // eslint-disable-next-line new-cap
 const semesterRoutes = express.Router();
@@ -8,5 +8,6 @@ const semesterRoutes = express.Router();
 
 semesterRoutes.get('/', getAllSemesters);
 semesterRoutes.put('/updatedSemester/:id', updateSemester);
+semesterRoutes.put('/:id/examCommittee',addExamCommitteeMember)
 
 export  { semesterRoutes };

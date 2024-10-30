@@ -53,3 +53,20 @@ export async function updateSemester(req, res) {
   }
 }
 
+export async function addExamCommitteeMember(req,res){
+  try {
+    const { id } = req.params;
+    const { teacherId } = req.body;
+
+    const updatedSemester = await semesterServices.addExamCommitteeMember(id, teacherId);
+
+    if (!updatedSemester) {
+      return res.status(404).json({ message: 'Semester not found' });
+    }
+
+    res.status(200).json(updatedSemester);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+}
+
