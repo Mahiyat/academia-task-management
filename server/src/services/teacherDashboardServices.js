@@ -1,3 +1,8 @@
+import Teacher from '../models/Teacher.js';
+import mongoose from 'mongoose';
+import KanbanBoard from '../models/KanbanBoard.js';
+import Task from '../models/Task.js';
+
 const mockTasks = [
   {
     title: "Complete the project proposal",
@@ -94,7 +99,35 @@ const priorityOrder = {
 
 
 const getTasks = async (teacherId) => {
-  return mockTasks.sort((a, b) => {
+
+   
+  const teacher = await Teacher.findById(teacherId);
+
+  console.log(teacher);
+  if (!teacher || !teacher.courses.length) {
+    return [];
+  }
+
+  console.log(teacher.courses);
+  let tasks = [];
+
+  for (const { _id: courseId } of courses) {
+    const kanbanBoard = await getBoardByCourseId(courseId);
+
+    if (kanbanBoard) {
+      const { _id: kanbanBoardId } = kanbanBoard; 
+      
+      const boardTasks = await getTasksByBoardAndStatus(kanbanBoardId, 'todo');
+
+      tasks = tasks.concat(boardTasks); 
+
+      boardTasks = await getTasksByBoardAndStatus(kanbanBoardId, 'doing');
+
+      tasks = tasks.concat(boardTasks); 
+    }
+  }
+
+  return tasks.sort((a, b) => {
     
     // Sort by deadline
     const deadlineA = new Date(a.deadline);
