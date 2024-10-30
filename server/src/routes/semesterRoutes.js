@@ -7,6 +7,6 @@ const semesterRoutes = express.Router();
 // getAllSemesters
 
 semesterRoutes.get('/', getAllSemesters);
-semesterRoutes.post('/updatedSemester', updateSemester);
+semesterRoutes.put('/updatedSemester/:id', updateSemester);
 
 export  { semesterRoutes };

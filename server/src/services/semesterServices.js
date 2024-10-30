@@ -12,7 +12,7 @@ const getAllSemesters = async() =>{
 };
 
 const updateSemester = async (semesterId,updatedSemester) =>{
-    const updatedNewSemester = await findByIdAndUpdate(semesterId, updatedSemester, { new: true });
+    const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
     return updatedNewSemester;
 }
 
