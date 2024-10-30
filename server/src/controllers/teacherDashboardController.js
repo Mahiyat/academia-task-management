@@ -24,8 +24,8 @@ const priorityOrder = {
 
 export async function showPriorityTasks(req, res){
   try {
-    const { teacherId } = req.params;
-    const priorityTasks = await teacherDashboardServices.getTasks(teacherId);
+    const { id } = req.params;
+    const priorityTasks = await teacherDashboardServices.getTasks(id);
 
     priorityTasks.sort((a, b) => {
     
