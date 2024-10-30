@@ -11,6 +11,12 @@ const getAllSemesters = async() =>{
     return semesters;
 };
 
+const createSemester = async (semesterData) => {
+    const semester = new Semester(semesterData);
+    return await semester.save();
+  };
+
+
 const updateSemester = async (semesterId,updatedSemester) =>{
     const updatedNewSemester = await findByIdAndUpdate(semesterId, updatedSemester, { new: true });
     return updatedNewSemester;
@@ -20,4 +26,5 @@ const updateSemester = async (semesterId,updatedSemester) =>{
 export default {
     getAllSemesters,
     updateSemester,
+    createSemester,
 }

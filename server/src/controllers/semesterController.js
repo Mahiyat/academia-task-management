@@ -26,18 +26,15 @@ export async function getAllSemesters(req, res) {
 //   }
 // }
 
-// // Create a new semester
-// export async function createSemester(req, res) {
-//   const semester = new Semester(req.body);
-
-//   try {
-//     const newSemester = await semester.save();
-
-//     res.status(201).json(newSemester);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// }
+// Create a new semester
+export async function createSemester(req, res) {
+  try {
+    const newSemester = await semesterServices.createSemester(req.body);
+    res.status(201).json({ message: 'Semester created successfully', semester: newSemester });
+  } catch (error) {
+    res.status(400).json({ message: 'Error creating semester', error: error.message });
+  }
+}
 
 // Update a semester
 export async function updateSemester(req, res) {

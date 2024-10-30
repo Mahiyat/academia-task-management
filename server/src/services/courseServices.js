@@ -28,11 +28,16 @@ const deleteCourse = async (courseId) => {
   return await Course.findByIdAndDelete(courseId);
 };
 
+const getCoursesBySemester = async (semesterId) => {
+  return await Course.find({ semester: semesterId }).populate('courseTeachers');
+};
+
 export default {
   createNewCourse,
   getAllCourses,
   getCourseById,
   updateCourse,
   deleteCourse,
+  getCoursesBySemester,
 };
 

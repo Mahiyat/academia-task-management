@@ -1,5 +1,5 @@
 import express from 'express';
-import { createNewCourse, getAllCourses, getCourseById, updateCourse, deleteCourse } 
+import { createNewCourse, getAllCourses, getCourseById, updateCourse, deleteCourse, getCoursesBySemester} 
   from '../controllers/courseController.js';
 
 // eslint-disable-next-line new-cap
@@ -19,5 +19,7 @@ courseRoutes.put('/:id', updateCourse);
 
 // Route to delete a specific course by ID
 courseRoutes.delete('/:id', deleteCourse);
+
+courseRoutes.get('/semesters/:semesterId', getCoursesBySemester);
 
 export  { courseRoutes };
