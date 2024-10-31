@@ -8,7 +8,7 @@ describe("Teacher Dashboard Controller", () => {
 
   beforeEach(() => {
     req = {
-      params: { teacherId: "123" },
+      params: { teacherId: "6722664b2722d82a38dd1fc8" },
     }; 
     res = {
       status: sinon.stub().returnsThis(),
@@ -24,33 +24,32 @@ describe("Teacher Dashboard Controller", () => {
     it("should retrieve and return sorted priority tasks with status 200", async () => {
       const sortedTasks = [
         {
-          title: "Complete the project proposal",
-          description: "Prepare and submit the project proposal document",
-          category: "Class",
-          priority: "blue",
-          deadline: new Date("2024-11-05T10:00:00Z"),
-          status: "todo",
+          "_id": "672267dd2722d82a38dd1fe9",
+          "title": "Complete project proposal",
+          "description": "Prepare the project proposal for CSE101.",
+          "category": "Class",
+          "priority": "orange",
+          "deadline": "2024-02-15T12:00:00.000Z",
+          "status": "todo",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
         },
         {
-          title: "Project meeting",
-          description: "Team meeting to discuss project timelines and milestones",
-          category: "Others",
-          priority: "orange",
-          deadline: new Date("2024-11-07T11:00:00Z"),
-          status: "done",
-        },
-        {
-          title: "Upload lecture notes",
-          description: "Add notes on database indexing to the portal",
-          category: "Tutorial",
-          priority: "green",
-          deadline: new Date("2024-11-08T14:00:00Z"),
-          status: "todo",
-        },
+          "_id": "672267dd2722d82a38dd1fea",
+          "title": "Review algorithms",
+          "description": "Revise algorithms for CSE102.",
+          "category": "Class",
+          "priority": "red",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "doing",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        }
       ];
 
       // Stub the teacherDashboardServices.getTasks method
-      sinon.stub(teacherDashboardServices, "getTasks").withArgs("123").resolves(sortedTasks);
+      sinon.stub(teacherDashboardServices, "getTasks").withArgs("6722664b2722d82a38dd1fc8")
+        .resolves(sortedTasks);
 
       // Call the showPriorityTasks controller
       await showPriorityTasks(req, res);
