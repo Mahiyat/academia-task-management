@@ -14,8 +14,10 @@ import { teacherRoutes } from "./routes/teacherRoutes.js";
 import { semesterRoutes } from "./routes/semesterRoutes.js";
 import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
+import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 
 const app = express();
+
 
 app.use(express.json());
 app.use(helmet());
@@ -39,6 +41,8 @@ app.use("/api/performance", performanceRoutes);
 
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
+app.use("/api/class-and-tutorial-overview", classTutOverviewRoutes);
+
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);
