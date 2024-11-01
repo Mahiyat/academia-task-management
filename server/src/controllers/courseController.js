@@ -1,14 +1,13 @@
 import courseService from '../services/courseServices.js';
 
-// Create a new course
+
 export const createNewCourse = async (req, res) => {
   try {
     const course = await courseService.createNewCourse(req.body);
     
-
-    res.status(201).json({ message: 'Course created successfully!', course });
-    res.status(201).json({ message: 'Course created successfully!', course });
+    res.status(201).json({ message: 'Course created!', course });
   } catch (err) {
+    console.error('Error creating course:', err); // 
     res.status(500).json({ message: 'Error creating course', error: err.message });
   }
 };
