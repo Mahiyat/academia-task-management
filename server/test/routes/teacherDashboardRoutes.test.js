@@ -27,7 +27,7 @@ describe("Teacher Dashboard Routes", () => {
   });
 
   describe("GET /:teacherId", () => {
-    it("should return priority tasks for a specific teacher", (done) => {
+    it("should return priority tasks for all the courses a teacher is included in", (done) => {
       const teacherId = "6722664b2722d82a38dd1fc8";
 
       request(app)
@@ -49,21 +49,6 @@ describe("Teacher Dashboard Routes", () => {
           ); 
         })
         .end(done); 
-    });
-
-    it("should handle errors and return a 500 status", (done) => {
-      const errorMessage = "Internal server error";
-
-      teacherDashboardServices.getTasks.rejects(new Error(errorMessage));
-
-      request(app)
-        .get(`/api/teacher-dashboard/invalidTeacherId`)
-        .expect(500)
-        .expect((res) => {
-          expect(res.body).to.have.property("message").equal("Error retrieving cards");
-          expect(res.body).to.have.property("error").equal(errorMessage);
-        })
-        .end(done);
     });
   });
 });

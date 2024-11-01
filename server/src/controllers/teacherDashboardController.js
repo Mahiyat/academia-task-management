@@ -9,6 +9,19 @@ const priorityOrder = {
   purple: 6
 };
 
+/**
+ * Retrieves and returns sorted priority tasks for a specified teacher.
+ * Tasks are sorted by deadline in ascending order, then by priority based on
+ * predefined levels (e.g., red is the highest).
+ *
+ * @async
+ * @function showPriorityTasks
+ * @param {object} req - The request object.
+ * @param {string} req.params.teacherId - Unique identifier for the teacher.
+ * @param {object} res - The response object.
+ * @returns {JSON} 200 - An array of tasks sorted by deadline and priority.
+ */
+
 export async function showPriorityTasks(req, res){
   try {
     const { teacherId } = req.params;

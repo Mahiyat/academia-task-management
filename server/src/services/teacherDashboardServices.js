@@ -3,7 +3,15 @@ import taskServices from "../services/taskServices.js";
 import KanbanBoard from '../models/KanbanBoard.js';
 
 
-
+/**
+ * Retrieves all 'todo' and 'doing' tasks for a given teacher, based on 
+ * their courses and associated kanban boards.
+ *
+ * @async
+ * @function getTasks
+ * @param {string} teacherId - Unique identifier for the teacher.
+ * @returns {Promise<Array<object>>} - A promise that resolves to an array of task objects.
+ */
 const getTasks = async (teacherId) => {
 
    
@@ -16,20 +24,16 @@ const getTasks = async (teacherId) => {
 
     const kanbanBoard = await KanbanBoard.findOne({course});
 
-    if (kanbanBoard) {
-      const { _id: kanbanBoardId } = kanbanBoard;
-      const kanbanBoardIdString = kanbanBoardId.toString(); 
+    const { _id: kanbanBoardId } = kanbanBoard;
+    const kanbanBoardIdString = kanbanBoardId.toString(); 
       
-      const todoTasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardIdString, 'todo');
+    const todoTasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardIdString, 'todo');
 
-      tasks = tasks.concat(todoTasks); 
+    tasks = tasks.concat(todoTasks); 
 
-      const doingTasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardIdString, 'doing'); 
+    const doingTasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardIdString, 'doing'); 
 
-      tasks = tasks.concat(doingTasks); 
-    } else {
-      console.log(`No kanban board found for course ID: ${courseIdString}`);
-    }
+    tasks = tasks.concat(doingTasks); 
   }
 
 
