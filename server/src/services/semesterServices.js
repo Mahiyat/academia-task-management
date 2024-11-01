@@ -10,7 +10,6 @@ const getAllSemesters = async () => {
     .populate("courses")
     .populate("examCommittee");
 
-  console.log(semesters);
   return semesters;
 };
 
