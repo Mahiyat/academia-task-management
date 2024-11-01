@@ -1,26 +1,24 @@
-// src/services/courseServices.js
+import Teacher from '../models/Teacher.js';
 
-import Course from '../models/Course.js';
 
-/**
- * Retrieves the performance data for courses associated with a specific teacher.
- * @param {string} teacherId - The ID of the teacher.
- * @returns {Array} - List of courses with performance data.
- */
-const getCoursePerformanceData = async (teacherId) => {
+const getTeacherCourses = async (teacherId) => {
   try {
-    // Find courses associated with the teacher
-    const courses = await Course.find({ courseTeachers: teacherId })
-      .populate('courseTeachers', 'name')  // Populate teacher name if available
-      .populate('semester', 'name');       // Populate semester name if available
+    const teacher = await Teacher.findById(teacherId).populate({
+      path: 'courses',
+      populate: { path: 'courseTeachers', select: 'firstName lastName' }, 
+      // Populate teacher names in each course
+    });
 
-    return courses;
+    return teacher;
   } catch (error) {
-    console.error("Error in getCoursePerformanceData:", error);
+    console.error("Error in getTeacherCourses:", error);
     throw error; // Throw error to be handled in the controller
   }
 };
 
-export default {
-  getCoursePerformanceData,
+export {
+  getTeacherCourses,
 };
+
+
+
