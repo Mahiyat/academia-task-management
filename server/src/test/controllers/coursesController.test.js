@@ -131,6 +131,7 @@ describe("Course Controller", () => {
       sinon.stub(courseServices, "updateCourse").resolves(null);
 
       await updateCourse(req, res);
+      //comment
 
       expect(res.status.calledWith(404)).to.be.true;
       expect(res.json.calledWith({ message: "Course not found" })).to.be.true;
