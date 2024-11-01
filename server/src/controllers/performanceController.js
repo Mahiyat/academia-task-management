@@ -52,19 +52,8 @@ export async function getTeacherCourses(req, res) {
       return res.status(404).json({ message: "Course data missing for the specified teacher." });
     }
 
-    // Return teacher's course data
-    res.status(200).json({
-      success: true,
-      data: {
-        teacher: {
-          // eslint-disable-next-line no-underscore-dangle
-          id: teacher._id,
-          name: `${teacher.firstName} ${teacher.lastName}`,
-          email: teacher.email,
-        },
-        courses: teacher.courses,
-      },
-    });
+    // Return courses data
+    res.status(200).json(courses);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "System error – Please try again later." });

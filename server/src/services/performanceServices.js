@@ -1,24 +1,17 @@
-import Teacher from '../models/Teacher.js';
+import Teacher from "../models/Teacher";
 
-
-const getTeacherCourses = async (teacherId) => {
+// Get a teacher by ID
+export const getTeacherById = async (req, res) => {
   try {
-    const teacher = await Teacher.findById(teacherId).populate({
-      path: 'courses',
-      populate: { path: 'courseTeachers', select: 'firstName lastName' }, 
-      // Populate teacher names in each course
-    });
+    const teacher = await Teacher.findById(req.params.id).populate('courses');
 
-    return teacher;
+
+    if (!teacher) {
+      return res.status(404).json({ message: 'Teacher not found' });
+    }
+    res.status(200).json(teacher);
   } catch (error) {
-    console.error("Error in getTeacherCourses:", error);
-    throw error; // Throw error to be handled in the controller
+    res.status(500).json({ message: error.message });
   }
 };
-
-export {
-  getTeacherCourses,
-};
-
-
 
