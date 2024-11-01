@@ -3,25 +3,11 @@ import taskServices from "../services/taskServices.js";
 import KanbanBoard from '../models/KanbanBoard.js';
 
 
-// Priority mapping for sorting
-const priorityOrder = {
-  red: 1,
-  orange: 2,
-  yellow: 3,
-  green: 4,
-  blue: 5,
-  purple: 6
-};
 
-
-const getTasks = async (id) => {
+const getTasks = async (teacherId) => {
 
    
-  const teacher = await Teacher.findById(id).populate("courses");
-
-  if (!teacher || !teacher.courses.length) {
-    return [];
-  }
+  const teacher = await Teacher.findById(teacherId).populate("courses");
   let tasks = [];
 
   for (const { _id: courseId } of teacher.courses) {
@@ -47,17 +33,7 @@ const getTasks = async (id) => {
   }
 
 
-  return tasks.sort((a, b) => {
-    
-    const deadlineA = new Date(a.deadline);
-    const deadlineB = new Date(b.deadline);
-
-    if (deadlineA - deadlineB !== 0) {
-      return deadlineA - deadlineB;
-    }
-
-    return priorityOrder[a.priority] - priorityOrder[b.priority];
-  });
+  return tasks;
 };
 
 export default {
