@@ -6,10 +6,9 @@ import Course from '../models/Course.js';
  * @returns {Promise<Array>} An array of all teacher documents.
  */
 
-const getAllTeachers = async () => {
-  const teachers = await Teacher.find().populate("courses");
-
-  console.log(teachers);
+const getAllTeachers = async() =>{
+  const teachers = await Teacher.find().populate('courses');
+  
   return teachers;
 };
 
