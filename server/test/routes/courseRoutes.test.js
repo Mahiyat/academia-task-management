@@ -6,6 +6,7 @@ import sinon from 'sinon';
 import courseService from '../../src/services/courseServices.js'; // Adjust the path as necessary
 
 const app = express();
+
 app.use(express.json());
 app.use('/courses', courseRoutes); // Mounting the course routes
 

@@ -41,6 +41,7 @@ export const getCourseById = async (req, res) => {
 export const updateCourse = async (req, res) => {
   try {
     const course = await courseService.updateCourse(req.params.id, req.body);
+
     if (!course) {
       return res.status(404).json({ message: 'Course not found' });
     }
@@ -70,6 +71,7 @@ export const getCoursesBySemester = async (req, res) => {
 
   try {
     const courses = await courseService.getCoursesBySemester(semesterId);
+    
     if (!courses.length) {
       return res.status(404).json({ message: 'No courses found for this semester.' });
     }

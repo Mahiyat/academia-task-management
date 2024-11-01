@@ -25,8 +25,8 @@ connectMongoDB();
 
 app.use("/api/users", userRoutes);
 app.use("/api/courses", courseRoutes);
-app.use("/api/teachers",teacherRoutes);
-app.use("/api/semesters",semesterRoutes);
+app.use("/api/teachers", teacherRoutes);
+app.use("/api/semesters", semesterRoutes);
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);

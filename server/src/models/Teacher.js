@@ -26,11 +26,13 @@ const TeacherSchema = new mongoose.Schema({
       ref: 'Course' 
     }
   ]
-  // role: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Role',
-  //   required: true
-  // }
+  /*
+   * role: {
+   *   type: mongoose.Schema.Types.ObjectId,
+   *   ref: 'Role',
+   *   required: true
+   * }
+   */
 });
 
 const Teacher = mongoose.model('Teacher', TeacherSchema);

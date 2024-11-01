@@ -6,25 +6,28 @@ import Semester from '../models/Semester.js';
  */
 
 const getAllSemesters = async() =>{
-    const semesters = await Semester.find().populate('courses').populate('examCommittee');
-    console.log(semesters);
-    return semesters;
+  const semesters = await Semester.find().populate('courses').populate('examCommittee');
+
+  console.log(semesters);
+  return semesters;
 };
 
 const createSemester = async (semesterData) => {
-    const semester = new Semester(semesterData);
-    return await semester.save();
-  };
+  const semester = new Semester(semesterData);
+
+  return await semester.save();
+};
 
 
-const updateSemester = async (semesterId,updatedSemester) =>{
-    const updatedNewSemester = await findByIdAndUpdate(semesterId, updatedSemester, { new: true });
-    return updatedNewSemester;
-}
+const updateSemester = async (semesterId, updatedSemester) =>{
+  const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
+
+  return updatedNewSemester;
+};
 
 
 export default {
-    getAllSemesters,
-    updateSemester,
-    createSemester,
-}
+  getAllSemesters,
+  updateSemester,
+  createSemester,
+};

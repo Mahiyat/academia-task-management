@@ -1,4 +1,5 @@
 import express from 'express';
+// eslint-disable-next-line max-len
 import { createNewCourse, getAllCourses, getCourseById, updateCourse, deleteCourse, getCoursesBySemester} 
   from '../controllers/courseController.js';
 
