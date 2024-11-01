@@ -14,12 +14,12 @@ const courseSchema = new mongoose.Schema({
   courseTeachers: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Teacher', // Assuming User model represents teachers
+      ref: 'Teacher', 
     },
   ],
   semester: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Semester', // References the Semester model
+    ref: 'Semester', 
   },
 });
 

@@ -4,7 +4,9 @@ import courseService from '../services/courseServices.js';
 export const createNewCourse = async (req, res) => {
   try {
     const course = await courseService.createNewCourse(req.body);
+    
 
+    res.status(201).json({ message: 'Course created successfully!', course });
     res.status(201).json({ message: 'Course created successfully!', course });
   } catch (err) {
     res.status(500).json({ message: 'Error creating course', error: err.message });

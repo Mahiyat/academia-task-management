@@ -6,6 +6,7 @@ const createNewCourse = async (courseData) => {
   return await course.save();
 };
  
+
 // Get all courses
 const getAllCourses = async () => {
   return await Course.find().populate('courseTeachers').populate('semester');
@@ -40,4 +41,5 @@ export default {
   deleteCourse,
   getCoursesBySemester,
 };
+
 

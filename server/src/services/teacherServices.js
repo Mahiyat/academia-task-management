@@ -14,7 +14,7 @@ const getAllTeachers = async() =>{
 export const updateTeacherCourses = async (teacherId, courseId) => {
     return await Teacher.findByIdAndUpdate(
       teacherId,
-      { $addToSet: { courses: courseId } }, // Prevent duplicate course entries
+      { $addToSet: { courses: courseId } }, 
       { new: true }
     );
   };
