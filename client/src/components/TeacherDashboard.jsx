@@ -25,6 +25,26 @@ const TeacherDashboard = () => {
     fetchTasks();
   }, []);
 
+  const getPriorityColor = (priority) => {
+    switch (priority) {
+      case "red":
+        return "#e74c3c"; // Red color
+      case "orange":
+        return "#e67e22"; // Orange color
+      case "yellow":
+        return "#f1c40f"; // Yellow color
+      case "green":
+        return "#2ecc71"; // Green color
+      case "blue":
+        return "#3498db"; // Blue color
+      case "purple":
+        return "#9b59b6"; // Purple color
+      default:
+        return "#7f8c8d"; // Default gray color for undefined priorities
+    }
+  };
+  
+
   return (
     <div
       style={{
@@ -83,6 +103,7 @@ const TeacherDashboard = () => {
         />
       </div>
 
+
       {/* Task List */}
       <div
         style={{
@@ -103,7 +124,8 @@ const TeacherDashboard = () => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                backgroundColor: "#f9f9f9",
+                alignItems: "center",
+                backgroundColor: "#d5d9ed",
                 margin: "8px 0",
                 padding: "10px 15px",
                 borderRadius: "8px",
@@ -113,21 +135,27 @@ const TeacherDashboard = () => {
               }}
             >
               <strong style={{ color: "#4a90e2" }}>{task.title}</strong>
-              <span
-                style={{
-                  backgroundColor: "#e7f3ff",
-                  padding: "3px 8px",
-                  borderRadius: "4px",
-                  fontWeight: "bold",
-                  color: "#333",
-                }}
-              >
-                {task.priority}
-              </span>
+              
+              <div style={{ display: "flex", alignItems: "center", fontSize: "0.9em" }}>
+                <span style={{ marginRight: "10px", color: "#555" }}>Deadline: {new Date(task.deadline).toLocaleDateString()}</span>
+                <span
+                  style={{
+                    backgroundColor: getPriorityColor(task.priority),
+                    padding: "3px 8px",
+                    borderRadius: "4px",
+                    fontWeight: "bold",
+                    color: "#fff",
+                  }}
+                >
+                  {task.priority}
+                </span>
+              </div>
             </li>
           ))}
         </ul>
       </div>
+
+
 
       {/* Calendar Overlay */}
       {showCalendar && (

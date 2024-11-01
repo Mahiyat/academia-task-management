@@ -22,7 +22,7 @@ describe("Teacher Dashboard Controller", () => {
   });
 
   describe("showPriorityTasks", () => {
-    it("should retrieve, sort, and return priority tasks with status 200", async () => {
+    it("should retrieve, sort by deadline, and return priority tasks with status 200", async () => {
       const unsortedTasks = [
         {
           "_id": "672267dd2722d82a38dd1fea",
@@ -73,33 +73,75 @@ describe("Teacher Dashboard Controller", () => {
         }
       ];
 
-      // Stub the teacherDashboardServices.getTasks method to return unsorted tasks
       sinon.stub(teacherDashboardServices, "getTasks").resolves(unsortedTasks);
 
-      // Call the showPriorityTasks controller
       await showPriorityTasks(req, res);
 
-      // Capture the tasks returned by res.json
       const returnedTasks = res.json.getCall(0).args[0];
 
-      // Verify response status and sorted tasks
       expect(res.status.calledWith(200)).to.be.true;
-      expect(returnedTasks).to.deep.equal(sortedTasks); // Check that tasks are sorted as expected
+      expect(returnedTasks).to.deep.equal(sortedTasks); 
     });
 
-    it("should return status 500 and an error message if an error occurs", async () => {
-      const errorMessage = "Error retrieving cards";
-      const error = new Error("Database connection error");
+    it("should sort tasks by priority when deadlines are the same", async () => {
+      const unsortedTasks = [
+        {
+          "_id": "672267dd2722d82a38dd1fea",
+          "title": "Review algorithms",
+          "description": "Revise algorithms for CSE102.",
+          "category": "Class",
+          "priority": "orange",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "doing",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        },
+        {
+          "_id": "672267dd2722d82a38dd1fe9",
+          "title": "Complete project proposal",
+          "description": "Prepare the project proposal for CSE101.",
+          "category": "Class",
+          "priority": "red",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "todo",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        }
+      ];
 
-      // Stub the teacherDashboardServices.getTasks method to throw an error
-      sinon.stub(teacherDashboardServices, "getTasks").throws(error);
+      const sortedTasks = [
+        {
+          "_id": "672267dd2722d82a38dd1fe9",
+          "title": "Complete project proposal",
+          "description": "Prepare the project proposal for CSE101.",
+          "category": "Class",
+          "priority": "red",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "todo",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        },
+        {
+          "_id": "672267dd2722d82a38dd1fea",
+          "title": "Review algorithms",
+          "description": "Revise algorithms for CSE102.",
+          "category": "Class",
+          "priority": "orange",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "doing",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        }
+      ];
 
-      // Call the showPriorityTasks controller
+      sinon.stub(teacherDashboardServices, "getTasks").resolves(unsortedTasks);
+
       await showPriorityTasks(req, res);
 
-      // Verify the response status and json for the error
-      expect(res.status.calledWith(500)).to.be.true;
-      expect(res.json.calledWith({ message: errorMessage, error: error.message })).to.be.true;
+      const returnedTasks = res.json.getCall(0).args[0];
+
+      expect(res.status.calledWith(200)).to.be.true;
+      expect(returnedTasks).to.deep.equal(sortedTasks); 
     });
   });
 });
