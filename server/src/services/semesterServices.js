@@ -20,6 +20,7 @@ const createSemester = async (semesterData) => {
 
 
 const updateSemester = async (semesterId, updatedSemester) =>{
+  // eslint-disable-next-line max-len
   const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
 
   return updatedNewSemester;
@@ -39,6 +40,6 @@ const addExamCommitteeMember = async (semesterId, teacherId) =>{
 export default {
   getAllSemesters,
   updateSemester,
-    addExamCommitteeMember,
+  addExamCommitteeMember,
   createSemester,
 };

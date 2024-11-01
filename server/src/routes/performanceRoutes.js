@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/check-tag-names */
 import express from 'express';
 import { getAllTeachers, getTeacherById, getTeacherCourses } 
   from '../controllers/performanceController.js';
@@ -11,7 +12,7 @@ const performanceRoutes = express.Router();
  * @name GetAllTeachers
  * @route GET /teacher
  * @group Teacher - Operations about teachers
- * @returns {Array.<Object>} 200 - An array of teacher objects
+ * @returns {Array.<object>} 200 - An array of teacher objects
  * @returns {Error} 500 - Internal server error
  */
 performanceRoutes.get('/teacher', getAllTeachers);
@@ -23,7 +24,7 @@ performanceRoutes.get('/teacher', getAllTeachers);
  * @route GET /teacher/:id
  * @group Teacher - Operations about teachers
  * @param {string} id.path.required - Teacher's unique ID
- * @returns {Object} 200 - Teacher object
+ * @returns {object} 200 - Teacher object
  * @returns {Error} 404 - Teacher not found
  * @returns {Error} 500 - Internal server error
  */
@@ -36,7 +37,7 @@ performanceRoutes.get('/teacher/:id', getTeacherById);
  * @route GET /teacherCourse/:id
  * @group Teacher - Operations about teachers
  * @param {string} id.path.required - Teacher's unique ID
- * @returns {Array.<Object>} 200 - An array of course objects for the specified teacher
+ * @returns {Array.<object>} 200 - An array of course objects for the specified teacher
  * @returns {Error} 404 - Course data missing for the specified teacher
  * @returns {Error} 500 - Internal server error
  */

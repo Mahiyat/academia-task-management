@@ -6,8 +6,8 @@ import teacherServices from '../services/teacherServices.js';
  * 
  * @async
  * @function getAllTeachers
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a response with the list of teachers or an error message.
  */
 export const getAllTeachers = async (req, res) => {
@@ -25,8 +25,8 @@ export const getAllTeachers = async (req, res) => {
  * 
  * @async
  * @function getTeacherById
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a response with the teacher object or an error message.
  */
 export const getTeacherById = async (req, res) => {
@@ -47,8 +47,8 @@ export const getTeacherById = async (req, res) => {
  * 
  * @async
  * @function getTeacherCourses
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a response with the list of courses or an error message.
  */
 export async function getTeacherCourses(req, res) {
