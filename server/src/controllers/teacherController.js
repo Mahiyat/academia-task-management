@@ -1,6 +1,13 @@
 import teacherServices from "../services/teacherServices.js";
 
-// Get all teachers
+/**
+ * Retrieves all teachers from the database.
+ * Sends an array of teacher objects as JSON response.
+ *
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ * @returns {Promise<void>} - A promise that resolves to a JSON response with all teachers.
+ */
 export const getAllTeachers = async (req, res) => {
   try {
     const teachers = await teacherServices.getAllTeachers();

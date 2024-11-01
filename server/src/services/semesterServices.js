@@ -19,6 +19,12 @@ const createSemester = async (semesterData) => {
   return await semester.save();
 };
 
+/**
+ * Updates a semester with the provided data.
+ * @param {string} semesterId - The ID of the semester to update.
+ * @param {object} updatedSemester - The data to update the semester with.
+ * @returns {Promise<object|null>} The updated semester document, or null if not found.
+ */
 const updateSemester = async (semesterId, updatedSemester) => {
   const updatedNewSemester = await Semester.findByIdAndUpdate(
     semesterId,
@@ -29,6 +35,12 @@ const updateSemester = async (semesterId, updatedSemester) => {
   return updatedNewSemester;
 };
 
+/**
+ * Adds a teacher to the exam committee of a semester.
+ * @param {string} semesterId - The ID of the semester.
+ * @param {string} teacherId - The ID of the teacher to add to the exam committee.
+ * @returns {Promise<Object|null>} The updated semester document, or null if not found.
+ */
 const addExamCommitteeMember = async (semesterId, teacherId) => {
   const updatedSemester = await Semester.findByIdAndUpdate(
     semesterId,
@@ -38,6 +50,7 @@ const addExamCommitteeMember = async (semesterId, teacherId) => {
   
   return updatedSemester;
 };
+
 
 export default {
   getAllSemesters,
