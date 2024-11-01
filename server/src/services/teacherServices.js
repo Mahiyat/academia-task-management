@@ -7,8 +7,6 @@ import Teacher from '../models/Teacher.js';
 
 const getAllTeachers = async() =>{
   const teachers = await Teacher.find().populate('courses');
-
-  console.log(teachers);
   return teachers;
 };
 
