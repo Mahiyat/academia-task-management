@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllSemesters, updateSemester, createSemester }
+import { addExamCommitteeMember, getAllSemesters, updateSemester, createSemester }
   from '../controllers/semesterController.js';
 
 
@@ -11,5 +11,6 @@ const semesterRoutes = express.Router();
 semesterRoutes.get('/', getAllSemesters);
 semesterRoutes.post('/', createSemester);
 semesterRoutes.put('/updatedSemester/:id', updateSemester);
+semesterRoutes.put('/:id/examCommittee', addExamCommitteeMember);
 
 export  { semesterRoutes };

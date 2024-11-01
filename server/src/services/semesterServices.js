@@ -25,9 +25,19 @@ const updateSemester = async (semesterId, updatedSemester) =>{
   return updatedNewSemester;
 };
 
+const addExamCommitteeMember = async (semesterId,teacherId) =>{
+    const updatedSemester = await Semester.findByIdAndUpdate(
+        semesterId,
+        { $push: { examCommittee: teacherId } },
+        { new: true }
+      );
+      return updatedSemester;
+}
+
 
 export default {
   getAllSemesters,
   updateSemester,
+    addExamCommitteeMember,
   createSemester,
 };
