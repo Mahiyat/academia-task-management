@@ -7,7 +7,7 @@ import Semester from '../models/Semester.js';
 
 const getAllSemesters = async() =>{
     const semesters = await Semester.find().populate('courses').populate('examCommittee');
-    console.log(semesters);
+
     return semesters;
 };
 

@@ -33,9 +33,19 @@ const TeacherList = ({ courseId }) => {
 
   const handleAssignTeachers = async () => {
     try {
+      
       await axios.put(`http://localhost:5000/api/courses/${courseId}`, {
         courseTeachers: selectedTeachers,
       });
+
+      await Promise.all(
+        selectedTeachers.map(async (teacherId) => {
+          await axios.put(`http://localhost:5000/api/teachers/${teacherId}`, {
+            courses: courseId,
+          });
+        })
+      );
+
       alert('Teachers assigned successfully!');
     } catch (error) {
       const message = error.response ? error.response.data.message : error.message;
