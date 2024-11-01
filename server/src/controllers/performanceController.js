@@ -1,6 +1,15 @@
 import courseService from '../services/courseServices.js';
 import teacherServices from '../services/teacherServices.js';
 
+/**
+ * Get all teachers.
+ * 
+ * @async
+ * @function getAllTeachers
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} Sends a response with the list of teachers or an error message.
+ */
 export const getAllTeachers = async (req, res) => {
   try {
     const teachers = await teacherServices.getAllTeachers();
@@ -11,11 +20,18 @@ export const getAllTeachers = async (req, res) => {
   }
 };
 
-// Get a teacher by ID
+/**
+ * Get a teacher by their ID.
+ * 
+ * @async
+ * @function getTeacherById
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} Sends a response with the teacher object or an error message.
+ */
 export const getTeacherById = async (req, res) => {
   try {
     const teacher = await teacherServices.getTeacherById(req.params.id);
-
 
     if (!teacher) {
       return res.status(404).json({ message: 'Teacher not found' });
@@ -26,9 +42,17 @@ export const getTeacherById = async (req, res) => {
   }
 };
 
+/**
+ * Get courses for a specific teacher by their ID.
+ * 
+ * @async
+ * @function getTeacherCourses
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Promise<void>} Sends a response with the list of courses or an error message.
+ */
 export async function getTeacherCourses(req, res) {
   try {
-
     // Call the service to get the teacher's courses
     const courses = await teacherServices.getCoursesByTeacherId(req.params.id);
 

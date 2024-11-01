@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
 import teacherServices from "../../src/services/teacherServices.js";
-import courseServices from "../../src/services/courseServices.js";
+
 import {
   getAllTeachers,
   getTeacherById,
