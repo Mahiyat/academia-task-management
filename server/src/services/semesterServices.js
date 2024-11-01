@@ -10,10 +10,6 @@ const getAllSemesters = async() =>{
 
   console.log(semesters);
   return semesters;
-  const semesters = await Semester.find().populate('courses').populate('examCommittee');
-
-  console.log(semesters);
-  return semesters;
 };
 
 const createSemester = async (semesterData) => {

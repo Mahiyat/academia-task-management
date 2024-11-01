@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllCourses, getCourseById, getTeacherById, getTeacherCourses}
+import { getAllTeachers, getTeacherById, getTeacherCourses}
   from '../controllers/performanceController.js';
 
 
@@ -7,9 +7,9 @@ import { getAllCourses, getCourseById, getTeacherById, getTeacherCourses}
 const performanceRoutes = express.Router();
 
 
-//performanceRoutes.get('/', getAllCourses);
-//performanceRoutes.get('/:id', getTeacherById);
-performanceRoutes.get('/:id', getTeacherCourses);
+performanceRoutes.get('/teacher', getAllTeachers);
+performanceRoutes.get('/teacher/:id', getTeacherById);
+performanceRoutes.get('/teacherCourse/:id', getTeacherCourses);
 
 
 

@@ -1,28 +1,13 @@
 import courseService from '../services/courseServices.js';
 import teacherServices from '../services/teacherServices.js';
 
-// Get all courses
-export const getAllCourses = async (req, res) => {
+export const getAllTeachers = async (req, res) => {
   try {
-    const courses = await courseService.getAllCourses();
+    const teachers = await teacherServices.getAllTeachers();
 
-    res.status(200).json(courses);
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching courses', error: err.message });
-  }
-};
-
-// Get a specific course by ID
-export const getCourseById = async (req, res) => {
-  try {
-    const course = await courseService.getCourseById(req.params.id);
-
-    if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
-    }
-    res.status(200).json(course);
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching course', error: err.message });
+    res.status(200).json(teachers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -48,7 +33,7 @@ export async function getTeacherCourses(req, res) {
     const courses = await teacherServices.getCoursesByTeacherId(req.params.id);
 
     // Check if any courses were found
-    if (!courses) {
+    if (!courses || courses.length === 0) {
       return res.status(404).json({ message: "Course data missing for the specified teacher." });
     }
 

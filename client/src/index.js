@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AssignTeacherDashboard from './Components/AssignTeacherDashboard';
+import TeacherPerformance from './Components/TeacherPerformance'
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AssignTeacherDashboard></AssignTeacherDashboard>
+  <TeacherPerformance></TeacherPerformance>
   </React.StrictMode>
 );
 
