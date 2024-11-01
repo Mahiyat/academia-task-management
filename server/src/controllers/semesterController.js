@@ -27,7 +27,7 @@ export async function createSemester(req, res) {
 // Update a semester
 export async function updateSemester(req, res) {
   try {
-    const updatedSemester = await semesterServices.updateSemester(req.params.id, req.body);
+    const updatedSemester = await semesterServices.updateSemester(req.params.id,  req.body);
 
     if (!updatedSemester) {
       return res.status(404).json({ message: 'Semester not found' });
@@ -38,7 +38,7 @@ export async function updateSemester(req, res) {
   }
 }
 
-export async function addExamCommitteeMember(req, res){
+export async function addExamCommitteeMember(req,  res){
   try {
     const { id } = req.params;
     const { teacherId } = req.body;
