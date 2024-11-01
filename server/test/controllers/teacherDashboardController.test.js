@@ -1,3 +1,4 @@
+// test/controllers/teacherDashboardController.test.js
 import { expect } from "chai";
 import sinon from "sinon";
 import teacherDashboardServices from "../../src/services/teacherDashboardServices.js";
@@ -9,7 +10,7 @@ describe("Teacher Dashboard Controller", () => {
   beforeEach(() => {
     req = {
       params: { teacherId: "6722664b2722d82a38dd1fc8" },
-    }; 
+    };
     res = {
       status: sinon.stub().returnsThis(),
       json: sinon.stub(),
@@ -17,11 +18,36 @@ describe("Teacher Dashboard Controller", () => {
   });
 
   afterEach(() => {
-    sinon.restore(); 
+    sinon.restore();
   });
 
   describe("showPriorityTasks", () => {
-    it("should retrieve and return sorted priority tasks with status 200", async () => {
+    it("should retrieve, sort, and return priority tasks with status 200", async () => {
+      const unsortedTasks = [
+        {
+          "_id": "672267dd2722d82a38dd1fea",
+          "title": "Review algorithms",
+          "description": "Revise algorithms for CSE102.",
+          "category": "Class",
+          "priority": "red",
+          "deadline": "2024-02-20T12:00:00.000Z",
+          "status": "doing",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        },
+        {
+          "_id": "672267dd2722d82a38dd1fe9",
+          "title": "Complete project proposal",
+          "description": "Prepare the project proposal for CSE101.",
+          "category": "Class",
+          "priority": "orange",
+          "deadline": "2024-02-15T12:00:00.000Z",
+          "status": "todo",
+          "createdAt": "2024-01-01T00:00:00.000Z",
+          "kanbanBoardId": "672267132722d82a38dd1fd6"
+        }
+      ];
+
       const sortedTasks = [
         {
           "_id": "672267dd2722d82a38dd1fe9",
@@ -47,16 +73,18 @@ describe("Teacher Dashboard Controller", () => {
         }
       ];
 
-      // Stub the teacherDashboardServices.getTasks method
-      sinon.stub(teacherDashboardServices, "getTasks").withArgs("6722664b2722d82a38dd1fc8")
-        .resolves(sortedTasks);
+      // Stub the teacherDashboardServices.getTasks method to return unsorted tasks
+      sinon.stub(teacherDashboardServices, "getTasks").resolves(unsortedTasks);
 
       // Call the showPriorityTasks controller
       await showPriorityTasks(req, res);
 
-      // Verify the response status and json
+      // Capture the tasks returned by res.json
+      const returnedTasks = res.json.getCall(0).args[0];
+
+      // Verify response status and sorted tasks
       expect(res.status.calledWith(200)).to.be.true;
-      expect(res.json.calledWith(sortedTasks)).to.be.true;
+      expect(returnedTasks).to.deep.equal(sortedTasks); // Check that tasks are sorted as expected
     });
 
     it("should return status 500 and an error message if an error occurs", async () => {
