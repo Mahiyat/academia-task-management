@@ -1,0 +1,13 @@
+{
+    "source": {
+      "include": ["src/services"],
+      "includePattern": ".js$",
+      "excludePattern": "(node_modules|docs)"
+    },
+    "opts": {
+      "destination": "./docs/services",
+      "recurse": true,
+      "template": "node_modules/jsdoc/templates/default"
+    }
+  }
+  

@@ -8,7 +8,12 @@
     "start": "node .",
     "dev": "nodemon .",
     "lint": "eslint .",
-    "test": "mocha --recursive --require @babel/register"
+    "test": "mocha --recursive --require @babel/register",
+    "docs:models": "jsdoc -c jsdoc-model.json",
+    "docs:controllers": "jsdoc -c jsdoc-controller.json",
+    "docs:services": "jsdoc -c jsdoc-service.json",
+    "docs:routes": "jsdoc -c jsdoc-routes.json",
+    "docs:all": "yarn docs:models && yarn docs:controllers && yarn docs:services && yarn docs:routes"
   },
   "author": "",
   "license": "ISC",
