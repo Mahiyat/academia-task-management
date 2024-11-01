@@ -33,10 +33,10 @@ const SemesterDropdown = ({ onSelectSemester }) => {
         transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
       }}
       onFocus={(e) =>
-        (e.target.style.borderColor = '#4A90E2') // Change border color on focus
+        (e.target.style.borderColor = '#4A90E2') 
       }
       onBlur={(e) =>
-        (e.target.style.borderColor = '#ccc') // Reset border color on blur
+        (e.target.style.borderColor = '#ccc') 
       }
     >
       <option value="" disabled selected>

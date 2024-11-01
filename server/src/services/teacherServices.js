@@ -33,11 +33,14 @@ const getCoursesByTeacherId = async (teacherId) => {
 };
 
 export const updateTeacherCourses = async (teacherId, courseId) => {
-  return await Teacher.findByIdAndUpdate(
-    teacherId,
-    { $addToSet: { courses: courseId } }, 
-    { new: true }
-  );
+  const teacher = await Teacher.findById(teacherId);
+
+  if (teacher && !teacher.courses.includes(courseId)) {
+    teacher.courses.push(courseId);
+    await teacher.save();
+  }
+
+  return teacher;
 };
 
 export default {

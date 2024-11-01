@@ -32,7 +32,7 @@ const updateSemester = async (semesterId, updatedSemester) => {
       updatedSemester,
       { new: true }
     );
-    
+
     return updatedNewSemester;
   };
 
