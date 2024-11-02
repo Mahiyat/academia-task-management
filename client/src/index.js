@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AssignTeacherDashboard from './Components/AssignTeacherDashboard';
 import TeacherPerformance from './Components/TeacherPerformance'
+import BarChart from './Components/Barchart';
 
 
 

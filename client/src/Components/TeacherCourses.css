@@ -49,3 +49,9 @@
   .chart-container {
     margin-top: 20px;
   }
+
+  .chart-container {
+    width: 100%;
+    height: 400px; /* Set this or adjust to fit your layout */
+  }
+  
