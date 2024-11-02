@@ -16,6 +16,7 @@ import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 
+
 const app = express();
 
 
@@ -41,7 +42,7 @@ app.use("/api/performance", performanceRoutes);
 
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
-app.use("/api/class-and-tutorial-overview", classTutOverviewRoutes);
+app.use('/api/class-overview', classTutOverviewRoutes);
 
 
 app.listen(config.app.port, () => {

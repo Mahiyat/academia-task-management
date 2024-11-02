@@ -1,53 +1,30 @@
-class ClassTutOverviewServices {
-  constructor() {
-    // Embedded dummy data
-    this.courses = [
-      {
-        name: 'Introduction to AI',
-        code: 'AI101',
-        expectedClasses: 20,
-        classesConducted: 15,
-        expectedTutorials: 10,
-        tutorialsConducted: 6,
-        kanbanOverview: {
-          todo: 5,
-          doing: 3,
-          done: 12,
-        },
-      },
-      {
-        name: 'Data Science Basics',
-        code: 'DSB201',
-        expectedClasses: 25,
-        classesConducted: 20,
-        expectedTutorials: 8,
-        tutorialsConducted: 6,
-        kanbanOverview: {
-          todo: 4,
-          doing: 5,
-          done: 16,
-        },
-      },
-    ];
-  }
+// services/classTutOverviewService.js
+import Course from '../models/Course.js';
+import Teacher from '../models/Teacher.js';
 
-  // Function to simulate creating a new course (adding to the embedded dummy data)
-  async createNewCourse(courseData) {
-    this.courses.push(courseData);
-    return courseData;
-  }
+const getCourseOverviewData = async (teacherId) => {
+  try {
 
-  // Function to retrieve all courses with an overview calculation for each course
-  async getAllCourses() {
-    return this.courses.map((course) => {
-      // Calculate progress percentages for each course
-      const classCompletionPercentage = (course.classesConducted / course.expectedClasses) * 100;
-      const tutorialCompletionPercentage =
-       (course.tutorialsConducted / course.expectedTutorials) * 100;
-      const overallProgressPercentage = 
-      i(classCompletionPercentage + tutorialCompletionPercentage) / 2;
+    const teacher = await Teacher.findById(teacherId).populate('courses');
 
-      // Determine qualitative progress status based on the percentage
+    console.log(teacher);
+    // Retrieve courses for a specific teacher
+    const courses = teacher.courses;
+
+    if (!courses.length) {
+      throw new Error('No course data available');
+    }
+
+    // Calculate progress and format response data
+    return courses.map((course) => {
+      // eslint-disable-next-line max-len
+      const classCompletionPercentage = (course.noOfClassesTaken / course.expectedNoOfClasses) * 100;
+      // eslint-disable-next-line max-len
+      const tutorialCompletionPercentage = (course.noOfTutorialsTaken / course.expectedNoOfTutorials) * 100;
+      // eslint-disable-next-line max-len
+      const overallProgressPercentage = (classCompletionPercentage + tutorialCompletionPercentage) / 2;
+
+      // Determine qualitative progress status
       let progressStatus;
 
       if (overallProgressPercentage >= 90) {
@@ -64,18 +41,22 @@ class ClassTutOverviewServices {
 
       return {
         courseDetails: {
-          name: course.name,
-          code: course.code,
+          courseName: course.courseName,
+          courseCode: course.courseCode,
+          courseCredit: course.courseCredit,
+          courseType: course.courseType,
+          contactHours: course.contactHours,
         },
-        expectedClasses: course.expectedClasses,
-        classesConducted: course.classesConducted,
-        expectedTutorials: course.expectedTutorials,
-        tutorialsConducted: course.tutorialsConducted,
+        expectedNoOfClasses: course.expectedNoOfClasses,
+        noOfClassesTaken: course.noOfClassesTaken,
+        expectedNoOfTutorials: course.expectedNoOfTutorials,
+        noOfTutorialsTaken: course.noOfTutorialsTaken,
         progressStatus,
-        kanbanOverview: course.kanbanOverview,
       };
     });
+  } catch (error) {
+    throw new Error(error.message || 'Unable to load class and tutorial overview.');
   }
-}
+};
 
-export default new ClassTutOverviewServices();
+export default { getCourseOverviewData };

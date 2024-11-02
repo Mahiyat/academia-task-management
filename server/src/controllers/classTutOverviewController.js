@@ -1,36 +1,21 @@
-import classTutOverviewServices from '../services/classTutOverviewServices.js';
-import ClassTutOverviewServices from '../services/classTutOverviewServices.js';
+// controllers/classTutOverviewController.js
+import classTutOverviewService from '../services/classTutOverviewServices.js';
 
-export async function getClassTutOverview(req, res) {
-  const { courseId } = req.query;
+export const getClassTutOverview = async (req, res) => {
+  const { teacherId } = req.params;
 
+  console.log(teacherId);
   try {
-    const overview = await classTutOverviewServices.getClassTutOverview(courseId);
+    const overviewData = await classTutOverviewService.getCourseOverviewData(teacherId);
 
-    res.status(200).json({
-      success: true,
-      message: 'Class and tutorial overview loaded successfully',
-      data: overview
-    });
+    res.status(200).json(overviewData);
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: determineErrorMessage(error.message),
-      error: error.message
-    });
+    if (error.message === 'No course data available') {
+      res.status(404).json({ message: 'No course data available.' });
+    } else if (error.message === 'Unable to load class and tutorial overview.') {
+      res.status(500).json({ message: 'Unable to load class and tutorial overview.' });
+    } else {
+      res.status(500).json({ message: 'System error – unable to retrieve progress chart.' });
+    }
   }
 };
-
-const determineErrorMessage = (errorMsg) => {
-  switch (errorMsg) {
-  case 'No course data available':
-    return 'No course data available.';
-  case 'Unable to load class and tutorial overview':
-    return 'Unable to load class and tutorial overview.';
-  default:
-    return 'System error – unable to retrieve progress chart.';
-  }
-};
-
-
-
