@@ -6,28 +6,32 @@ import Semester from '../models/Semester.js';
  */
 
 const getAllSemesters = async() =>{
-    const semesters = await Semester.find().populate('courses').populate('examCommittee');
-    console.log(semesters);
-    return semesters;
+  const semesters = await Semester.find().populate('courses').populate('examCommittee');
+
+  console.log(semesters);
+  return semesters;
 };
 
-const updateSemester = async (semesterId,updatedSemester) =>{
-    const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
-    return updatedNewSemester;
-}
+const updateSemester = async (semesterId, updatedSemester) =>{
+  // eslint-disable-next-line max-len
+  const updatedNewSemester = await Semester.findByIdAndUpdate(semesterId, updatedSemester, { new: true });
 
-const addExamCommitteeMember = async (semesterId,teacherId) =>{
-    const updatedSemester = await Semester.findByIdAndUpdate(
-        semesterId,
-        { $push: { examCommittee: teacherId } },
-        { new: true }
-      );
-      return updatedSemester;
-}
+  return updatedNewSemester;
+};
+
+const addExamCommitteeMember = async (semesterId, teacherId) =>{
+  const updatedSemester = await Semester.findByIdAndUpdate(
+    semesterId,
+    { $push: { examCommittee: teacherId } },
+    { new: true }
+  );
+
+  return updatedSemester;
+};
 
 
 export default {
-    getAllSemesters,
-    updateSemester,
-    addExamCommitteeMember,
-}
+  getAllSemesters,
+  updateSemester,
+  addExamCommitteeMember,
+};
