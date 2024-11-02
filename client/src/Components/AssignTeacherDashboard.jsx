@@ -23,7 +23,7 @@ const AssignTeacherDashboard = () => {
     >
       <h1 style={{ color: '#333', marginBottom: '20px' }}>Assign Teacher Dashboard</h1>
 
-      <div style={{ marginBottom: '20px', width: '300px' }}>
+      <div style={{ marginBottom: '20px', width: '500px' }}>
         {/* Dropdown to select semester */}
         <SemesterDropdown onSelectSemester={setSelectedSemester} />
       </div>
@@ -32,7 +32,7 @@ const AssignTeacherDashboard = () => {
         <div
           style={{
             marginBottom: '20px',
-            width: '300px',
+            width: '500px',
             padding: '10px',
             backgroundColor: '#fff',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -46,7 +46,7 @@ const AssignTeacherDashboard = () => {
       {selectedCourse && (
         <div
           style={{
-            width: '300px',
+            width: '500px',
             padding: '10px',
             backgroundColor: '#fff',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',

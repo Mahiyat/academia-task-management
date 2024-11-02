@@ -46,10 +46,10 @@ const TeacherList = ({ courseId }) => {
         })
       );
 
-      alert('Teachers assigned successfully!');
+      alert('Course Assignment Successful!');
     } catch (error) {
       const message = error.response ? error.response.data.message : error.message;
-      alert(`Failed to assign teachers: ${message}`);
+      alert(`Unable to assign teachers: ${message}`);
     }
   };
 
