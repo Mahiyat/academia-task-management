@@ -2217,6 +2217,7 @@
     "@react-spring/types" "~9.7.5"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 06ab070 (add semesterprogress tracking frontend+backend)
 "@remix-run/router@1.20.0":
   version "1.20.0"
@@ -2229,13 +2230,30 @@
 =======
 =======
 =======
+=======
+>>>>>>> 217f13c (add semesterprogress tracking frontend+backend)
 "@remix-run/router@1.21.0":
   version "1.21.0"
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.21.0.tgz#c65ae4262bdcfe415dbd4f64ec87676e4a56e2b5"
   integrity sha512-xfSkCAchbdG5PnbrKqFWwia4Bi61nH+wm8wLEqfHDyp7Y3dZzgqS2itV8i4gAq9pC2HsTpwyBC6Ds8VHZ96JlA==
+<<<<<<< HEAD
 >>>>>>> 6f2f1dc ( test and backend done with partial forntend)
+<<<<<<< HEAD
 >>>>>>> 1cf9309 ( test and backend done with partial forntend)
+<<<<<<< HEAD
 >>>>>>> 51596e1 ( test and backend done with partial forntend)
+=======
+=======
+=======
+=======
+"@remix-run/router@1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.20.0.tgz#03554155b45d8b529adf635b2f6ad1165d70d8b4"
+  integrity sha512-mUnk8rPJBI9loFDZ+YzPGdeniYK+FTmRD1TMCz7ev2SNIozyKKpnGgsxO34u6Z4z/t0ITuu7voi/AshfsGsgFg==
+>>>>>>> 3193435 (add semesterprogress tracking frontend+backend)
+>>>>>>> 217f13c (add semesterprogress tracking frontend+backend)
+>>>>>>> b276d17 (add semesterprogress tracking frontend+backend)
+>>>>>>> 9d4c4c3 (add semesterprogress tracking frontend+backend)
 
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
