@@ -9,6 +9,7 @@
     "@mui/material": "^6.1.6",
     "@mui/x-charts": "^7.22.1",
     "@react-pdf/renderer": "^4.0.0",
+    "@mui/x-charts": "^7.22.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
