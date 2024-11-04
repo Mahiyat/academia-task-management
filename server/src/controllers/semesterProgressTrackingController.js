@@ -1,5 +1,6 @@
 import semesterProgressTrackingServices from '../services/semesterProgressTrackingServices.js';
 
+<<<<<<< HEAD
 /**
  * Retrieves progress data for a specific semester.
  * 
@@ -14,6 +15,9 @@ import semesterProgressTrackingServices from '../services/semesterProgressTracki
  * @throws {Error} Returns a 500 status code if unable to load semester data.
  */
 export async function getSemesterProgress(req, res) {
+=======
+export async function getSemesterProgress (req, res) {
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
   try {
     const semesterId = req.params.semesterId;
     const progressData = await semesterProgressTrackingServices
@@ -23,6 +27,7 @@ export async function getSemesterProgress(req, res) {
   } catch (error) {
     res.status(500).json({ message: "Unable to load semester data." });
   }
+<<<<<<< HEAD
 }
 
 /**
@@ -46,3 +51,7 @@ export async function getAllSemestersProgress(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
+=======
+};
+
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)

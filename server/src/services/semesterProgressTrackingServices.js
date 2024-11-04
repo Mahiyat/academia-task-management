@@ -1,6 +1,7 @@
 import Semester from '../models/Semester.js';
 import Course from '../models/Course.js';
 
+<<<<<<< HEAD
 /**
  * Calculates the progress of a specific semester based on the progress of each course.
  * 
@@ -12,6 +13,8 @@ import Course from '../models/Course.js';
  * 
  * @throws {Error} Throws an error if unable to calculate semester progress.
  */
+=======
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
 const calculateSemesterProgress = async (semesterId) => {
   try {
     const semester = await Semester.findById(semesterId).populate('courses');
@@ -30,8 +33,13 @@ const calculateSemesterProgress = async (semesterId) => {
         classProgress: classProgress.toFixed(2),
         tutorialProgress: tutorialProgress.toFixed(2),
         totalProgress: totalProgress,
+<<<<<<< HEAD
         noOfClassesTaken: course.noOfClassesTaken,
         noOfTutorialsTaken: course.noOfTutorialsTaken
+=======
+        noOfClassesTaken : course.noOfClassesTaken,
+        noOfTutorialsTaken : course.noOfTutorialsTaken
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
       };
     });
 
@@ -41,6 +49,7 @@ const calculateSemesterProgress = async (semesterId) => {
   }
 };
 
+<<<<<<< HEAD
 /**
  * Retrieves the progress data for all semesters.
  * 
@@ -80,4 +89,8 @@ const getAllSemestersProgress = async () => {
 export default {
   calculateSemesterProgress,
   getAllSemestersProgress,
+=======
+export default {
+  calculateSemesterProgress,
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
 };
