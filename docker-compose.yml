@@ -1,0 +1,62 @@
+version: '3.8'
+services:
+  academia_client:
+    container_name: academia_client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    depends_on:
+      - academia_server
+    ports:
+      - 3000:3000
+    restart: on-failure
+    volumes:
+      - ./client/src:/app/src
+
+  academia_server:
+    container_name: academia_server
+    build:
+      context: server
+      dockerfile: Dockerfile
+    depends_on:
+      - academia_mongo
+      - academia-ollama
+    networks:
+      - ollama-docker
+    ports:
+      - 5000:5000
+    restart: on-failure
+    volumes:
+      - ./server/src:/app/src
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb+srv://your_mongo_uri
+      - SECRET_KEY=my-secret-key
+      - TOKEN_DURATION=1h
+
+  academia_mongo:
+    container_name: academia_mongo
+    image: mongo
+    ports:
+      - 27017:27017
+
+  academia-ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    volumes:
+      - .:/code
+      - ./ollama/ollama:/root/.ollama
+    container_name: academia-ollama
+    pull_policy: always
+    tty: true
+    restart: always
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_HOST=0.0.0.0
+    networks:
+      - ollama-docker
+
+networks:
+  ollama-docker:
+    external: false
