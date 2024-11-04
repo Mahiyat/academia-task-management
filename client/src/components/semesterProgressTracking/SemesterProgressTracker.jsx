@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SemesterList from './SemesterList';
 import SemesterProgress from './SemesterProgress';
-<<<<<<< HEAD
 import TotalSemesterProgress from './TotalSemesterProgress';
 import { Container, Box, Typography, Paper } from '@mui/material';
 
@@ -33,25 +32,6 @@ const SemesterProgressTracker = () => {
         </Box>
       </Paper>
     </Container>
-=======
-
-const SemesterProgressTracker = () => {
-  const [selectedSemesterId, setSelectedSemesterId] = useState(null);
-
-  return (
-    <div>
-      <h2>Semester Progress Tracker</h2>
-      <div style={{width : "50%" }}>
-        <SemesterList onSelectSemester={setSelectedSemesterId} />
-      </div>
-      
-      {selectedSemesterId ? (
-        <SemesterProgress semesterId={selectedSemesterId} />
-      ) : (
-        <p>Please select a semester to view progress.</p>
-      )}
-    </div>
->>>>>>> 3193435 (add semesterprogress tracking frontend+backend)
   );
 };
 
