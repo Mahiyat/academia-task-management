@@ -10,7 +10,6 @@ const SemesterProgress = ({ semesterId }) => {
       try {
         const response = await axios.get(`http://localhost:5000/api/semester-progress-tracking/semester/${semesterId}/progress`);
         setSemesterData(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching semester progress:", error);
       }
