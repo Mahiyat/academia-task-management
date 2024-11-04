@@ -9,7 +9,6 @@ const SemesterList = ({ onSelectSemester }) => {
       try {
         const response = await axios.get('http://localhost:5000/api/semesters'); // Adjust the endpoint as needed
         setSemesters(response.data);
-        console.log(response.data);
         
       } catch (error) {
         console.error("Error fetching semesters:", error);

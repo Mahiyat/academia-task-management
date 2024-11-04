@@ -12,3 +12,13 @@ export async function getSemesterProgress (req, res) {
   }
 };
 
+export async function getAllSemestersProgress (req, res){
+    try {
+      const semestersProgress = await semesterProgressTrackingServices.getAllSemestersProgress();
+      res.status(200).json(semestersProgress);
+    } catch (error) {
+      console.error("Error fetching all semesters progress:", error);
+      res.status(500).json({ message: error.message });
+    }
+  };
+
