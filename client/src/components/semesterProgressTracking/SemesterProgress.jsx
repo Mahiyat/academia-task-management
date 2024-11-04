@@ -54,7 +54,6 @@ const SemesterProgress = ({ semesterId }) => {
       },
     ],
   };
-
   const chartOptions = {
     maintainAspectRatio: false,
     responsive: true,
