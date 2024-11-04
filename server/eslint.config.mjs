@@ -5,7 +5,11 @@ import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
   {
+<<<<<<< HEAD
     ignores: ['node_modules/**', 'docs/**'],
+=======
+    ignores: ['node_modules/**', 'docs/**']// Optional: Add ignored directories or files here.
+>>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
   },
   {
     languageOptions: {
