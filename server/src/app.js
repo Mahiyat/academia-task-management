@@ -15,6 +15,7 @@ import { semesterRoutes } from "./routes/semesterRoutes.js";
 import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
+import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 
 const app = express();
 
@@ -42,6 +43,8 @@ app.use("/api/performance", performanceRoutes);
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 app.use('/api/class-overview', classTutOverviewRoutes);
+
+app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
 
 
 app.listen(config.app.port, () => {
