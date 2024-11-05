@@ -16,6 +16,7 @@ import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
+import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 
 const app = express();
 
@@ -39,16 +40,15 @@ app.use("/api/kanban", kanbanRoutes);
 app.use("/api/teachers",  teacherRoutes);
 app.use("/api/semesters",  semesterRoutes);
 app.use("/api/performance", performanceRoutes);
-
-
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 app.use('/api/class-overview', classTutOverviewRoutes);
+app.use('/api/generate-workflow', workflowRoutes);
 
 app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
 
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);
-});
+}).timeout = 600000;
 
 export default app;

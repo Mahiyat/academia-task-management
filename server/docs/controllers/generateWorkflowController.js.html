@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: teacherController.js</title>
+    <title>JSDoc: Source: generateWorkflowController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: teacherController.js</h1>
+    <h1 class="page-title">Source: generateWorkflowController.js</h1>
 
     
 
@@ -26,53 +26,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import teacherServices from "../services/teacherServices.js";
+            <pre class="prettyprint source linenums"><code>import generateWorkflowServices from "../services/generateWorkflowServices.js";
 
 /**
- * Retrieves all teachers from the database.
- * Sends an array of teacher objects as JSON response.
- *
- * @param {object} req - The request object.
- * @param {object} res - The response object.
- * @returns {Promise&lt;void>} - A promise that resolves to a JSON response with all teachers.
+ * Streams the response from the service to the client in chunks.
+ * @param {object} req - The Express request object.
+ * @param {object} res - The Express response object.
+ * @returns {Promise&lt;void>} - Sends the generated suggestions as a stream to the client.
  */
-export const getAllTeachers = async (req, res) => {
+export const generateSuggestions = async (req, res) => {
   try {
-    const teachers = await teacherServices.getAllTeachers();
+    const kanbanBoardId = req.params.kanbanBoardId;
 
-    res.status(200).json(teachers);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
+    res.setHeader("Content-Type", "application/json");
 
-/**
- * Updates a teacher's assigned courses.
- * @param {object} req - The request object.
- * @param {object} res - The response object.
- * @returns {Promise&lt;void>} - A promise that resolves to a JSON response with updated teacher.
- */
-export const updateTeacher = async (req, res) => {
-  const { id } = req.params;
-  const { courseId } = req.body;
+    const responseStream = await generateWorkflowServices.generateSuggestions(
+      kanbanBoardId
+    );
 
-  try {
-   
-    const teacher = await teacherServices.updateTeacherCourses(id, courseId);
-
-    if (!teacher) {
-      return res.status(404).json({ message: 'Teacher not found' });
+    if (!responseStream) {
+      throw new Error("Response stream is undefined");
     }
 
-    res.status(200).json({ message: 'Teacher updated successfully', teacher });
+    for await (const chunk of responseStream) {
+
+      const data = JSON.stringify({
+        response: chunk.response,
+        done: chunk.done,
+      });
+
+
+      res.write(data + "\n");
+
+      if (chunk.done) {
+        break;
+      }
+    }
+
+    res.status(200).end();
   } catch (error) {
-    console.error('Error updating teacher:', error);
-    res.status(500).json({ message: 'Error updating teacher', error: error.message });
+    res.status(500).json({ error: "Failed to generate workflow suggestions" });
   }
 };
-
-
-
 </code></pre>
         </article>
     </section>
