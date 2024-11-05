@@ -21,6 +21,7 @@ import { messageRoutes } from "./routes/messageRoutes.js";
 import { performanceChairmanRoutes } from "./routes/performanceChairmanRoutes.js";
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 import { progressRoutes } from "./routes/semesterProgressRoutes.js";
+import { reportGenerationRoutes } from "./routes/reportGenerationRoutes.js";
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use("/api/performance", performanceRoutes);
 app.use("/api/messaging-system", messageRoutes);
 app.use("/api/performanceChairman", performanceChairmanRoutes);
 app.use("/api/progress", progressRoutes);
+app.use("/api/report-generation", reportGenerationRoutes);
 
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
