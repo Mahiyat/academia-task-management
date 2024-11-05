@@ -23,6 +23,7 @@ import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackin
 import { progressRoutes } from "./routes/semesterProgressRoutes.js";
 import { reportGenerationRoutes } from "./routes/reportGenerationRoutes.js";
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
+import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 
 const app = express();
 
@@ -56,8 +57,11 @@ app.use("/api/report-generation", reportGenerationRoutes);
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 app.use('/api/class-overview', classTutOverviewRoutes);
 app.use('/api/generate-workflow', workflowRoutes);
+<<<<<<< HEAD
 
 app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
+=======
+>>>>>>> 84e0c82 (Write tests for generate workflow suggestions)
 
 app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
 
