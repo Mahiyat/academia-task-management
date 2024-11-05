@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: teacherDashboardServices.js</title>
+    <title>JSDoc: Source: generateWorkflowServices.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: teacherDashboardServices.js</h1>
+    <h1 class="page-title">Source: generateWorkflowServices.js</h1>
 
     
 
@@ -26,49 +26,63 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Teacher from "../models/Teacher.js";
-import taskServices from "../services/taskServices.js";
-import KanbanBoard from "../models/KanbanBoard.js";
+            <pre class="prettyprint source linenums"><code>import ollama from "ollama";
+import Task from "../models/Task.js";
 
 /**
- * Retrieves all 'todo' and 'doing' tasks for a given teacher, based on
- * their courses and associated kanban boards.
- * @param {string} teacherId - Unique identifier for the teacher.
- * @returns {Promise&lt;Array&lt;object>>} - A promise that resolves to an array of task objects.
+ * Connects with the Ollama API to generate suggestions for managing tasks 
+ * based on priority and deadlines.
+ * @param {string} kanbanBoardId - The ID of the kanban board whose tasks will be analyzed.
+ * @returns {AsyncGenerator&lt;object, void, undefined>} - An async generator 
+ * that yields response objects from the Ollama API.
+ * @throws {Error} - Throws an error if there is a failure connecting to the Ollama service.
  */
-const getTasks = async (teacherId) => {
-  const teacher = await Teacher.findById(teacherId).populate("courses");
-  let tasks = [];
+const generateSuggestions = async (kanbanBoardId) => {
+  const tasks = await Task.find({
+    kanbanBoardId,
+    status: { $in: ["todo", "doing"] },
+  });
 
-  for (const { _id: courseId } of teacher.courses) {
-    const course = courseId.toString();
+  const request = {
+    model: "llama3.2",
+    prompt: `I need your help. I have been overloaded with tons of tasks. 
+        The list of tasks in json format as follows:
+        ${tasks}
 
-    const kanbanBoard = await KanbanBoard.findOne({ course });
+        Suggest me how I will complete the tasks on time as per deadline and priority. 
+        If deadline gets crossed then suggest me how I will complete the tasks with minimum delay. 
+        The meaning of the colors used in priority in the order of their preference is given:
+        red: "urgent",
+        orange: "important",
+        yellow: "moderate",
+        green: "completed",
+        purple: "info",
+        blue: "optional".
+        While suggesting, please mention only the task names in list format.`,
+    stream: true,
+    options: {
+      seed: 42,
+      temperature: 0.5,
+    },
+  };
 
-    const { _id: kanbanBoardId } = kanbanBoard;
-    const kanbanBoardIdString = kanbanBoardId.toString();
+  try {
+    const ollamaResponse = await Promise.race([
+      ollama.generate(request),
+      new Promise(
+        (_, reject) =>
+          setTimeout(() => reject(new Error("Ollama request timed out")), 20000)
+      ),
+    ]);
 
-    const todoTasks = await taskServices.getTasksByBoardAndStatus(
-      kanbanBoardIdString,
-      "todo"
-    );
-
-    tasks = tasks.concat(todoTasks);
-
-    const doingTasks = await taskServices.getTasksByBoardAndStatus(
-      kanbanBoardIdString,
-      "doing"
-    );
-
-    tasks = tasks.concat(doingTasks);
+    return ollamaResponse;
+  } catch (error) {
+    console.error("Ollama request error:", error);
+    throw new Error("Failed to connect to Ollama service");
   }
-
-  return tasks;
 };
 
-export default {
-  getTasks,
-};
+export default { generateSuggestions };
 </code></pre>
         </article>
     </section>

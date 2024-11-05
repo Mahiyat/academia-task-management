@@ -5,7 +5,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
   {
-    ignores: ['node_modules/**', 'docs/**']// Optional: Add ignored directories or files here.
+    ignores: ['node_modules/**', 'docs/**'],
   },
   {
     languageOptions: {

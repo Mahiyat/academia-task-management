@@ -70,6 +70,7 @@ const KanbanBoard = () => {
 
         setData({ lanes });
       } catch (error) {
+        console.log(error);
         alert("System error – unable to load Kanban board");
       }
     };
