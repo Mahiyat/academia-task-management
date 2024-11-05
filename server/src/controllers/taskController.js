@@ -69,6 +69,22 @@ export const getTasksByBoardAndStatus = async (req, res) => {
 };
 
 /**
+ * Gets task by kanban ID and status.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
+ */
+export const getTasksByBoard = async (req, res) => {
+  try {
+    const kanbanBoardId = req.params.kanbanBoardId;
+    const tasks = await taskServices.getTasksByBoard(kanbanBoardId);
+
+    res.status(200).json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Unable to retrieve tasks by board", error });
+  }
+};
+
+/**
  * Deletes a new task.
  * @param {object} req - The request object.
  * @param {object} res - The response object.

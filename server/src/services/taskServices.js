@@ -40,6 +40,15 @@ export const getTasksByBoardAndStatus = async (kanbanBoardId, status) => {
 };
 
 /**
+ * Retrieves tasks by Kanban board ID and status.
+ * @param {string} kanbanBoardId - The ID of the Kanban board.
+ * @returns {Promise<Array>} An array of tasks matching the criteria.
+ */
+export const getTasksByBoard = async (kanbanBoardId) => {
+  return await Task.find({ kanbanBoardId });
+};
+
+/**
  * Retrieves a task by ID.
  * @param {string} taskId - The ID of the task.
  * @returns {Promise<object|null>} The task if found, otherwise null.
@@ -62,6 +71,7 @@ export default {
   updateTask,
   getAllTasks,
   getTasksByBoardAndStatus,
+  getTasksByBoard,
   getTaskById,
   deleteTask
 };

@@ -44,6 +44,16 @@ taskRoutes.get('/', taskController.getAllTasks);
 taskRoutes.get('/board/:kanbanBoardId/status/:status', taskController.getTasksByBoardAndStatus);
 
 /**
+ * GET /board/:kanbanBoardId/status/:status
+ * @summary Retrieves tasks by Kanban board ID.
+ * @param {string} kanbanBoardId.path.required - The ID of the Kanban board
+ * @returns {Array.<Task>} 200 - An array of tasks matching the board ID
+ * @returns {Error} 404 - No tasks found with the given board ID
+ * @returns {Error} 500 - Error message
+ */
+taskRoutes.get('/board/:kanbanBoardId', taskController.getTasksByBoard);
+
+/**
  * DELETE /delete/:id
  * @summary Deletes a task by ID.
  * @param {string} id.path.required - The ID of the task to delete
