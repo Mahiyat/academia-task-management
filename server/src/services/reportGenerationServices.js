@@ -31,7 +31,8 @@ const generateCourseReport = async (teacherId) => {
         Planned classes: ${course.expectedNoOfClasses}, Taken: ${course.noOfClassesTaken}.
         Planned tutorials: ${course.expectedNoOfTutorials}, Taken: ${course.noOfTutorialsTaken}.
         Provide insights on teacher engagement, areas needing improvement, and overall 
-        recommendations. Write the report in a formal manner, no markdown.
+        recommendations. Write the report in a formal manner, I will use it to show on a website 
+        and also turn it into a pdf.
       `;
 
       const response = await ollama.chat({
