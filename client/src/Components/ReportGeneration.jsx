@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import ReactMarkdown from 'react-markdown';
 
 const ReportGeneration = ({ teacherId }) => {
   const [report, setReport] = useState('');
@@ -75,7 +76,9 @@ const ReportGeneration = ({ teacherId }) => {
           </PDFDownloadLink>
           <div>
             <h2>Course Performance Report</h2>
-            <pre>{report}</pre>
+            <ReactMarkdown>
+              {report}
+            </ReactMarkdown>
           </div>
         </>
       ) : (
