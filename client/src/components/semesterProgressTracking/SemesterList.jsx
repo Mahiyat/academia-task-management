@@ -5,6 +5,7 @@ import { FormControl, InputLabel, Select, MenuItem, Typography, Box, CircularPro
 const SemesterList = ({ onSelectSemester }) => {
   const [semesters, setSemesters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedSemester, setSelectedSemester] = useState(''); // State to store the selected semester
 
   useEffect(() => {
     const fetchSemesters = async () => {
@@ -22,6 +23,7 @@ const SemesterList = ({ onSelectSemester }) => {
 
   const handleSelectChange = (event) => {
     const selectedSemesterId = event.target.value;
+    setSelectedSemester(selectedSemesterId); // Update the selected semester in the state
     onSelectSemester(selectedSemesterId);
   };
 
@@ -38,10 +40,9 @@ const SemesterList = ({ onSelectSemester }) => {
         <FormControl fullWidth variant="outlined">
           <InputLabel>Semester</InputLabel>
           <Select
-            value=""
+            value={selectedSemester} // Use selectedSemester state as the value
             onChange={handleSelectChange}
             label="Semester"
-            defaultValue=""
           >
             <MenuItem value="" disabled>
               -- Select a Semester --
