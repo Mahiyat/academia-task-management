@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BarChart } from '@mui/x-charts/BarChart';
+import { Container, Paper, Typography, CircularProgress, Box } from '@mui/material';
 
 const TotalProgress = () => {
   const [semestersProgress, setSemestersProgress] = useState([]);
@@ -25,38 +26,40 @@ const TotalProgress = () => {
     totalProgress: parseFloat(semester.totalProgress), // Ensure totalProgress is a number
   }));
 
-  const valueFormatter = (value) => {
-    return `${value.toFixed(2)}%`;
-  };
-
-  const chartSettings = {
-    height: 400,
-    xAxis: [{ scaleType: 'band', dataKey: 'semesterTitle' }], // x-axis based on semesterTitle
-  };
+  const valueFormatter = (value) => `${value.toFixed(2)}%`;
 
   return (
-    <div>
-      <h3>Total Progress of All Semesters</h3>
-      {semestersProgress.length === 0 ? (
-        <div>Loading total progress...</div>
-      ) : (
-        <div style={{ width: '60%', margin: '0 auto' }}>
-          <BarChart
-            dataset={dataset}
-            xAxis={[{ scaleType: 'band', dataKey: 'semesterTitle' }]}
-            series={[
-              { 
-                dataKey: 'totalProgress', 
-                label: 'Total Progress (%)', 
-                color: 'rgba(75, 192, 192, 0.6)', 
-                valueFormatter 
-              }
-            ]}
-            {...chartSettings}
-          />
-        </div>
-      )}
-    </div>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Paper elevation={3} sx={{ p: 4 }}>
+        <Typography variant="h5" align="center" gutterBottom>
+          Total Progress of All Semesters
+        </Typography>
+        {semestersProgress.length === 0 ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+            <CircularProgress />
+            <Typography variant="body2" color="textSecondary" sx={{ ml: 2 }}>
+              Loading total progress...
+            </Typography>
+          </Box>
+        ) : (
+          <Box sx={{ width: '100%', mt: 3 }}>
+            <BarChart
+              dataset={dataset}
+              xAxis={[{ scaleType: 'band', dataKey: 'semesterTitle' }]}
+              series={[
+                {
+                  dataKey: 'totalProgress',
+                  label: 'Total Progress (%)',
+                  color: 'rgba(75, 192, 192, 0.6)',
+                  valueFormatter
+                }
+              ]}
+              height={400}
+            />
+          </Box>
+        )}
+      </Paper>
+    </Container>
   );
 };
 

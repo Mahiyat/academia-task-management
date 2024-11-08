@@ -1,4 +1,4 @@
-/* eslint-disable jsdoc/check-tag-names */
+ 
 import express from 'express';
 import { getAllTeachers, getTeacherById, getTeacherCourses } 
   from '../controllers/performanceController.js';
