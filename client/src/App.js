@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
 import SemesterList from './components/SemesterList';
@@ -24,13 +25,20 @@ import TeacherDashboard from './Components/TeacherDashboard';
 >>>>>>> 6ae58bb (Done)
 =======
 >>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
+=======
+// import SemesterList from './components/SemesterList';
+// import SemesterDetails from './components/SemesterDetails';
+// import TeacherDashboard from './components/TeacherDashboard';
+// import SemesterProgressTracker from './components/semesterProgressTracking/SemesterProgressTracker';
+import SemesterProgress from './components/SemesterProgress';
+>>>>>>> 51596e1 ( test and backend done with partial forntend)
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SemesterProgressTracker />} />
-        <Route path="/semester/:id" element={<SemesterDetails />} />
+        <Route path="/" element={<SemesterProgress/>} />
+        {/* <Route path="/semester/:id" element={<SemesterDetails />} /> */}
       </Routes>
     </Router>
   );

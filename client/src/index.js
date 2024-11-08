@@ -24,13 +24,12 @@ import reportWebVitals from './reportWebVitals';
 import AssignTeacherDashboard from './Components/AssignTeacherDashboard';
 import TeacherPerformance from './Components/TeacherPerformance'
 import BarChart from './Components/Barchart';
-import ChairmanPerformance from './Components/ChairmanPerformance.jsx';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChairmanPerformance/>
+  <App />
 );
 
 reportWebVitals();
