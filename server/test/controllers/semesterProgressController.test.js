@@ -7,7 +7,8 @@ describe("Semester Progress Controller", () => {
   let req, res;
 
   beforeEach(() => {
-    req = { params: { semesterId: "2024" } }; 
+    
+    req = { params: { semesterId: "2024" } };
     res = {
       status: sinon.stub().returnsThis(),
       json: sinon.stub(),
@@ -19,8 +20,30 @@ describe("Semester Progress Controller", () => {
   });
 
   describe("getSemesterProgress", () => {
-    it("should return semester progress data with status 200", async () => {
-      const progressData = { semesterId: "2024", overallProgress: 75 };
+    it("should return detailed semester progress data with status 200", async () => {
+    
+      const progressData = {
+        semesterId: "2024",
+        overallProgress: 75,
+        coursesProgress: [
+          {
+            courseId: "course1",
+            courseName: "Mathematics",
+            courseCode: "MATH101",
+            lectureProgress: "66.67",
+            tutorialProgress: "80.00",
+          },
+          {
+            courseId: "course2",
+            courseName: "Physics",
+            courseCode: "PHYS101",
+            lectureProgress: "70.00",
+            tutorialProgress: "85.00",
+          },
+        ],
+      };
+
+     
       sinon.stub(semesterProgressServices, "getSemesterProgress").resolves(progressData);
 
       await getSemesterProgress(req, res);

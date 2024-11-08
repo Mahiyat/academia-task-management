@@ -1,9 +1,9 @@
 import express from "express";
 import { getSemesterProgress } from "../controllers/semesterProgressController.js";
 
-const router = express.Router();
+const progressRoutes = express.Router();
 
 // Route to get semester progress
-router.get("/:semesterId/progress", getSemesterProgress);
+progressRoutes.get('/:semesterId', getSemesterProgress);
 
-export default router;
+export { progressRoutes } ;
