@@ -31,14 +31,22 @@ import TeacherDashboard from './Components/TeacherDashboard';
 // import TeacherDashboard from './components/TeacherDashboard';
 // import SemesterProgressTracker from './components/semesterProgressTracking/SemesterProgressTracker';
 import SemesterProgress from './components/SemesterProgress';
+<<<<<<< HEAD
 >>>>>>> 51596e1 ( test and backend done with partial forntend)
+=======
+import SemesterList from './components/SemesterList';
+import SemesterDetails from './components/SemesterDetails';
+import TeacherDashboard from './components/TeacherDashboard';
+import SemesterProgressTracker from './components/semesterProgressTracking/SemesterProgressTracker';
+import ExamCommitteeSelection from './components/ExamCommitteeSelection';
+>>>>>>> 0062759 (modify frontend for assignExamCommittee)
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SemesterProgress/>} />
-        {/* <Route path="/semester/:id" element={<SemesterDetails />} /> */}
+        <Route path="/" element={<SemesterList />} />
+        <Route path="/semester/:id" element={<SemesterDetails />} />
       </Routes>
     </Router>
   );

@@ -1,9 +1,8 @@
-import semesterProgressTrackingServices from '../services/semesterProgressTrackingServices.js';
+import semesterProgressTrackingServices from "../services/semesterProgressTrackingServices.js";
 
-<<<<<<< HEAD
 /**
  * Retrieves progress data for a specific semester.
- * 
+ *
  * @async
  * @function getSemesterProgress
  * @param {object} req - The request object.
@@ -11,39 +10,38 @@ import semesterProgressTrackingServices from '../services/semesterProgressTracki
  * @param {string} req.params.semesterId - The ID of the semester to retrieve progress for.
  * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a JSON response with the semester's progress data.
- * 
+ *
  * @throws {Error} Returns a 500 status code if unable to load semester data.
  */
 export async function getSemesterProgress(req, res) {
-=======
-export async function getSemesterProgress (req, res) {
->>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
   try {
     const semesterId = req.params.semesterId;
-    const progressData = await semesterProgressTrackingServices
-      .calculateSemesterProgress(semesterId);
+    const progressData =
+      await semesterProgressTrackingServices.calculateSemesterProgress(
+        semesterId
+      );
 
     res.status(200).json(progressData);
   } catch (error) {
     res.status(500).json({ message: "Unable to load semester data." });
   }
-<<<<<<< HEAD
 }
 
 /**
  * Retrieves progress data for all semesters.
- * 
+ *
  * @async
  * @function getAllSemestersProgress
  * @param {object} req - The request object.
  * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a JSON response with progress data for all semesters.
- * 
+ *
  * @throws {Error} Returns a 500 status code if unable to load semesters data.
  */
 export async function getAllSemestersProgress(req, res) {
   try {
-    const semestersProgress = await semesterProgressTrackingServices.getAllSemestersProgress();
+    const semestersProgress =
+      await semesterProgressTrackingServices.getAllSemestersProgress();
 
     res.status(200).json(semestersProgress);
   } catch (error) {
@@ -51,7 +49,3 @@ export async function getAllSemestersProgress(req, res) {
     res.status(500).json({ message: error.message });
   }
 }
-=======
-};
-
->>>>>>> 655b710 (add semesterprogress tracking frontend+backend)
