@@ -45,7 +45,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SemesterProgressTracker />} />
+        <Route path="/" element={<SemesterList />} />
         <Route path="/semester/:id" element={<SemesterDetails />} />
       </Routes>
     </Router>
