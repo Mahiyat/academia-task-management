@@ -1,4 +1,3 @@
-// src/components/ExamCommitteeSelection.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -17,7 +16,9 @@ import {
   Snackbar,
   Button,
   Paper,
+  IconButton,
 } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const ExamCommitteeSelection = ({ semesterId }) => {
   const [teachers, setTeachers] = useState([]);
@@ -43,8 +44,12 @@ const ExamCommitteeSelection = ({ semesterId }) => {
   const handleSelectTeacher = (event) => {
     const teacherId = event.target.value;
 
-    // Prevent adding more than 3 teachers
+    // Prevent adding more than 3 teachers or duplicate selections
     if (selectedTeachers.length >= 3) {
+      setAlertOpen(true);
+      return;
+    }
+    if (selectedTeachers.includes(teacherId)) {
       setAlertOpen(true);
       return;
     }
@@ -52,6 +57,10 @@ const ExamCommitteeSelection = ({ semesterId }) => {
     // Update selected teachers state and reset select value
     setSelectedTeachers((prev) => [...prev, teacherId]);
     setSelectedTeacherId(''); // Reset selected teacher id
+  };
+
+  const handleRemoveTeacher = (teacherId) => {
+    setSelectedTeachers((prev) => prev.filter((id) => id !== teacherId));
   };
 
   const handleSaveCommittee = async () => {
@@ -110,6 +119,7 @@ const ExamCommitteeSelection = ({ semesterId }) => {
               <TableCell>Name</TableCell>
               <TableCell>Designation</TableCell>
               <TableCell>Phone Number</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -121,6 +131,14 @@ const ExamCommitteeSelection = ({ semesterId }) => {
                     <TableCell>{`${teacher.firstName} ${teacher.lastName}`}</TableCell>
                     <TableCell>{teacher.designation}</TableCell>
                     <TableCell>{teacher.phoneNumber}</TableCell>
+                    <TableCell>
+                      <IconButton
+                        color="secondary"
+                        onClick={() => handleRemoveTeacher(teacherId)}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
                   </TableRow>
                 )
               );
@@ -143,7 +161,7 @@ const ExamCommitteeSelection = ({ semesterId }) => {
 
       <Snackbar open={alertOpen} autoHideDuration={3000} onClose={handleCloseAlert}>
         <Alert onClose={handleCloseAlert} severity="warning">
-          You can only select up to 3 teachers.
+          You can only select up to 3 teachers, or you have already selected this teacher.
         </Alert>
       </Snackbar>
       <Snackbar open={Boolean(error)} autoHideDuration={3000} onClose={handleCloseError}>

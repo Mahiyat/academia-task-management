@@ -1,13 +1,20 @@
-// src/components/SemesterDetails.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Paper, Typography, CircularProgress } from '@mui/material';
+import {
+  Container,
+  Paper,
+  Typography,
+  CircularProgress,
+  Box,
+  Divider,
+} from '@mui/material';
 import ExamCommitteeSelection from './ExamCommitteeSelection';
 
 const SemesterDetails = () => {
   const { id } = useParams();
   const [semester, setSemester] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSemester = async () => {
@@ -18,29 +25,51 @@ const SemesterDetails = () => {
         setSemester(selectedSemester);
       } catch (error) {
         console.error('Error fetching semester:', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchSemester();
   }, [id]);
 
-  if (!semester) return <CircularProgress />; // Display a loading spinner while fetching
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (!semester) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
+        <Typography variant="h6" color="textSecondary">
+          Semester not found.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
-    <Container maxWidth="md" style={{ marginTop: '20px' }}>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h4" component="h2" gutterBottom>
-          {semester.semesterTitle}
-        </Typography>
-        <Typography variant="h6" component="p">
-          Year: {semester.semesterYear}
-        </Typography>
-        <Typography variant="h6" component="p">
-          Program Type: {semester.programType}
-        </Typography>
+    <Container maxWidth="md" sx={{ marginTop: 4 }}>
+      <Paper elevation={3} sx={{ padding: 3, borderRadius: 2 }}>
+        <Box mb={3}>
+          <Typography variant="h4" component="h2" color="primary" gutterBottom>
+            {semester.semesterTitle}
+          </Typography>
+          <Divider sx={{ marginY: 2 }} />
+          <Typography variant="h6" component="p" gutterBottom>
+            <strong>Year:</strong> {semester.semesterYear}
+          </Typography>
+          <Typography variant="h6" component="p" gutterBottom>
+            <strong>Program Type:</strong> {semester.programType}
+          </Typography>
+        </Box>
         <ExamCommitteeSelection semesterId={semester._id} />
       </Paper>
     </Container>
   );
 };
+
 
 export default SemesterDetails;
