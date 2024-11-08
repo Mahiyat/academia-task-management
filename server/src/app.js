@@ -16,6 +16,7 @@ import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
+import { progressRoutes } from "./routes/semesterProgressRoutes.js";
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use("/api/kanban", kanbanRoutes);
 app.use("/api/teachers",  teacherRoutes);
 app.use("/api/semesters",  semesterRoutes);
 app.use("/api/performance", performanceRoutes);
+app.use("/api/progress", progressRoutes);
 
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);

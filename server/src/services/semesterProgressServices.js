@@ -30,8 +30,8 @@ export const getSemesterProgress = async (semesterId) => {
       // Update semester totals
       totalClassesExpected += courseData.expectedNoOfClasses || 0;
       totalClassesTaken += courseData.noOfClassesTaken || 0;
-      totalTutorialsExpected += courseData.expectedNoOfTutorials || 0; // Accumulate expected tutorials
-      totalTutorialsTaken += courseData.noOfTutorialsTaken || 0; // Accumulate taken tutorials
+      totalTutorialsExpected += courseData.expectedNoOfTutorials || 0; 
+      totalTutorialsTaken += courseData.noOfTutorialsTaken || 0; 
 
       return {
         courseId: courseData._id,

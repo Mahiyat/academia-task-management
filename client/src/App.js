@@ -1,16 +1,17 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SemesterList from './components/SemesterList';
-import SemesterDetails from './components/SemesterDetails';
-import TeacherDashboard from './components/TeacherDashboard';
-import SemesterProgressTracker from './components/semesterProgressTracking/SemesterProgressTracker';
+// import SemesterList from './components/SemesterList';
+// import SemesterDetails from './components/SemesterDetails';
+// import TeacherDashboard from './components/TeacherDashboard';
+// import SemesterProgressTracker from './components/semesterProgressTracking/SemesterProgressTracker';
+import SemesterProgress from './components/SemesterProgress';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SemesterProgressTracker />} />
-        <Route path="/semester/:id" element={<SemesterDetails />} />
+        <Route path="/" element={<SemesterProgress/>} />
+        {/* <Route path="/semester/:id" element={<SemesterDetails />} /> */}
       </Routes>
     </Router>
   );
