@@ -1,15 +1,16 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SemesterList from './components/SemesterList';
-import SemesterDetails from './components/SemesterDetails';
-import TeacherDashboard from './components/TeacherDashboard';
+
+
+
+import SendMessage from './Components/SendMessage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SemesterList />} />
-        <Route path="/semester/:id" element={<SemesterDetails />} />
+        <Route path="/" element={<SendMessage />} />
+      
       </Routes>
     </Router>
   );
