@@ -5,10 +5,10 @@ import semesterProgressTrackingServices from '../services/semesterProgressTracki
  * 
  * @async
  * @function getSemesterProgress
- * @param {Object} req - The request object.
- * @param {Object} req.params - Parameters from the request.
+ * @param {object} req - The request object.
+ * @param {object} req.params - Parameters from the request.
  * @param {string} req.params.semesterId - The ID of the semester to retrieve progress for.
- * @param {Object} res - The response object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a JSON response with the semester's progress data.
  * 
  * @throws {Error} Returns a 500 status code if unable to load semester data.
@@ -16,7 +16,8 @@ import semesterProgressTrackingServices from '../services/semesterProgressTracki
 export async function getSemesterProgress(req, res) {
   try {
     const semesterId = req.params.semesterId;
-    const progressData = await semesterProgressTrackingServices.calculateSemesterProgress(semesterId);
+    const progressData = await semesterProgressTrackingServices
+      .calculateSemesterProgress(semesterId);
 
     res.status(200).json(progressData);
   } catch (error) {
@@ -29,8 +30,8 @@ export async function getSemesterProgress(req, res) {
  * 
  * @async
  * @function getAllSemestersProgress
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  * @returns {Promise<void>} Sends a JSON response with progress data for all semesters.
  * 
  * @throws {Error} Returns a 500 status code if unable to load semesters data.

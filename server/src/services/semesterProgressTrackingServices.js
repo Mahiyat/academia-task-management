@@ -7,7 +7,8 @@ import Course from '../models/Course.js';
  * @async
  * @function calculateSemesterProgress
  * @param {string} semesterId - The ID of the semester to calculate progress for.
- * @returns {Promise<Object>} An object containing the semester title and progress data for each course.
+ * @returns {Promise<object>} An object containing 
+ * the semester title and progress data for each course.
  * 
  * @throws {Error} Throws an error if unable to calculate semester progress.
  */
@@ -45,7 +46,8 @@ const calculateSemesterProgress = async (semesterId) => {
  * 
  * @async
  * @function getAllSemestersProgress
- * @returns {Promise<Array<Object>>} An array of objects, each containing a semester title and the total progress.
+ * @returns {Promise<Array<object>>} An array of objects, each 
+ * containing a semester title and the total progress.
  * 
  * @throws {Error} Throws an error if unable to fetch progress for all semesters.
  */
@@ -55,6 +57,7 @@ const getAllSemestersProgress = async () => {
     
     // Create an array to hold all semesters' progress
     const semestersProgress = await Promise.all(semesters.map(async (semester) => {
+      // eslint-disable-next-line 'no-underscore-dangle'
       const { semesterTitle, progressData } = await calculateSemesterProgress(semester._id);
       
       // Calculate total progress for this semester
