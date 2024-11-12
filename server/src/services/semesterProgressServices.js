@@ -5,8 +5,20 @@ import Course from "../models/Course.js";
  * Fetches detailed semester progress, including overall semester progress
  * and individual course progress.
  *
- * @param {string} semesterId - The ID of the semester.
- * @returns {object} Semester progress data with overall and per-course progress.
+ * @async
+ * @function getSemesterProgress
+ * @param {string} semesterId - The ID of the semester to retrieve progress for.
+ * @returns {Promise<object>} An object containing the overall progress of the semester
+ * and detailed progress for each course.
+ * @throws {Error} Throws an error if the semester is not found.
+ * 
+ * @property {string} overallProgress - The total progress of the semester as a percentage (0-100).
+ * @property {Array<object>} coursesProgress - An array containing the progress details of each course.
+ * @property {string} coursesProgress[].courseId - The ID of the course.
+ * @property {string} coursesProgress[].courseName - The name of the course.
+ * @property {string} coursesProgress[].courseCode - The code of the course.
+ * @property {string} coursesProgress[].lectureProgress - The lecture progress of the course as a percentage (0-100).
+ * @property {string} coursesProgress[].tutorialProgress - The tutorial progress of the course as a percentage (0-100).
  */
 export const getSemesterProgress = async (semesterId) => {
   const semester = await Semester.findById(semesterId).populate("courses");
