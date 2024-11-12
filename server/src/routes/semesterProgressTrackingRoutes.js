@@ -1,5 +1,6 @@
 import express from 'express';
-import { getAllSemestersProgress, getSemesterProgress } from '../controllers/semesterProgressTrackingController.js';
+import { getAllSemestersProgress, getSemesterProgress } 
+  from '../controllers/semesterProgressTrackingController.js';
 
 // eslint-disable-next-line new-cap
 const semesterProgressTrackingRoutes = express.Router();
