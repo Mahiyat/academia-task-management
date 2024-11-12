@@ -16,7 +16,8 @@ import semesterProgressTrackingServices from '../services/semesterProgressTracki
 export async function getSemesterProgress(req, res) {
   try {
     const semesterId = req.params.semesterId;
-    const progressData = await semesterProgressTrackingServices.calculateSemesterProgress(semesterId);
+    const progressData = await semesterProgressTrackingServices
+      .calculateSemesterProgress(semesterId);
 
     res.status(200).json(progressData);
   } catch (error) {

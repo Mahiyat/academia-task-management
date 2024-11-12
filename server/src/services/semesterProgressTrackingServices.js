@@ -7,12 +7,8 @@ import Course from '../models/Course.js';
  * @async
  * @function calculateSemesterProgress
  * @param {string} semesterId - The ID of the semester to calculate progress for.
-<<<<<<< HEAD
  * @returns {Promise<object>} An object containing 
  * the semester title and progress data for each course.
-=======
- * @returns {Promise<Object>} An object containing the semester title and progress data for each course.
->>>>>>> af58ac5 (modify frontend for assignExamCommittee)
  * 
  * @throws {Error} Throws an error if unable to calculate semester progress.
  */
