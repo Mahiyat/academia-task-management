@@ -1,18 +1,22 @@
 import semesterProgressServices from "../services/semesterProgressServices.js";
 
 /**
- * Controller to get the semester progress.
+ * Controller to get the semester progress by semester ID.
  *
- * @param {object} req - Request object.
- * @param {object} res - Response object.
+ * @async
+ * @function getSemesterProgress
+ * @param {object} req - Express request object.
+ * @param {object} req.params - Parameters included in the request URL.
+ * @param {string} req.params.semesterId - The ID of the semester to retrieve progress for.
+ * @param {object} res - Express response object.
+ * @returns {Promise<void>} Returns a JSON response with the semester progress data or an error message.
+ *
+ * @throws {Error} Sends a 404 status if progress data is not found, or a 500 status for other errors.
  */
 export const getSemesterProgress = async (req, res) => {
   try {
-    const semesterId = req.params.semesterId;
+    const { semesterId } = req.params;
     const progressData = await semesterProgressServices.getSemesterProgress(semesterId);
-
-
-
     // Check if progress data is not found
     if (!progressData) {
       return res.status(404).json({ message: 'Progress data not found' });
@@ -25,5 +29,4 @@ export const getSemesterProgress = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
