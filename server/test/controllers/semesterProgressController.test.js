@@ -63,6 +63,7 @@ describe("Semester Progress Controller", () => {
 
     it("should return status 500 if there is an error", async () => {
       const errorMessage = "An error occurred";
+      
       sinon.stub(semesterProgressServices, "getSemesterProgress").rejects(new Error(errorMessage));
 
       await getSemesterProgress(req, res);
