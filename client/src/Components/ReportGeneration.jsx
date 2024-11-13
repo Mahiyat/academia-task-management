@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import ReactMarkdown from 'react-markdown';
+import { Button, Typography, CircularProgress, Container, Box } from '@mui/material';
 
 const ReportGeneration = ({ teacherId }) => {
   const [report, setReport] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  // Fetch the report from the backend when the component mounts
   useEffect(() => {
     const fetchReport = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/report-generation/${teacherId}`); // Update with your actual API endpoint
+        const response = await fetch(`http://localhost:5000/api/report-generation/${teacherId}`);
         const data = await response.json();
-        setReport(data.report); // Adjust based on the actual response structure
+        setReport(data.report);
       } catch (error) {
         console.error('Error fetching report:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchReport();
   }, [teacherId]);
 
-  // Define styles for the PDF document
   const styles = StyleSheet.create({
     page: {
       padding: 20,
@@ -38,20 +40,8 @@ const ReportGeneration = ({ teacherId }) => {
       fontSize: 12,
       marginBottom: 5,
     },
-    downloadButton: {
-      position: 'absolute',
-      top: 20,
-      right: 20,
-      padding: 10,
-      backgroundColor: '#4CAF50',
-      color: 'white',
-      border: 'none',
-      cursor: 'pointer',
-      borderRadius: 5,
-    },
   });
 
-  // Create a PDF document
   const MyDocument = () => (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -64,27 +54,34 @@ const ReportGeneration = ({ teacherId }) => {
   );
 
   return (
-    <div style={{ position: 'relative' }}>
-      {report ? (
-        <>
-          <PDFDownloadLink document={<MyDocument />} fileName="course_report.pdf">
-            {({ loading }) => (
-              <button style={styles.downloadButton} disabled={loading}>
-                {loading ? 'Generating PDF...' : 'Download PDF'}
-              </button>
-            )}
-          </PDFDownloadLink>
-          <div>
-            <h2>Course Performance Report</h2>
-            <ReactMarkdown>
-              {report}
-            </ReactMarkdown>
-          </div>
-        </>
+    <Container sx={{ position: 'relative', marginTop: 4 }}>
+      {loading ? (
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
+          <CircularProgress />
+          <Typography variant="body1" sx={{ marginLeft: 2 }}>
+            Loading report...
+          </Typography>
+        </Box>
       ) : (
-        <p>Loading report...</p>
+        <>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 2 }}>
+            <PDFDownloadLink document={<MyDocument />} fileName="course_report.pdf">
+              {({ loading: pdfLoading }) => (
+                <Button variant="contained" color="primary" disabled={pdfLoading}>
+                  {pdfLoading ? 'Generating PDF...' : 'Download PDF'}
+                </Button>
+              )}
+            </PDFDownloadLink>
+          </Box>
+          <Typography variant="h4" gutterBottom>
+            Course Performance Report
+          </Typography>
+          <Box sx={{ border: 1, padding: 2, borderRadius: 1, borderColor: 'grey.300' }}>
+            <ReactMarkdown>{report}</ReactMarkdown>
+          </Box>
+        </>
       )}
-    </div>
+    </Container>
   );
 };
 
