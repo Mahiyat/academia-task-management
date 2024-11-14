@@ -22,7 +22,6 @@ import { performanceChairmanRoutes } from "./routes/performanceChairmanRoutes.js
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 import { progressRoutes } from "./routes/semesterProgressRoutes.js";
 import { reportGenerationRoutes } from "./routes/reportGenerationRoutes.js";
-import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 
 const app = express();
