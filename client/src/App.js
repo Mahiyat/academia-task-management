@@ -1,8 +1,8 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SemesterList from './components/SemesterList';
-import SemesterDetails from './components/SemesterDetails';
-import TeacherDashboard from './components/TeacherDashboard';
+import SemesterList from './Components/SemesterList';
+import SemesterDetails from './Components/SemesterDetails';
+import TeacherDashboard from './Components/TeacherDashboard';
 
 function App() {
   return (

@@ -15,6 +15,7 @@ import { semesterRoutes } from "./routes/semesterRoutes.js";
 import { performanceRoutes } from "./routes/performanceRoutes.js";
 import { teacherDashboardRoutes } from "./routes/teacherDashboardRoutes.js";
 import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
+import { performanceChairmanRoutes } from "./routes/performanceChairmanRoutes.js";
 
 const app = express();
 
@@ -38,7 +39,7 @@ app.use("/api/kanban", kanbanRoutes);
 app.use("/api/teachers",  teacherRoutes);
 app.use("/api/semesters",  semesterRoutes);
 app.use("/api/performance", performanceRoutes);
-
+app.use("/api/performanceChairman", performanceChairmanRoutes);
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 app.use('/api/class-overview', classTutOverviewRoutes);

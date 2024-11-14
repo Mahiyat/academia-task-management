@@ -58,9 +58,30 @@ const addExamCommitteeMember = async (semesterId, teacherId) => {
   return updatedSemester;
 };
 
+const getSemesters = async () => {
+  const semesters = await Semester.find();
+
+  return semesters;
+};
+
+const getCoursesBySemesterId = async (semesterId) => {
+  console.log(semesterId);
+  const semester = await Semester.findById(semesterId).populate('courses');
+
+  if (!semester) {
+    console.log('semster is not found');
+    return null;
+  }
+
+  console.log('semester is found');
+  return semester.courses;
+};
+
 export default {
   getAllSemesters,
   updateSemester,
   createSemester,
   addExamCommitteeMember,
+  getSemesters,
+  getCoursesBySemesterId,
 };
