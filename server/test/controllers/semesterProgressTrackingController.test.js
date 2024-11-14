@@ -1,8 +1,10 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { getSemesterProgress, getAllSemestersProgress } from '../../src/controllers/semesterProgressTrackingController.js';
+import { getSemesterProgress, getAllSemestersProgress } 
+  from '../../src/controllers/semesterProgressTrackingController.js';
 import Semester from '../../src/models/Semester.js';
-import semesterProgressTrackingServices from '../../src/services/semesterProgressTrackingServices.js';
+import semesterProgressTrackingServices 
+  from '../../src/services/semesterProgressTrackingServices.js';
 
 
 describe('Semester Progress Tracking Controller', () => {
@@ -75,7 +77,10 @@ describe('Semester Progress Tracking Controller', () => {
         json: sinon.stub()
       };
 
-      // Mock data representing multiple semesters based on the Semester model
+      /*
+       *  Mock data representing multiple semesters 
+       * based on the Semester model
+       */
       const mockSemestersProgress = [
         {
           semesterTitle: 'Fall 2024',
@@ -88,7 +93,8 @@ describe('Semester Progress Tracking Controller', () => {
       ];
 
       // Stub the service function to return mock data
-      sinon.stub(semesterProgressTrackingServices, 'getAllSemestersProgress').resolves(mockSemestersProgress);
+      sinon.stub(semesterProgressTrackingServices, 'getAllSemestersProgress')
+        .resolves(mockSemestersProgress);
 
       // Call the controller function
       await getAllSemestersProgress(req, res);

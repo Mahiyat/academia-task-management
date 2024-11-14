@@ -10,8 +10,13 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* feature routes -  abrar */}
+
         <Route path="/" element={<SemesterList />} />
+        <Route path="/semester-progress" element={<SemesterProgressTracker/>} />
         <Route path="/semester/:id" element={<SemesterDetails />} />
+        <Route path="/exam-committee-selection/semesters" element={<SemesterList/>}/>
+
       </Routes>
     </Router>
   );
