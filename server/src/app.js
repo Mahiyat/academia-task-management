@@ -18,6 +18,7 @@ import { classTutOverviewRoutes } from "./routes/classTutOverviewRoutes.js";
 import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 import { messageRoutes } from "./routes/messageRoutes.js";
+import { performanceChairmanRoutes } from "./routes/performanceChairmanRoutes.js";
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use("/api/semesters",  semesterRoutes);
 app.use("/api/performance", performanceRoutes);
 
 app.use("/api/messaging-system", messageRoutes);
+app.use("/api/performanceChairman", performanceChairmanRoutes);
 
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
 app.use('/api/class-overview', classTutOverviewRoutes);
