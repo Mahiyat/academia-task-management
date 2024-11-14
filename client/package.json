@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
-    "@mui/x-charts": "^7.22.1",
     "@react-pdf/renderer": "^4.0.0",
     "@mui/x-charts": "^7.22.1",
     "@testing-library/jest-dom": "^5.14.1",
