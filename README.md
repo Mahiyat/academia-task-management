@@ -15,11 +15,14 @@
   - [Troubleshooting](#troubleshooting)
 - [Project Setup So Far](#project-setup-so-far)
   - [Server](#server)
+  - [Client](#client)
   
 ---
 
 # Academia Application
 This application, Academia, is a Node.js and React.js project that provides a web-based interface and API for users, with MongoDB as the database and an integrated AI-driven response generation using Ollama. This README covers how to set up the application using Docker (recommended) and manual setup instructions if you prefer not to use Docker.
+
+To know details about Academia application click [here](https://github.com/Mahiyat/academia-task-management/wiki/Software-Requirement-Specification)
 
 
 ---
@@ -155,7 +158,7 @@ Create an `.env` file in both server and client directories as needed with the f
   - Verify `MONGO_URI` is correct and accessible from within the Docker network (or your local network, if running without Docker).
   
 - **Missing Dependencies:**
-  - Make sure all required dependencies are installed with `npm install` in each respective directory.
+  - Make sure all required dependencies are installed with `yarn install` in each respective directory.
 
 For further help, please refer to the [Docker documentation](https://docs.docker.com/get-started/) or [Ollama documentation](https://github.com/ollama/ollama).
 
@@ -171,7 +174,16 @@ For further help, please refer to the [Docker documentation](https://docs.docker
 - [ ] Add logging
 - [X] Add unit test
 - [X] Add lint rules
-- [X] Add documentation tool
+- [X] Add documentation tool (jsdoc)
 - [X] Dockerize
 - [ ] Add app runner CLI
+
+## Client
+- [X] Create react app for client
+- [X] Add frontend components
+- [ ] Connect backend REST APIs to frontend
+- [ ] Add lint rules
+- [ ] Add documentation tool (storybook)
+- [X] Dockerize
+- [ ] Configure React Router 
 
