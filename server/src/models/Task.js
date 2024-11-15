@@ -6,7 +6,7 @@ import mongoose from "mongoose";
  * @property {string} title - Title of the task.
  * @property {string} description - Description of the task.
  * @property {string} category - Category of the task ("Class", "Tutorial", or "Others").
- * @property {string} priority - 
+ * @property {string} priority -
  * Priority level ("red", "orange", "yellow", "green", "purple", "blue").
  * @property {Date} deadline - Deadline for task completion.
  * @property {string} status - Status of the task ("todo", "doing", "done").

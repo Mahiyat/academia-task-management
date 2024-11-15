@@ -7,7 +7,7 @@ import Course from "../models/Course.js";
  */
 const createNewCourse = async (courseData) => {
   const course = new Course(courseData);
-  
+
   return await course.save();
 };
 
@@ -16,7 +16,7 @@ const createNewCourse = async (courseData) => {
  * @returns {Promise<Array<Course>>} An array of courses with populated fields.
  */
 const getAllCourses = async () => {
-  return await Course.find().populate('courseTeachers').populate('semester');
+  return await Course.find().populate("courseTeachers").populate("semester");
 };
 
 /**
@@ -25,7 +25,9 @@ const getAllCourses = async () => {
  * @returns {Promise<Course|null>} The requested course, or null if not found.
  */
 const getCourseById = async (courseId) => {
-  return await Course.findById(courseId).populate('courseTeachers').populate('semester');
+  return await Course.findById(courseId)
+    .populate("courseTeachers")
+    .populate("semester");
 };
 
 /**
@@ -36,8 +38,8 @@ const getCourseById = async (courseId) => {
  */
 const updateCourse = async (courseId, updatedData) => {
   return await Course.findByIdAndUpdate(courseId, updatedData, { new: true })
-    .populate('courseTeachers')
-    .populate('semester');
+    .populate("courseTeachers")
+    .populate("semester");
 };
 
 /**
@@ -55,7 +57,7 @@ const deleteCourse = async (courseId) => {
  * @returns {Promise<Array<Course>>} An array of courses for the specified semester.
  */
 const getCoursesBySemester = async (semesterId) => {
-  return await Course.find({ semester: semesterId }).populate('courseTeachers');
+  return await Course.find({ semester: semesterId }).populate("courseTeachers");
 };
 
 export default {
@@ -66,5 +68,3 @@ export default {
   deleteCourse,
   getCoursesBySemester,
 };
-
-

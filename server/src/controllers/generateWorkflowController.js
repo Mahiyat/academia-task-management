@@ -21,12 +21,10 @@ export const generateSuggestions = async (req, res) => {
     }
 
     for await (const chunk of responseStream) {
-
       const data = JSON.stringify({
         response: chunk.response,
         done: chunk.done,
       });
-
 
       res.write(data + "\n");
 

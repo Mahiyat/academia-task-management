@@ -2,18 +2,21 @@ import ollama from "ollama";
 import Task from "../models/Task.js";
 
 /**
- * Connects with the Ollama API to generate suggestions for managing tasks 
+ * Connects with the Ollama API to generate suggestions for managing tasks
  * based on priority and deadlines.
  * @param {string} kanbanBoardId - The ID of the kanban board whose tasks will be analyzed.
- * @returns {AsyncGenerator<object, void, undefined>} - An async generator 
+ * @returns {AsyncGenerator<object, void, undefined>} - An async generator
  * that yields response objects from the Ollama API.
  * @throws {Error} - Throws an error if there is a failure connecting to the Ollama service.
  */
 const generateSuggestions = async (kanbanBoardId) => {
-  const tasks = await Task.find({
-    kanbanBoardId,
-    status: { $in: ["todo", "doing"] },
-  }, '_id title category priority deadline status');
+  const tasks = await Task.find(
+    {
+      kanbanBoardId,
+      status: { $in: ["todo", "doing"] },
+    },
+    "_id title category priority deadline status"
+  );
 
   console.log(date);
 
@@ -43,9 +46,8 @@ const generateSuggestions = async (kanbanBoardId) => {
   try {
     const ollamaResponse = await Promise.race([
       ollama.generate(request),
-      new Promise(
-        (_, reject) =>
-          setTimeout(() => reject(new Error("Ollama request timed out")), 20000)
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Ollama request timed out")), 20000)
       ),
     ]);
 

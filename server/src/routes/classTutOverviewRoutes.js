@@ -1,6 +1,6 @@
 // routes/classTutOverviewRoutes.js
-import express from 'express';
-import { getClassTutOverview } from '../controllers/classTutOverviewController.js';
+import express from "express";
+import { getClassTutOverview } from "../controllers/classTutOverviewController.js";
 
 // eslint-disable-next-line new-cap
 const classTutOverviewRoutes = express.Router();
@@ -13,6 +13,6 @@ const classTutOverviewRoutes = express.Router();
  * @returns {Error} 404 - No course data available.
  * @returns {Error} 505 - Server error.
  */
-classTutOverviewRoutes.get('/:teacherId', getClassTutOverview);
+classTutOverviewRoutes.get("/:teacherId", getClassTutOverview);
 
 export { classTutOverviewRoutes };

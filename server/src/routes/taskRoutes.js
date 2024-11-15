@@ -1,5 +1,5 @@
-import express from 'express';
-import * as taskController from '../controllers/taskController.js';
+import express from "express";
+import * as taskController from "../controllers/taskController.js";
 
 // eslint-disable-next-line new-cap
 const taskRoutes = express.Router();
@@ -11,7 +11,7 @@ const taskRoutes = express.Router();
  * @returns {object} 201 - The created task
  * @returns {Error} 500 - Error message
  */
-taskRoutes.post('/add', taskController.createTask);
+taskRoutes.post("/add", taskController.createTask);
 
 /**
  * PUT /update/:id
@@ -22,7 +22,7 @@ taskRoutes.post('/add', taskController.createTask);
  * @returns {Error} 404 - Task not found
  * @returns {Error} 500 - Error message
  */
-taskRoutes.put('/update/:id', taskController.updateTask);
+taskRoutes.put("/update/:id", taskController.updateTask);
 
 /**
  * GET /
@@ -30,7 +30,7 @@ taskRoutes.put('/update/:id', taskController.updateTask);
  * @returns {Array.<Task>} 200 - An array of tasks
  * @returns {Error} 500 - Error message
  */
-taskRoutes.get('/', taskController.getAllTasks);
+taskRoutes.get("/", taskController.getAllTasks);
 
 /**
  * GET /board/:kanbanBoardId/status/:status
@@ -41,7 +41,10 @@ taskRoutes.get('/', taskController.getAllTasks);
  * @returns {Error} 404 - No tasks found with the given board ID and status
  * @returns {Error} 500 - Error message
  */
-taskRoutes.get('/board/:kanbanBoardId/status/:status', taskController.getTasksByBoardAndStatus);
+taskRoutes.get(
+  "/board/:kanbanBoardId/status/:status",
+  taskController.getTasksByBoardAndStatus
+);
 
 /**
  * GET /board/:kanbanBoardId/status/:status
@@ -51,7 +54,7 @@ taskRoutes.get('/board/:kanbanBoardId/status/:status', taskController.getTasksBy
  * @returns {Error} 404 - No tasks found with the given board ID
  * @returns {Error} 500 - Error message
  */
-taskRoutes.get('/board/:kanbanBoardId', taskController.getTasksByBoard);
+taskRoutes.get("/board/:kanbanBoardId", taskController.getTasksByBoard);
 
 /**
  * DELETE /delete/:id
@@ -61,6 +64,6 @@ taskRoutes.get('/board/:kanbanBoardId', taskController.getTasksByBoard);
  * @returns {Error} 404 - Task not found
  * @returns {Error} 500 - Error message
  */
-taskRoutes.delete('/delete/:id', taskController.deleteTask);
+taskRoutes.delete("/delete/:id", taskController.deleteTask);
 
 export { taskRoutes };

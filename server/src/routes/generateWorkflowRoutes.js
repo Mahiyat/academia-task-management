@@ -1,5 +1,5 @@
-import express from 'express';
-import * as generateWorkflowController from '../controllers/generateWorkflowController.js';
+import express from "express";
+import * as generateWorkflowController from "../controllers/generateWorkflowController.js";
 
 // eslint-disable-next-line new-cap
 const workflowRoutes = express.Router();
@@ -11,6 +11,9 @@ const workflowRoutes = express.Router();
  * @returns {object} 200 - Streamed response with workflow suggestions.
  * @returns {Error} 500 - Error message if generation fails.
  */
-workflowRoutes.post('/board/:kanbanBoardId', generateWorkflowController.generateSuggestions);
+workflowRoutes.post(
+  "/board/:kanbanBoardId",
+  generateWorkflowController.generateSuggestions
+);
 
 export { workflowRoutes };

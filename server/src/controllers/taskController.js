@@ -60,11 +60,16 @@ export const getAllTasks = async (req, res) => {
 export const getTasksByBoardAndStatus = async (req, res) => {
   try {
     const { kanbanBoardId, status } = req.params;
-    const tasks = await taskServices.getTasksByBoardAndStatus(kanbanBoardId, status);
+    const tasks = await taskServices.getTasksByBoardAndStatus(
+      kanbanBoardId,
+      status
+    );
 
     res.status(200).json(tasks);
   } catch (error) {
-    res.status(500).json({ message: "Unable to retrieve tasks by board and status", error });
+    res
+      .status(500)
+      .json({ message: "Unable to retrieve tasks by board and status", error });
   }
 };
 
@@ -80,7 +85,9 @@ export const getTasksByBoard = async (req, res) => {
 
     res.status(200).json(tasks);
   } catch (error) {
-    res.status(500).json({ message: "Unable to retrieve tasks by board", error });
+    res
+      .status(500)
+      .json({ message: "Unable to retrieve tasks by board", error });
   }
 };
 

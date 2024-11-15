@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 /**
  * Schema representing a semester.
- * 
+ *
  * @typedef {object} Semester
  * @property {string} semesterTitle - The title of the semester.
  * @property {number} semesterYear - The year of the semester.
@@ -13,38 +13,38 @@ import mongoose from 'mongoose';
  * @property {string} [programType] - The type of academic program .
  */
 const SemesterSchema = new mongoose.Schema({
-  semesterTitle : {
-    type : String,
-    required : true
+  semesterTitle: {
+    type: String,
+    required: true,
   },
   semesterYear: {
     type: Number,
-    required: true
+    required: true,
   },
   semesterNo: {
     type: Number,
-    required: true
+    required: true,
   },
   courses: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Course'
-    }
+      ref: "Course",
+    },
   ],
   examCommittee: [
     {
-      type : mongoose.Schema.Types.ObjectId,
-      ref : 'Teacher'
-    }
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Teacher",
+    },
   ],
   sessionYear: {
-    type: String
+    type: String,
   },
   programType: {
-    type: String
+    type: String,
   },
 });
 
-const Semester = mongoose.model('Semester', SemesterSchema);
+const Semester = mongoose.model("Semester", SemesterSchema);
 
 export default Semester;

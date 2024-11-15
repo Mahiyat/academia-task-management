@@ -29,19 +29,17 @@ export const updateTeacher = async (req, res) => {
   const { courseId } = req.body;
 
   try {
-   
     const teacher = await teacherServices.updateTeacherCourses(id, courseId);
 
     if (!teacher) {
-      return res.status(404).json({ message: 'Teacher not found' });
+      return res.status(404).json({ message: "Teacher not found" });
     }
 
-    res.status(200).json({ message: 'Teacher updated successfully', teacher });
+    res.status(200).json({ message: "Teacher updated successfully", teacher });
   } catch (error) {
-    console.error('Error updating teacher:', error);
-    res.status(500).json({ message: 'Error updating teacher', error: error.message });
+    console.error("Error updating teacher:", error);
+    res
+      .status(500)
+      .json({ message: "Error updating teacher", error: error.message });
   }
 };
-
-
-

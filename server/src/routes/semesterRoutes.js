@@ -24,7 +24,7 @@ semesterRoutes.get("/", getAllSemesters);
  * @returns {object} 400 - Bad request, possibly due to missing or invalid fields
  * @returns {object} 500 - Internal server error
  */
-semesterRoutes.post('/', createSemester);
+semesterRoutes.post("/", createSemester);
 
 /**
  * PUT /updatedSemester/:id

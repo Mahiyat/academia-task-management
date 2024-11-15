@@ -1,4 +1,4 @@
-import MessageService from '../services/messageService.js';
+import MessageService from "../services/messageService.js";
 
 /**
  * Sends a message to the specified recipient.
@@ -10,27 +10,31 @@ const sendMessage = async (req, res) => {
   const { senderId, recipientId, content } = req.body;
 
   if (!senderId || !recipientId || !content) {
-    return res.status(400).json({ success: false, message: 'Missing required fields' });
+    return res
+      .status(400)
+      .json({ success: false, message: "Missing required fields" });
   }
 
-  const response = await MessageService.sendMessage(senderId, recipientId, content);
+  const response = await MessageService.sendMessage(
+    senderId,
+    recipientId,
+    content
+  );
 
   if (response.success) {
     return res.status(200).json({
       success: true,
       message: response.message,
-      confirmation: 'Message sent at ' + new Date().toISOString(),
-      data: response.data
+      confirmation: "Message sent at " + new Date().toISOString(),
+      data: response.data,
     });
   } else {
     const errorMessage = response.error
-      ? 'System error – unable to send message. Please try again later.'
+      ? "System error – unable to send message. Please try again later."
       : response.message;
 
     return res.status(500).json({ success: false, message: errorMessage });
   }
 };
 
-export  {
-  sendMessage,
-};
+export { sendMessage };

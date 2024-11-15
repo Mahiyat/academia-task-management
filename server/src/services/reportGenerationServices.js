@@ -1,9 +1,9 @@
-import { Ollama } from 'ollama';
-import Teacher from '../models/Teacher.js';  
+import { Ollama } from "ollama";
+import Teacher from "../models/Teacher.js";
 
 const ollama = new Ollama({
   apiKey: process.env.OLLAMA_API_KEY, // Load your API key from environment variables
-  baseUrl: 'http://127.0.0.1:11434',
+  baseUrl: "http://127.0.0.1:11434",
 });
 
 /**
@@ -16,7 +16,7 @@ const generateCourseReport = async (teacherId) => {
     const teacher = await Teacher.findById(teacherId).populate("courses");
 
     if (!teacher) {
-      throw new Error('Teacher not found');
+      throw new Error("Teacher not found");
     }
     const courses = teacher.courses;
 
@@ -33,8 +33,8 @@ const generateCourseReport = async (teacherId) => {
       `;
 
       const response = await ollama.chat({
-        model: 'llama3.2',
-        messages: [{ role: 'user', content: prompt }],
+        model: "llama3.2",
+        messages: [{ role: "user", content: prompt }],
       });
 
       console.log(response.message.content);
@@ -46,12 +46,10 @@ const generateCourseReport = async (teacherId) => {
       });
     }
 
-    
-
     return courseReports;
   } catch (error) {
     console.error("Error in generating report:", error);
-    throw new Error('Report generation failed');
+    throw new Error("Report generation failed");
   }
 };
 

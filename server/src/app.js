@@ -19,13 +19,10 @@ import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackin
 import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 import { messageRoutes } from "./routes/messageRoutes.js";
 import { performanceChairmanRoutes } from "./routes/performanceChairmanRoutes.js";
-import { semesterProgressTrackingRoutes } from "./routes/semesterProgressTrackingRoutes.js";
 import { progressRoutes } from "./routes/semesterProgressRoutes.js";
 import { reportGenerationRoutes } from "./routes/reportGenerationRoutes.js";
-import { workflowRoutes } from "./routes/generateWorkflowRoutes.js";
 
 const app = express();
-
 
 app.use(express.json());
 app.use(helmet());
@@ -43,8 +40,8 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/semesters", semesterRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/kanban", kanbanRoutes);
-app.use("/api/teachers",  teacherRoutes);
-app.use("/api/semesters",  semesterRoutes);
+app.use("/api/teachers", teacherRoutes);
+app.use("/api/semesters", semesterRoutes);
 app.use("/api/performance", performanceRoutes);
 
 app.use("/api/messaging-system", messageRoutes);
@@ -52,18 +49,11 @@ app.use("/api/performanceChairman", performanceChairmanRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/report-generation", reportGenerationRoutes);
 
-
 app.use("/api/teacher-dashboard", teacherDashboardRoutes);
-app.use('/api/class-overview', classTutOverviewRoutes);
-app.use('/api/generate-workflow', workflowRoutes);
-<<<<<<< HEAD
+app.use("/api/class-overview", classTutOverviewRoutes);
+app.use("/api/generate-workflow", workflowRoutes);
 
 app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
-=======
->>>>>>> 84e0c82 (Write tests for generate workflow suggestions)
-
-app.use("/api/semester-progress-tracking", semesterProgressTrackingRoutes);
-
 
 app.listen(config.app.port, () => {
   console.log(`Example app listening on port ${config.app.port}`);
