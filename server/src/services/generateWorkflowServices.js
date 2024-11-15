@@ -1,4 +1,4 @@
-import ollama from "ollama";
+import { Ollama } from "ollama";
 import Task from "../models/Task.js";
 
 /**
@@ -19,6 +19,10 @@ const generateSuggestions = async (kanbanBoardId) => {
   );
 
   const date = new Date();
+
+  const ollamaHost = process.env.OLLAMA_HOST || "http://localhost:11434";
+
+  const ollama = new Ollama({ host: ollamaHost });
 
   // console.log(date);
 
@@ -49,7 +53,7 @@ const generateSuggestions = async (kanbanBoardId) => {
     const ollamaResponse = await Promise.race([
       ollama.generate(request),
       new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Ollama request timed out")), 20000)
+        setTimeout(() => reject(new Error("Ollama request timed out")), 60000)
       ),
     ]);
 

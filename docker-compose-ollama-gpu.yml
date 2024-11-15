@@ -21,8 +21,6 @@ services:
     depends_on:
       - academia_mongo
       - academia-ollama
-    networks:
-      - ollama-docker
     ports:
       - 5000:5000
     restart: on-failure
@@ -33,9 +31,7 @@ services:
       - MONGO_URI=mongodb+srv://your_mongo_uri
       - SECRET_KEY=my-secret-key
       - TOKEN_DURATION=1h
-      - OLLAMA_BASE_URLS=http://academia-ollama:11434
-    extra_hosts:
-      - host.docker.internal:host-gateway
+      - OLLAMA_HOST=http://academia-ollama:11434
 
   academia_mongo:
     container_name: academia_mongo
@@ -48,7 +44,6 @@ services:
     ports:
       - 11434:11434
     volumes:
-      - .:/code
       - ./ollama/ollama:/root/.ollama
     container_name: academia-ollama
     pull_policy: always
@@ -57,8 +52,6 @@ services:
     environment:
       - OLLAMA_KEEP_ALIVE=24h
       - OLLAMA_HOST=0.0.0.0
-    networks:
-      - ollama-docker
     deploy:
       resources:
         reservations:
@@ -66,7 +59,3 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-
-networks:
-  ollama-docker:
-    external: false
