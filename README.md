@@ -45,7 +45,6 @@ To know details about Academia application click [here](https://github.com/Mahiy
 ## Installation
 
 ### Docker Setup
-**Note: The ollama service is currently not working as expected when using docker. Also GPU support documentation has not been added. Updates will be available soon.**
 1. Clone the repository:<br>
    **Using Https:**
     ```bash
@@ -60,9 +59,14 @@ To know details about Academia application click [here](https://github.com/Mahiy
 
 2. Update Environment Variables: Create an `.env` file in the root directory with the required variables (see Environment Variables section).
 
-3. Start the Application: Run the following command to start all services using Docker Compose:
+3. Start the Application: Run the following command to start all services using Docker Compose(without GPU support):
     ```bash
-    docker-compose up -d --build
+    docker compose up -d --build
+    ```
+
+    If you want GPU support, run the following command to start all services using Docker Compose:
+    ```bash
+    docker compose -f docker-compose-ollama-gpu.yml up -d --build
     ```
 
 This will:
@@ -71,14 +75,16 @@ This will:
 - Start MongoDB on port 27017.
 - Start Ollama AI service on port 11434.
 
-4. Access the Application:
+1. Access the Application:
    - Frontend (React client): http://localhost:3000
    - Backend API (Node.js server): http://localhost:5000
 
 To stop the application, run:
     ```bash
-    docker-compose down
+    docker compose down
     ```
+
+**Note: To setup GPU you can follow [Installing the NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) and [GPU Support in Docker Desktop](https://docs.docker.com/desktop/features/gpu/)**
 
 ### Manual Setup (Without Docker)
 If you prefer to run the application without Docker, follow these steps:
