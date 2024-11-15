@@ -1,9 +1,9 @@
-import courseService from '../services/courseServices.js';
-import teacherServices from '../services/teacherServices.js';
+import courseService from "../services/courseServices.js";
+import teacherServices from "../services/teacherServices.js";
 
 /**
  * Get all teachers.
- * 
+ *
  * @async
  * @function getAllTeachers
  * @param {object} req - The request object.
@@ -22,7 +22,7 @@ export const getAllTeachers = async (req, res) => {
 
 /**
  * Get a teacher by their ID.
- * 
+ *
  * @async
  * @function getTeacherById
  * @param {object} req - The request object.
@@ -34,7 +34,7 @@ export const getTeacherById = async (req, res) => {
     const teacher = await teacherServices.getTeacherById(req.params.id);
 
     if (!teacher) {
-      return res.status(404).json({ message: 'Teacher not found' });
+      return res.status(404).json({ message: "Teacher not found" });
     }
     res.status(200).json(teacher);
   } catch (error) {
@@ -44,7 +44,7 @@ export const getTeacherById = async (req, res) => {
 
 /**
  * Get courses for a specific teacher by their ID.
- * 
+ *
  * @async
  * @function getTeacherCourses
  * @param {object} req - The request object.
@@ -58,7 +58,9 @@ export async function getTeacherCourses(req, res) {
 
     // Check if any courses were found
     if (!courses || courses.length === 0) {
-      return res.status(404).json({ message: "Course data missing for the specified teacher." });
+      return res
+        .status(404)
+        .json({ message: "Course data missing for the specified teacher." });
     }
 
     // Return courses data
@@ -67,4 +69,4 @@ export async function getTeacherCourses(req, res) {
     console.error(error);
     res.status(500).json({ message: "System error – Please try again later." });
   }
-};
+}

@@ -1,4 +1,4 @@
-import Task from '../models/Task.js';
+import Task from "../models/Task.js";
 
 /**
  * Creates a new task.
@@ -7,7 +7,7 @@ import Task from '../models/Task.js';
  */
 const createTask = async (taskData) => {
   const newTask = new Task(taskData);
-  
+
   return await newTask.save();
 };
 
@@ -73,5 +73,5 @@ export default {
   getTasksByBoardAndStatus,
   getTasksByBoard,
   getTaskById,
-  deleteTask
+  deleteTask,
 };

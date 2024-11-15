@@ -13,7 +13,6 @@ const getAllSemesters = async () => {
   return semesters;
 };
 
-
 /**
  * Creates a new semester.
  * @param {object} semesterData - The data for the semester to create.
@@ -24,7 +23,6 @@ const createSemester = async (semesterData) => {
 
   return await semester.save();
 };
-
 
 /**
  * Updates a semester with the provided data.
@@ -54,7 +52,7 @@ const addExamCommitteeMember = async (semesterId, teacherId) => {
     { $push: { examCommittee: teacherId } },
     { new: true }
   );
-  
+
   return updatedSemester;
 };
 
@@ -66,14 +64,14 @@ const getSemesters = async () => {
 
 const getCoursesBySemesterId = async (semesterId) => {
   console.log(semesterId);
-  const semester = await Semester.findById(semesterId).populate('courses');
+  const semester = await Semester.findById(semesterId).populate("courses");
 
   if (!semester) {
-    console.log('semster is not found');
+    console.log("semster is not found");
     return null;
   }
 
-  console.log('semester is found');
+  console.log("semester is found");
   return semester.courses;
 };
 

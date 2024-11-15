@@ -1,4 +1,4 @@
-import Message from '../models/Message.js';
+import Message from "../models/Message.js";
 
 /**
  * Sends a message from the sender to the recipient.
@@ -9,15 +9,23 @@ import Message from '../models/Message.js';
  */
 const sendMessage = async (senderId, recipientId, content) => {
   try {
-    const message = new Message({ sender: senderId, recipient: recipientId, content });
+    const message = new Message({
+      sender: senderId,
+      recipient: recipientId,
+      content,
+    });
 
     await message.save();
 
     await sendAlert(recipientId); // Ensure the alert is sent after saving the message
 
-    return { success: true, message: 'Message sent successfully', data: message };
+    return {
+      success: true,
+      message: "Message sent successfully",
+      data: message,
+    };
   } catch (error) {
-    return { success: false, message: 'Message failed to send', error };
+    return { success: false, message: "Message failed to send", error };
   }
 };
 

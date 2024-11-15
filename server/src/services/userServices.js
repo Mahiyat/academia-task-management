@@ -1,3 +1,3 @@
-const getUserByEmail = async () => await 'Hello';
+const getUserByEmail = async () => await "Hello";
 
 export { getUserByEmail };

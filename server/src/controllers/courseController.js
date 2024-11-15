@@ -1,4 +1,4 @@
-import courseService from '../services/courseServices.js';
+import courseService from "../services/courseServices.js";
 
 /**
  * Create a new course.
@@ -9,11 +9,13 @@ import courseService from '../services/courseServices.js';
 export const createNewCourse = async (req, res) => {
   try {
     const course = await courseService.createNewCourse(req.body);
-    
-    res.status(201).json({ message: 'Course created!', course });
+
+    res.status(201).json({ message: "Course created!", course });
   } catch (err) {
-    console.error('Error creating course:', err);
-    res.status(500).json({ message: 'Error creating course', error: err.message });
+    console.error("Error creating course:", err);
+    res
+      .status(500)
+      .json({ message: "Error creating course", error: err.message });
   }
 };
 
@@ -29,7 +31,9 @@ export const getAllCourses = async (req, res) => {
 
     res.status(200).json(courses);
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching courses', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching courses", error: err.message });
   }
 };
 
@@ -44,11 +48,13 @@ export const getCourseById = async (req, res) => {
     const course = await courseService.getCourseById(req.params.id);
 
     if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
+      return res.status(404).json({ message: "Course not found" });
     }
     res.status(200).json(course);
   } catch (err) {
-    res.status(500).json({ message: 'Error fetching course', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error fetching course", error: err.message });
   }
 };
 
@@ -63,11 +69,13 @@ export const updateCourse = async (req, res) => {
     const course = await courseService.updateCourse(req.params.id, req.body);
 
     if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
+      return res.status(404).json({ message: "Course not found" });
     }
-    res.status(200).json({ message: 'Course updated successfully', course });
+    res.status(200).json({ message: "Course updated successfully", course });
   } catch (err) {
-    res.status(500).json({ message: 'Error updating course', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error updating course", error: err.message });
   }
 };
 
@@ -80,13 +88,15 @@ export const updateCourse = async (req, res) => {
 export const deleteCourse = async (req, res) => {
   try {
     const course = await courseService.deleteCourse(req.params.id);
-    
+
     if (!course) {
-      return res.status(404).json({ message: 'Course not found' });
+      return res.status(404).json({ message: "Course not found" });
     }
-    res.status(200).json({ message: 'Course deleted successfully' });
+    res.status(200).json({ message: "Course deleted successfully" });
   } catch (err) {
-    res.status(500).json({ message: 'Error deleting course', error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error deleting course", error: err.message });
   }
 };
 
@@ -101,13 +111,17 @@ export const getCoursesBySemester = async (req, res) => {
 
   try {
     const courses = await courseService.getCoursesBySemester(semesterId);
-    
+
     if (!courses.length) {
-      return res.status(404).json({ message: 'No courses found for this semester.' });
+      return res
+        .status(404)
+        .json({ message: "No courses found for this semester." });
     }
     res.status(200).json(courses);
   } catch (error) {
-    console.error('Error fetching courses:', error);
-    res.status(500).json({ message: 'Error fetching courses', error: error.message });
+    console.error("Error fetching courses:", error);
+    res
+      .status(500)
+      .json({ message: "Error fetching courses", error: error.message });
   }
 };

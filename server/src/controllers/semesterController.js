@@ -26,10 +26,17 @@ export async function getAllSemesters(req, res) {
 export async function createSemester(req, res) {
   try {
     const newSemester = await semesterServices.createSemester(req.body);
-    
-    res.status(201).json({ message: 'Semester created successfully', semester: newSemester });
+
+    res
+      .status(201)
+      .json({
+        message: "Semester created successfully",
+        semester: newSemester,
+      });
   } catch (error) {
-    res.status(500).json({ message: 'Error creating semester', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error creating semester", error: error.message });
   }
 }
 

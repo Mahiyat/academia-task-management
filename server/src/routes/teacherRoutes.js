@@ -1,5 +1,8 @@
-import express from 'express';
-import { getAllTeachers, updateTeacher} from '../controllers/teacherController.js';
+import express from "express";
+import {
+  getAllTeachers,
+  updateTeacher,
+} from "../controllers/teacherController.js";
 
 // eslint-disable-next-line new-cap
 const teacherRoutes = express.Router();
@@ -10,7 +13,7 @@ const teacherRoutes = express.Router();
  * @returns {Array<Teacher>} 200 - An array of teacher objects
  * @returns {Error} 500 - Server error
  */
-teacherRoutes.get('/', getAllTeachers);
+teacherRoutes.get("/", getAllTeachers);
 
 /**
  * PUT /:id
@@ -20,6 +23,6 @@ teacherRoutes.get('/', getAllTeachers);
  * @returns {Error} 500 - Server error
  */
 
-teacherRoutes.put('/:id', updateTeacher);
+teacherRoutes.put("/:id", updateTeacher);
 
 export { teacherRoutes };

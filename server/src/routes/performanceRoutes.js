@@ -1,7 +1,9 @@
- 
-import express from 'express';
-import { getAllTeachers, getTeacherById, getTeacherCourses } 
-  from '../controllers/performanceController.js';
+import express from "express";
+import {
+  getAllTeachers,
+  getTeacherById,
+  getTeacherCourses,
+} from "../controllers/performanceController.js";
 
 // eslint-disable-next-line new-cap
 const performanceRoutes = express.Router();
@@ -12,7 +14,7 @@ const performanceRoutes = express.Router();
  * @returns {Array.<object>} 200 - An array of teacher objects
  * @returns {Error} 500 - Internal server error
  */
-performanceRoutes.get('/teacher', getAllTeachers);
+performanceRoutes.get("/teacher", getAllTeachers);
 
 /**
  * GET /teacher/:id
@@ -22,7 +24,7 @@ performanceRoutes.get('/teacher', getAllTeachers);
  * @returns {Error} 404 - Teacher not found
  * @returns {Error} 500 - Internal server error
  */
-performanceRoutes.get('/teacher/:id', getTeacherById);
+performanceRoutes.get("/teacher/:id", getTeacherById);
 
 /**
  * GET /teacherCourse/:id
@@ -32,6 +34,6 @@ performanceRoutes.get('/teacher/:id', getTeacherById);
  * @returns {Error} 404 - Course data missing for the specified teacher
  * @returns {Error} 500 - Internal server error
  */
-performanceRoutes.get('/teacherCourse/:id', getTeacherCourses);
+performanceRoutes.get("/teacherCourse/:id", getTeacherCourses);
 
 export { performanceRoutes };

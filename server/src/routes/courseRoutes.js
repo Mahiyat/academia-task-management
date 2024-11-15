@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import {
   createNewCourse,
   getAllCourses,
@@ -6,7 +6,7 @@ import {
   updateCourse,
   deleteCourse,
   getCoursesBySemester,
-} from '../controllers/courseController.js';
+} from "../controllers/courseController.js";
 
 // eslint-disable-next-line new-cap
 const courseRoutes = express.Router();
@@ -17,14 +17,14 @@ const courseRoutes = express.Router();
  * @returns {object} 201 - The created course
  * @returns {Error}  500 - Error message
  */
-courseRoutes.post('/', createNewCourse);
+courseRoutes.post("/", createNewCourse);
 
 /**
  * GET /
  * @returns {Array.<Course>} 200 - An array of courses
  * @returns {Error}  500 - Error message
  */
-courseRoutes.get('/', getAllCourses);
+courseRoutes.get("/", getAllCourses);
 
 /**
  * GET /:id
@@ -33,7 +33,7 @@ courseRoutes.get('/', getAllCourses);
  * @returns {Error}  404 - Course not found
  * @returns {Error}  500 - Error message
  */
-courseRoutes.get('/:id', getCourseById);
+courseRoutes.get("/:id", getCourseById);
 
 /**
  * PUT /:id
@@ -43,7 +43,7 @@ courseRoutes.get('/:id', getCourseById);
  * @returns {Error}  404 - Course not found
  * @returns {Error}  500 - Error message
  */
-courseRoutes.put('/:id', updateCourse);
+courseRoutes.put("/:id", updateCourse);
 
 /**
  * DELETE /:id
@@ -52,7 +52,7 @@ courseRoutes.put('/:id', updateCourse);
  * @returns {Error}  404 - Course not found
  * @returns {Error}  500 - Error message
  */
-courseRoutes.delete('/:id', deleteCourse);
+courseRoutes.delete("/:id", deleteCourse);
 
 /**
  * GET /semesters/:semesterId
@@ -61,6 +61,6 @@ courseRoutes.delete('/:id', deleteCourse);
  * @returns {Error}  404 - No courses found for this semester
  * @returns {Error}  500 - Error message
  */
-courseRoutes.get('/semesters/:semesterId', getCoursesBySemester);
+courseRoutes.get("/semesters/:semesterId", getCoursesBySemester);
 
 export { courseRoutes };

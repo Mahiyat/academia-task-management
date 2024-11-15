@@ -1,11 +1,11 @@
-import express from 'express';
+import express from "express";
 
-import * as userServices from '../services/userServices.js';
+import * as userServices from "../services/userServices.js";
 
 // eslint-disable-next-line new-cap
 const userRoutes = express.Router();
 
-userRoutes.get('/test', async (req, res) => {
+userRoutes.get("/test", async (req, res) => {
   try {
     const testMessage = await userServices.getUserByEmail();
 

@@ -12,12 +12,10 @@ const progressRoutes = express.Router();
 /**
  * GET /:semesterId
  * @summary Retrieves progress data for a specified semester.
- * @function
- * @memberof module:progressRoutes
  * @param {string} semesterId - Unique identifier for the semester to fetch progress data.
  * @returns {object} 200 - An object containing the semester's progress details.
  * @returns {Error} 500 - Server error.
  */
-progressRoutes.get('/:semesterId', getSemesterProgress);
+progressRoutes.get("/:semesterId", getSemesterProgress);
 
 export { progressRoutes };

@@ -60,6 +60,6 @@ kanbanRoutes.delete("/delete/:id", kanbanController.deleteBoard);
  * @returns {Error} 404 - Kanban board not found
  * @returns {Error} 500 - Error message
  */
-kanbanRoutes.get('/course/:courseId', kanbanController.getBoardByCourseId);
+kanbanRoutes.get("/course/:courseId", kanbanController.getBoardByCourseId);
 
 export { kanbanRoutes };

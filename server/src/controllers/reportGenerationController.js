@@ -1,9 +1,9 @@
-import { Ollama } from 'ollama';
-import teacherServices from '../services/teacherServices.js';
+import { Ollama } from "ollama";
+import teacherServices from "../services/teacherServices.js";
 
 const ollama = new Ollama({
   apiKey: process.env.OLLAMA_API_KEY,
-  baseUrl: 'http://127.0.0.1:11434',
+  baseUrl: "http://127.0.0.1:11434",
 });
 
 /**
@@ -18,11 +18,10 @@ export const getCourseReport = async (req, res) => {
   const { teacherId } = req.params;
 
   try {
-
     const teacher = await teacherServices.getTeacherById(teacherId);
 
     if (!teacher) {
-      return res.status(404).json({ message: 'Teacher not found' });
+      return res.status(404).json({ message: "Teacher not found" });
     }
 
     const courses = teacher.courses;
@@ -43,8 +42,8 @@ export const getCourseReport = async (req, res) => {
       `;
 
       const response = await ollama.chat({
-        model: 'llama3.2',
-        messages: [{ role: 'user', content: prompt }],
+        model: "llama3.2",
+        messages: [{ role: "user", content: prompt }],
       });
 
       courseReports.push({
@@ -53,35 +52,39 @@ export const getCourseReport = async (req, res) => {
         report: response.message.content,
       });
     }
-    
+
     if (!courseReports || courseReports.length === 0) {
-      return res.status(200).json({ message: 'No courses found for this teacher' });
+      return res
+        .status(200)
+        .json({ message: "No courses found for this teacher" });
     }
 
-    // eslint-disable-next-line max-len
-    const invalidReports = courseReports.filter(courseReport => !courseReport.report || courseReport.report.trim() === '');
+    const invalidReports = courseReports.filter(
+      (courseReport) =>
+        !courseReport.report || courseReport.report.trim() === ""
+    );
 
     if (invalidReports.length > 0) {
       return res.status(400).json({
-        error: 'Some course reports are empty or missing sections.',
-        invalidReports: invalidReports.map(courseReport => ({
+        error: "Some course reports are empty or missing sections.",
+        invalidReports: invalidReports.map((courseReport) => ({
           courseName: courseReport.courseName,
-          courseCode: courseReport.courseCode
-        }))
+          courseCode: courseReport.courseCode,
+        })),
       });
     }
 
-    const report = courseReports.map(courseReport => (
-      `## Course: ${courseReport.courseName} (${courseReport.courseCode})\n\n` +
-      `**Report:**\n\n${courseReport.report}\n\n`
-    )).join('');
-    
-    
+    const report = courseReports
+      .map(
+        (courseReport) =>
+          `## Course: ${courseReport.courseName} (${courseReport.courseCode})\n\n` +
+          `**Report:**\n\n${courseReport.report}\n\n`
+      )
+      .join("");
+
     res.status(200).json({ report });
   } catch (error) {
     console.error("Error in getCourseReport controller:", error);
     res.status(500).json({ error: error.message });
   }
 };
-
- 
