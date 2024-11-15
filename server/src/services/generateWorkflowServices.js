@@ -18,7 +18,9 @@ const generateSuggestions = async (kanbanBoardId) => {
     "_id title category priority deadline status"
   );
 
-  console.log(date);
+  const date = new Date();
+
+  // console.log(date);
 
   const request = {
     model: "llama3.2",

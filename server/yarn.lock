@@ -2485,10 +2485,10 @@ object-inspect@^1.13.1:
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.13.2.tgz#dea0088467fb991e67af4058147a24824a3043ff"
   integrity sha512-IRZSRuzJiynemAXPYtPe5BoI/RESNYR7TYm50MC5Mqbd3Jmw5y790sErYw3V6SryFJD64b74qQQs9wn5Bg/k3g==
 
-ollama@^0.5.9:
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/ollama/-/ollama-0.5.9.tgz#d8c010fa80c8d6ece0c5cbc19b8432c780316cc0"
-  integrity sha512-F/KZuDRC+ZsVCuMvcOYuQ6zj42/idzCkkuknGyyGVmNStMZ/sU3jQpvhnl4SyC0+zBzLiKNZJnJeuPFuieWZvQ==
+ollama@^0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/ollama/-/ollama-0.5.10.tgz#82267e91b75445cef72a303a65664511f11bbbf9"
+  integrity sha512-M5O4u6S6yZeeKFrKA7ZfGGLjK54otOVGPrOUc3N64zSTpz9J+x/nh93dmD6Py7YLgXzq9I6Nq+PDDoaqJuV3LQ==
   dependencies:
     whatwg-fetch "^3.6.20"
 

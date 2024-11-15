@@ -3,36 +3,6 @@ import sinon from "sinon";
 import generateWorkflowServices from "../../src/services/generateWorkflowServices.js";
 import * as generateWorkflowController from "../../src/controllers/generateWorkflowController.js";
 
-const mockRequestBody = [
-  {
-    title: "Complete AI Module",
-    description: "Finish the module on AI-driven workflow suggestions",
-    category: "Class",
-    priority: "red",
-    deadline: new Date("2024-11-15T23:59:59.000Z"),
-    status: "todo",
-    kanbanBoardId: "64b28c4f1f2fbb00123abcd4",
-  },
-  {
-    title: "Prepare Tutorial Slides",
-    description: "Create slides for the upcoming coding tutorial session",
-    category: "Tutorial",
-    priority: "orange",
-    deadline: new Date("2024-11-10T17:00:00.000Z"),
-    status: "doing",
-    kanbanBoardId: "64b28c4f1f2fbb00123abcd4",
-  },
-  {
-    title: "Review Class Assignments",
-    description: "Check and provide feedback on students' assignments",
-    category: "Class",
-    priority: "yellow",
-    deadline: new Date("2024-11-12T21:00:00.000Z"),
-    status: "todo",
-    kanbanBoardId: "64b28c4f1f2fbb00123abcd4",
-  },
-];
-
 describe("Generate Workflow Controller", () => {
   afterEach(() => {
     sinon.restore();
