@@ -21,6 +21,9 @@ export const generateSuggestions = async (req, res) => {
     }
 
     for await (const chunk of responseStream) {
+
+      // console.log(chunk);
+
       const data = JSON.stringify({
         response: chunk.response,
         done: chunk.done,
